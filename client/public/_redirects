@@ -1,0 +1,3 @@
+# Netlify serves existing static files first; this is the last-resort SPA fallback
+# so deep links and refreshes never 404.
+/*    /index.html   200

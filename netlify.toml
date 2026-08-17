@@ -1,0 +1,23 @@
+# Netlify build configuration — Executive Wellness Housing
+#
+# The build runs Vite, then a Playwright prerender pass that visits every route
+# with headless Chromium and writes crawlable HTML. Netlify therefore has to
+# install a browser before building.
+#
+# PLAYWRIGHT_BROWSERS_PATH=0 puts Chromium inside node_modules so Netlify's
+# dependency cache keeps it between builds instead of re-downloading each time.
+
+[build]
+  command = "pnpm exec playwright install chromium && pnpm run build"
+  publish = "dist/public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PNPM_VERSION = "10"
+  PLAYWRIGHT_BROWSERS_PATH = "0"
+
+[context.deploy-preview]
+  command = "pnpm exec playwright install chromium && pnpm run build"
+
+[context.branch-deploy]
+  command = "pnpm exec playwright install chromium && pnpm run build"
