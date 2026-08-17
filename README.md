@@ -125,7 +125,9 @@ npx serve dist/public
 
 ## Known open items
 
-- Analytics is an empty marked slot in `client/index.html` — nothing is tracking yet.
+- Analytics is wired but dormant: paste a GA4 Measurement ID into `GA_MEASUREMENT_ID` in
+  `client/src/lib/analytics.ts` to switch it on. Tracking is restricted to the production hostname,
+  so deploy previews and local development never appear in the reports.
 - The live build used a patched `wouter@3.7.1`; the patch file was never delivered and this repo
   uses stock `wouter`. All five routes verify identically, so the patch's effect is not observable.
 
