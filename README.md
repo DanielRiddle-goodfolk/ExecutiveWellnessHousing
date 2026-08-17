@@ -118,8 +118,8 @@ npx serve dist/public
 ## Domain & DNS
 
 - **Domain:** executivewellnesshousing.com
-- **DNS managed at:** {{registrar — Dan to fill in}}
-- **Notes:** {{redirects / subdomains — Dan to fill in}}
+- **DNS managed at:** GoDaddy
+- **Notes:** redirects live in `client/public/_redirects`; custom headers in `client/public/_headers`
 
 > Credentials, API keys, and host logins are **never** stored in this repo.
 

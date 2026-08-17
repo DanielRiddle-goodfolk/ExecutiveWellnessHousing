@@ -11,7 +11,7 @@ import path from "node:path";
 import { chromium } from "playwright";
 
 const DIST = path.resolve(import.meta.dirname, "..", "dist", "public");
-const SHOTS = process.env.SHOT_DIR ?? "/mnt/user-data/working/shots";
+const SHOTS = process.env.SHOT_DIR ?? path.resolve(import.meta.dirname, "..", "shots");
 const PORT = 4174;
 
 const MIME = {
