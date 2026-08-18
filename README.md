@@ -33,32 +33,32 @@ pnpm run test:form # drives the real inquiry form against a fake Netlify server
 ```
 executive-wellness-housing/
 ├── client/
-│   ├── index.html          # HTML shell + the hidden Netlify form declaration
-│   ├── public/             # copied verbatim to the site root
-│   │   ├── photos/         # 67 optimized WebP property photos
-│   │   ├── _redirects      # Netlify redirects
-│   │   ├── _headers        # Netlify headers
+│   ├── index.html            # HTML shell + the hidden Netlify form declaration
+│   ├── public/               # copied verbatim to the site root
+│   │   ├── photos/           # 67 optimized WebP property photos
+│   │   ├── _redirects        # Netlify redirects
+│   │   ├── _headers          # Netlify headers
 │   │   ├── robots.txt
 │   │   └── sitemap.xml
 │   └── src/
-│       ├── pages/          # one component per route
-│       │   ├── Home.tsx            → /
-│       │   ├── CorporateHousing.tsx→ /corporate-housing
-│       │   ├── TheTable.tsx        → /the-table
-│       │   ├── Gallery.tsx         → /gallery
-│       │   ├── Application.tsx     → /apply  (the inquiry form)
-│       │   └── NotFound.tsx        → 404
-│       ├── components/     # shared UI
-│       ├── lib/seo.ts      # per-route meta, and INQUIRY_EMAIL
-│       ├── lib/analytics.ts# GA4 loader — dormant until a Measurement ID is set
-│       └── index.css       # Tailwind layer + design tokens
+│       ├── pages/            # one component per route
+│       │   ├── Home.tsx              → /
+│       │   ├── CorporateHousing.tsx  → /corporate-housing
+│       │   ├── TheTable.tsx          → /the-table
+│       │   ├── Gallery.tsx           → /gallery
+│       │   ├── Application.tsx       → /apply  (the inquiry form)
+│       │   └── NotFound.tsx          → 404
+│       ├── components/       # shared UI
+│       ├── lib/seo.ts        # per-route meta, and INQUIRY_EMAIL
+│       ├── lib/analytics.ts  # GA4 — dormant until a Measurement ID is set
+│       └── index.css         # Tailwind layer + design tokens
 ├── scripts/
-│   ├── prerender.mjs       # writes crawlable HTML for every route
-│   ├── verify.mjs          # route gate — run before every PR
-│   └── test-form.mjs       # form plumbing test
-├── netlify.toml            # build command, publish dir, Node/pnpm versions
-├── README.md               # this file (humans)
-├── CLAUDE.md               # instructions for AI editors
+│   ├── prerender.mjs         # writes crawlable HTML for every route
+│   ├── verify.mjs            # route gate — run before every PR
+│   └── test-form.mjs         # form plumbing test
+├── netlify.toml              # build command, publish dir, Node/pnpm versions
+├── README.md                 # this file (humans)
+├── CLAUDE.md                 # instructions for AI editors
 └── docs/
     └── CLAUDE-GITHUB-SETUP.md   # how a teammate connects Claude to this repo
 ```
@@ -70,37 +70,34 @@ plain English; Claude branches, makes the edit, opens a pull request, and hands 
 preview link. After review it's merged and goes live. The rules Claude follows are in
 [`CLAUDE.md`](./CLAUDE.md).
 
-**Setting up a new teammate:** follow [`docs/CLAUDE-GITHUB-SETUP.md`](./docs/CLAUDE-GITHUB-SETUP.md)
-exactly. The obvious path — adding the "GitHub" connector from Claude's directory — **does not
-work**; it authorizes without installing and ends up read-only. The setup guide covers the OAuth App
-method that does work.
+Setting a teammate up takes about fifteen minutes and is written out in
+[`docs/CLAUDE-GITHUB-SETUP.md`](./docs/CLAUDE-GITHUB-SETUP.md). **Follow that guide rather than
+adding the "GitHub" connector from Claude's directory** — that one authorizes without installing and
+ends up read-only, which looks like it worked right up until the first edit fails.
 
 ## Repository rules
 
-`main` is protected. Nobody commits to it directly, including Dan.
+`main` is the live site and is protected:
 
-| Rule | Setting |
-|---|---|
-| Pull request required before merging | yes |
-| Required approvals | **0** — with a single maintainer, requiring an approval deadlocks merges, since GitHub forbids approving your own PR |
-| Required status check | `netlify/executivewellnesshousing/deploy-preview` — a failed build blocks the merge |
-| Merge method | squash — one PR becomes one revertible commit |
-| Force pushes | blocked |
-| Signed commits | **must stay off** — commits created through the Claude connector are unsigned and would be rejected, breaking the whole editing workflow |
+- **A pull request is required.** Direct pushes to `main` are rejected.
+- **Zero approvals required.** A solo owner cannot approve their own PR, so requiring approvals would
+  deadlock merges. Turn this on when there are enough reviewers to make it work.
+- **The Netlify check must pass.** `netlify/executivewellnesshousing/deploy-preview` is a required
+  status check — a failed build blocks the merge button rather than merely looking alarming.
+- **Squash merges**, so one pull request lands as one revertible commit with a plain-English title.
+
+Do **not** enable *Require signed commits*. Commits created through the Claude connector are not
+signed that way and would be rejected, which would silently kill the editing workflow.
 
 ## How deploys work
 
 - **Open a pull request** → Netlify builds a **deploy preview** at
   `deploy-preview-<PR number>--executivewellnesshousing.netlify.app`. If the build fails, the PR
-  check goes red and the merge is blocked.
+  check goes red — that is your first line of defense.
 - **Merge into `main`** → Netlify builds and publishes to the live site.
 
-Nobody logs into Netlify to publish. A failed build cannot take the site down — Netlify only swaps
-in a new deploy on success.
-
-> **If Netlify ever has to be relinked, link the repo to the *existing* site** via Project
-> configuration → Build & deploy → Continuous deployment → Repository → Link repository. Creating a
-> new site instead gives it a fresh form store, and inquiries stop reaching Notion silently.
+Nobody logs into Netlify to publish. A failed build cannot take the site down — Netlify only swaps in
+a new deploy when the build succeeds, so the last good deploy keeps serving.
 
 ### The build's one fragile dependency
 
@@ -111,6 +108,13 @@ pinned to an exact version on purpose — a floating version downloads a differe
 
 If this ever breaks, the fallback is to run build + prerender in GitHub Actions and deploy the
 finished artifact with the Netlify CLI.
+
+### If Netlify stops building
+
+Changing the repository's visibility can break Netlify's access to it. Reconnect at **Project
+configuration → Build & deploy → Continuous deployment → Repository → Link repository**, and make
+sure Netlify's GitHub app has access to this repo. Always relink the **existing** site — creating a
+new one gives it a separate form store and silently orphans the inquiry pipeline.
 
 ## Forms
 
@@ -123,8 +127,8 @@ declares the field names Netlify scans at deploy time. Adding or renaming a fiel
 requires updating that hidden form to match, or the field is **silently dropped** — no error, the
 data just never arrives. `pnpm run test:form` catches the drift. See `CLAUDE.md`.
 
-Note that **deploy previews capture form submissions too**, into the same form as production. A test
-submission on a preview will create a real row in the CRM.
+Deploy previews capture submissions into the *same* form as production, so a test submission on a
+preview will reach Notion. Useful for verifying the chain; delete the test row afterwards.
 
 ## Previewing locally
 
@@ -150,14 +154,13 @@ npx serve dist/public
 
 ## Known open items
 
-- **Analytics is wired but dormant.** Paste a GA4 Measurement ID into `GA_MEASUREMENT_ID` in
+- Analytics is wired but dormant: paste a GA4 Measurement ID into `GA_MEASUREMENT_ID` in
   `client/src/lib/analytics.ts` to switch it on. Tracking is restricted to the production hostname,
   so deploy previews and local development never appear in the reports.
-- **The Zap stamps `Source` as "Website — Corporate Housing"**; it should be "Website — Apply." More
-  fundamentally, `Source` is a fixed value and can never vary — every inquiry passes through the one
-  `/apply` form. Attributing leads to a page would need a hidden field capturing the referrer.
-- **"Blue zone" appears twice on the live homepage** and the decision on it is still open. See the
-  brand voice section of `CLAUDE.md` before touching it.
+- The Zap writing into Notion stamps `Source` as *Website — Corporate Housing*; it should be
+  *Website — Apply*. Also worth knowing: `Source` is a fixed value, so it can never distinguish
+  where a lead came from. Real attribution needs a hidden field on the form capturing the referring
+  page.
 - The live build used a patched `wouter@3.7.1`; the patch file was never delivered and this repo
   uses stock `wouter`. All five routes verify identically, so the patch's effect is not observable.
 

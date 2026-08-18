@@ -32,24 +32,18 @@ One deliberate quirk: the field named `email` is lowercase on purpose. Netlify t
 literally named `email` as the reply-to address on notification emails, so Jennie can hit Reply and
 reach the prospect. **Do not rename it.**
 
-Submissions flow: Netlify Forms → email to Jennie → a Zap copies the row into a Notion CRM. Breaking
-the form breaks the lead pipeline, not just a page.
-
 ---
 
 ## Golden rules
 
-1. **Never commit to `main`.** Branch, edit, open a pull request. `main` is the live site, and it is
-   protected — direct pushes are rejected.
+1. **Never commit to `main`.** Branch, edit, open a pull request. `main` is the live site, and the
+   repo enforces this — direct pushes are rejected.
 2. **Branch names:** `edit/<short-description>` — e.g. `edit/update-phone-number`.
 3. **Always hand back the Netlify preview link** and wait for the person to confirm it looks right
-   before merging. The `netlify/executivewellnesshousing/deploy-preview` check is **required** — a
-   red check blocks the merge, and it should. Read the build log and fix it rather than working
-   around it.
-4. **Merge with squash.** One pull request becomes one commit on `main`, titled in plain language,
-   so a bad change can be reverted in one step.
-5. **Never put secrets in the repo.** No passwords, API keys, or credentials, ever. If a task seems
-   to need one, stop and ask.
+   before merging. The PR's `netlify/executivewellnesshousing/deploy-preview` check must be **green**
+   before a merge is allowed. If it's red the build failed — read the log and fix it, don't merge.
+4. **Merge with squash**, so one pull request becomes one revertible commit on `main`.
+5. **Never put secrets in the repo.** No passwords, API keys, or credentials, ever.
 6. **Ask when unsure.** Flag anything touching pricing, legal text, the Sanctuary Covenant, or
    licensing for Dan to approve.
 
@@ -71,7 +65,7 @@ harmonize it, do not swap one for the other — it changes SEO and needs Dan's e
 | Inquiry form | `client/src/pages/Application.tsx` **+** `client/index.html` |
 | Page titles, descriptions, social tags | `client/src/lib/seo.ts` |
 | Where inquiries are emailed | `INQUIRY_EMAIL` in `client/src/lib/seo.ts` |
-| Google Analytics | `GA_MEASUREMENT_ID` in `client/src/lib/analytics.ts` |
+| Google Analytics | `client/src/lib/analytics.ts` |
 | Colors, fonts, spacing tokens | `client/src/index.css` |
 | Shared buttons, nav, footer | `client/src/components/` |
 | Photos | `client/public/photos/` |
@@ -90,26 +84,19 @@ marketing verbs ("unlock," "elevate," "supercharge"). Match the cadence of the s
 
 - "La Porte" is always two words.
 - "Circa 1888," never "Est. 1888."
-- Avoid "silence" and standalone "green space" — these were removed deliberately.
-- **"Blue zone" — decision still open, do not touch either way.** The original spec contradicted
-  itself, approving the phrase only with a qualifier in one section and banning it in another. It
-  currently appears twice on the live homepage: *"a veritable blue zone of sorts"* (the qualified
-  form) and *"This was their beautiful blue zone"* (bare). Do not add new instances, and do not
-  remove the existing ones without Dan's sign-off.
 
-## Contrast — text over photographs
+## Text over photographs
 
-The hero and several sections set text directly over photos. Any text you add or restyle over an
-image must reach **4.5:1 contrast against the brightest part of the image behind it**, not the
-average — an average that passes will still be unreadable where the photo is bright.
+The hero and several sections set text directly on photos. Any text you add or restyle over an image
+must reach **4.5:1 contrast against the brightest part of the image behind it** — not the average.
+A photo that looks dark overall will still have bright patches that swallow light type.
 
-Brass on a photograph almost always fails and needs a backing. The hero call-to-action uses
-`bg-[oklch(0.20_0.005_285/0.85)]` for exactly this reason: 85% charcoal, measured at 4.68:1 in the
-worst region. Reuse that pattern rather than inventing a new one.
+Brass-coloured text on a photograph almost always fails this. It needs a backing. The hero CTA uses
+`bg-[oklch(0.20_0.005_285/0.85)]` — 85% charcoal, measured at 4.68:1 in the worst region of that
+image. Copy that pattern rather than inventing a new one, and don't lighten it without measuring.
 
-Note that Tailwind's `/50` opacity shorthand **does not work on an arbitrary CSS variable** —
-`bg-[var(--color-charcoal)]/50` silently generates no rule at all and you get no background. Write
-the colour inline with its alpha, as above.
+Note that a *semi-transparent white* backing behind light text makes things worse, not better — it
+raises the background toward the text colour. Darken behind light text; lighten behind dark text.
 
 ## Images
 
@@ -143,3 +130,9 @@ Then re-read the person's original request and confirm you actually did that, an
 - One topic per PR. Small and focused.
 - Commit messages in plain language: `Update contact phone number`, `Add sauna photos to gallery`.
 - PR description: one or two sentences a non-coder understands — what changed and why.
+
+## Connector setup
+
+If you are a teammate wiring Claude up to this repo for the first time, follow
+[`docs/CLAUDE-GITHUB-SETUP.md`](./docs/CLAUDE-GITHUB-SETUP.md). The built-in GitHub connector in
+Claude's directory does **not** work — it authorizes without installing and ends up read-only.
