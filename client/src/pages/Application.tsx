@@ -1,4 +1,5 @@
 import { useSeo, INQUIRY_EMAIL } from "@/lib/seo";
+import { applyAttribution } from "@/lib/attribution";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -31,6 +32,12 @@ export default function Application() {
     const form = e.currentTarget;
     const data = new FormData(form);
     data.set("form-name", "residency-inquiry");
+
+    // Attached here rather than rendered as inputs on purpose: the prerender
+    // pass would otherwise bake this visitor-specific data into the static HTML
+    // shipped to everyone. Field names are defined in lib/attribution.ts and
+    // must match the hidden Netlify declaration in client/index.html.
+    applyAttribution(data);
 
     try {
       const res = await fetch("/", {
