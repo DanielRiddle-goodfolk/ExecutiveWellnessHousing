@@ -1,4 +1,4 @@
-import { useSeo } from "@/lib/seo";
+import { useSeo, yearsSince } from "@/lib/seo";
 /**
  * The Table — Dedicated Food Gallery Page
  * Design: Archival Portra aesthetic, editorial food photography
@@ -192,7 +192,7 @@ export default function TheTable() {
           <p className="text-[oklch(0.72_0.01_80)] leading-relaxed text-lg italic">
             These tables have carried the heart and stories of every love-filled meal served in this house
             since its inception in 1888. They are the original farm tables — built for this room, in this house,
-            136 years ago. There is love in every bite.
+            {yearsSince()} years ago. There is love in every bite.
           </p>
         </motion.div>
       </section>
