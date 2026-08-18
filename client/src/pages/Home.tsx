@@ -95,7 +95,7 @@ export default function Home() {
               <motion.div variants={fadeUp}>
                 <Link href="/apply">
                   <span className="inline-flex items-center gap-4 group">
-                    <span className="px-8 py-4 border border-[var(--color-brass)] text-[var(--color-brass-light)] text-xs tracking-[0.2em] uppercase group-hover:bg-[var(--color-brass)] group-hover:text-[var(--color-ivory)] transition-all duration-300">
+                    <span className="px-8 py-4 border border-[var(--color-brass)] bg-[oklch(0.20_0.005_285/0.85)] text-[var(--color-brass-light)] text-xs tracking-[0.2em] uppercase group-hover:bg-[var(--color-brass)] group-hover:text-[var(--color-ivory)] transition-all duration-300">
                       Request a Private Residency
                     </span>
                     <span className="w-12 h-[1px] bg-[var(--color-brass)] group-hover:w-20 transition-all duration-300" />
