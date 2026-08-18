@@ -159,6 +159,13 @@ export default function Application() {
                   data-netlify-honeypot="company-website"
                 >
                   <input type="hidden" name="form-name" value="residency-inquiry" />
+                  {/* Declared so Netlify registers them when it parses this page.
+                      Deliberately valueless: the prerender pass would otherwise bake
+                      one visitor's data into the static HTML served to everyone.
+                      Real values are set on the FormData by applyAttribution(). */}
+                  <input type="hidden" name="Landing Page" />
+                  <input type="hidden" name="Traffic Source" />
+                  <input type="hidden" name="Campaign" />
                   <p className="hidden">
                     <label>
                       Leave this field empty
