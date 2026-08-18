@@ -1,5 +1,5 @@
 import { useSeo, INQUIRY_EMAIL } from "@/lib/seo";
-import { getAttribution } from "@/lib/attribution";
+import { applyAttribution } from "@/lib/attribution";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -35,12 +35,9 @@ export default function Application() {
 
     // Attached here rather than rendered as inputs on purpose: the prerender
     // pass would otherwise bake this visitor-specific data into the static HTML
-    // shipped to everyone. These three names must stay in step with the hidden
-    // Netlify declaration in client/index.html or they are silently dropped.
-    const attribution = getAttribution();
-    data.set("Landing Page", attribution.landingPage);
-    data.set("Referrer", attribution.referrer);
-    data.set("Campaign", attribution.campaign);
+    // shipped to everyone. Field names are defined in lib/attribution.ts and
+    // must match the hidden Netlify declaration in client/index.html.
+    applyAttribution(data);
 
     try {
       const res = await fetch("/", {
