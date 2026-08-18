@@ -9,7 +9,7 @@
  * deploy previews and local development never pollute the real numbers.
  */
 
-export const GA_MEASUREMENT_ID = "";
+export const GA_MEASUREMENT_ID = "G-RQ8W0NEY7H";
 
 const PRODUCTION_HOSTS = ["executivewellnesshousing.com", "www.executivewellnesshousing.com"];
 
@@ -41,7 +41,14 @@ export function initAnalytics() {
   window.gtag("config", GA_MEASUREMENT_ID);
 }
 
-/** Records a page view. Call on every client-side route change. */
+/**
+ * Records a page view for a client-side route change.
+ *
+ * Currently unused, and deliberately so: GA4's Enhanced Measurement includes
+ * "page changes based on browser history events", which already captures this
+ * app's Wouter navigation. Calling this as well would double-count every
+ * navigation. Wire it up only if Enhanced Measurement is turned off.
+ */
 export function trackPageView(path: string) {
   if (!GA_MEASUREMENT_ID || typeof window === "undefined" || !window.gtag) return;
   window.gtag("event", "page_view", {
