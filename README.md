@@ -50,6 +50,7 @@ executive-wellness-housing/
 │       │   └── NotFound.tsx        → 404
 │       ├── components/     # shared UI
 │       ├── lib/seo.ts      # per-route meta, and INQUIRY_EMAIL
+│       ├── lib/analytics.ts# GA4 loader — dormant until a Measurement ID is set
 │       └── index.css       # Tailwind layer + design tokens
 ├── scripts/
 │   ├── prerender.mjs       # writes crawlable HTML for every route
@@ -67,18 +68,39 @@ executive-wellness-housing/
 Day-to-day content edits go through **Claude**, not by hand. A teammate describes the change in
 plain English; Claude branches, makes the edit, opens a pull request, and hands back the Netlify
 preview link. After review it's merged and goes live. The rules Claude follows are in
-[`CLAUDE.md`](./CLAUDE.md); setup for a new teammate is in
-[`docs/CLAUDE-GITHUB-SETUP.md`](./docs/CLAUDE-GITHUB-SETUP.md).
+[`CLAUDE.md`](./CLAUDE.md).
 
-**The one rule:** nobody commits directly to `main`. Every change goes through a pull request.
+**Setting up a new teammate:** follow [`docs/CLAUDE-GITHUB-SETUP.md`](./docs/CLAUDE-GITHUB-SETUP.md)
+exactly. The obvious path — adding the "GitHub" connector from Claude's directory — **does not
+work**; it authorizes without installing and ends up read-only. The setup guide covers the OAuth App
+method that does work.
+
+## Repository rules
+
+`main` is protected. Nobody commits to it directly, including Dan.
+
+| Rule | Setting |
+|---|---|
+| Pull request required before merging | yes |
+| Required approvals | **0** — with a single maintainer, requiring an approval deadlocks merges, since GitHub forbids approving your own PR |
+| Required status check | `netlify/executivewellnesshousing/deploy-preview` — a failed build blocks the merge |
+| Merge method | squash — one PR becomes one revertible commit |
+| Force pushes | blocked |
+| Signed commits | **must stay off** — commits created through the Claude connector are unsigned and would be rejected, breaking the whole editing workflow |
 
 ## How deploys work
 
-- **Open a pull request** → Netlify builds a **deploy preview** at its own URL. If the build fails,
-  the PR check goes red — that is your first line of defense.
+- **Open a pull request** → Netlify builds a **deploy preview** at
+  `deploy-preview-<PR number>--executivewellnesshousing.netlify.app`. If the build fails, the PR
+  check goes red and the merge is blocked.
 - **Merge into `main`** → Netlify builds and publishes to the live site.
 
-Nobody logs into Netlify to publish.
+Nobody logs into Netlify to publish. A failed build cannot take the site down — Netlify only swaps
+in a new deploy on success.
+
+> **If Netlify ever has to be relinked, link the repo to the *existing* site** via Project
+> configuration → Build & deploy → Continuous deployment → Repository → Link repository. Creating a
+> new site instead gives it a fresh form store, and inquiries stop reaching Notion silently.
 
 ### The build's one fragile dependency
 
@@ -100,6 +122,9 @@ by a Zap.
 declares the field names Netlify scans at deploy time. Adding or renaming a field on `/apply`
 requires updating that hidden form to match, or the field is **silently dropped** — no error, the
 data just never arrives. `pnpm run test:form` catches the drift. See `CLAUDE.md`.
+
+Note that **deploy previews capture form submissions too**, into the same form as production. A test
+submission on a preview will create a real row in the CRM.
 
 ## Previewing locally
 
@@ -125,9 +150,14 @@ npx serve dist/public
 
 ## Known open items
 
-- Analytics is wired but dormant: paste a GA4 Measurement ID into `GA_MEASUREMENT_ID` in
+- **Analytics is wired but dormant.** Paste a GA4 Measurement ID into `GA_MEASUREMENT_ID` in
   `client/src/lib/analytics.ts` to switch it on. Tracking is restricted to the production hostname,
   so deploy previews and local development never appear in the reports.
+- **The Zap stamps `Source` as "Website — Corporate Housing"**; it should be "Website — Apply." More
+  fundamentally, `Source` is a fixed value and can never vary — every inquiry passes through the one
+  `/apply` form. Attributing leads to a page would need a hidden field capturing the referrer.
+- **"Blue zone" appears twice on the live homepage** and the decision on it is still open. See the
+  brand voice section of `CLAUDE.md` before touching it.
 - The live build used a patched `wouter@3.7.1`; the patch file was never delivered and this repo
   uses stock `wouter`. All five routes verify identically, so the patch's effect is not observable.
 
