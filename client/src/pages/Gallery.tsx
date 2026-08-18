@@ -290,7 +290,7 @@ export default function Gallery() {
             variants={fadeUp}
             className="whisper text-lg sm:text-xl"
           >
-            Fifty-one rooms. Four acres. {yearsSince()} years of story.
+            Fifteen suites. Four acres. {yearsSince()} years of story.
           </motion.p>
         </motion.div>
       </section>
