@@ -88,3 +88,23 @@ export function getAttribution(): Attribution {
     return EMPTY;
   }
 }
+
+/**
+ * Attaches attribution to an outgoing form submission.
+ *
+ * The field names live here, beside the values, so changing one means editing
+ * this file alone. They must match the hidden Netlify declaration in
+ * client/index.html exactly, or Netlify silently drops them.
+ *
+ * Do not use the names Netlify reserves for itself — `referrer`, `ip`, or
+ * `user_agent`. Netlify records those on every submission automatically, and a
+ * collision is invisible: its value wins, yours never appears, and the field
+ * looks populated in Zapier. "Traffic Source" exists because "Referrer" hit
+ * exactly that.
+ */
+export function applyAttribution(data: FormData): void {
+  const a = getAttribution();
+  data.set("Landing Page", a.landingPage);
+  data.set("Traffic Source", a.referrer);
+  data.set("Campaign", a.campaign);
+}
