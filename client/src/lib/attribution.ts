@@ -66,8 +66,13 @@ export function captureAttribution(): void {
       }
     }
 
+    // Netlify serves prerendered routes as directories, so paths arrive with a
+    // trailing slash. Strip it so "/corporate-housing" and "/corporate-housing/"
+    // do not count as two different landing pages.
+    const path = window.location.pathname.replace(/(.)\/$/, "$1");
+
     const record: Attribution = {
-      landingPage: window.location.pathname + window.location.search,
+      landingPage: path + window.location.search,
       referrer: referrer || "(direct)",
       campaign: utm || clickId,
     };

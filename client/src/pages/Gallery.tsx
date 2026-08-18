@@ -1,10 +1,10 @@
-import { useSeo } from "@/lib/seo";
+import { useSeo, yearsSince } from "@/lib/seo";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useState, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-// ─── Animation Variants ───────────────────────────────────────────────
+// --- Animation Variants ---
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
@@ -19,7 +19,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.08 } },
 };
 
-// ─── Gallery Data ─────────────────────────────────────────────────────
+// --- Gallery Data ---
 interface GalleryImage {
   src: string;
   alt: string;
@@ -52,7 +52,7 @@ const sections: GallerySection[] = [
   {
     id: "interior",
     title: "The Grand Interior",
-    subtitle: "Room after room of curated beauty, layered over 136 years.",
+    subtitle: `Room after room of curated beauty, layered over ${yearsSince()} years.`,
     images: [
       { src: "/photos/09.13.2023-Theoldruth-12_eaff6bd2.webp", alt: "Grand staircase with patterned carpet runner and chandelier", aspect: "portrait" },
       { src: "/photos/TOR-Summer-2025-29_2e2b4ff2.webp", alt: "Overhead atrium view with leather seating and balcony railing", aspect: "landscape" },
@@ -118,7 +118,7 @@ const sections: GallerySection[] = [
   },
 ];
 
-// ─── Lightbox Component ───────────────────────────────────────────────
+// --- Lightbox Component ---
 function Lightbox({
   images,
   currentIndex,
@@ -182,7 +182,7 @@ function Lightbox({
   );
 }
 
-// ─── Gallery Page ─────────────────────────────────────────────────────
+// --- Gallery Page ---
 export default function Gallery() {
   useSeo({
     title: "Photo Gallery | The Old Ruth Executive Wellness Suites | La Porte, IN",
@@ -290,7 +290,7 @@ export default function Gallery() {
             variants={fadeUp}
             className="whisper text-lg sm:text-xl"
           >
-            Fifty-one rooms. Four acres. One hundred thirty-six years of story.
+            Fifteen suites. Four acres. {yearsSince()} years of story.
           </motion.p>
         </motion.div>
       </section>
@@ -502,7 +502,7 @@ export default function Gallery() {
           variants={stagger}
           className="container max-w-3xl mx-auto text-center"
         >
-          <motion.p variants={fadeUp} className="whisper text-lg mb-8 text-[var(--color-brass-light)]">
+          <motion.p variants={fadeUp} className="whisper text-lg mb-8 text-[var(--color-brass-light)] text-balance">
             There is more to find here than photographs can hold.
           </motion.p>
           <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl text-[var(--color-ivory)] mb-10">

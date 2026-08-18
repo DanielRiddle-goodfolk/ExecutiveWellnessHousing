@@ -10,6 +10,22 @@ export const SITE_NAME = "The Old Ruth — Executive Wellness Suites";
 export const INQUIRY_EMAIL = "Jennie@goodfolk.com";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/photos/TOR-Summer-2025-56_5baec9be.webp`;
 
+/** The mansion was built in 1888. */
+export const FOUNDED_YEAR = 1888;
+
+/**
+ * Years since the house was built — computed, never hardcoded, so it cannot go
+ * stale the way "128 years" did.
+ *
+ * One caveat: the prerendered HTML captures this at build time. If a new year
+ * begins and the site is not redeployed, crawlers see last year's number until
+ * the next build. The browser corrects it on load, so visitors always see the
+ * right figure.
+ */
+export function yearsSince(): number {
+  return new Date().getFullYear() - FOUNDED_YEAR;
+}
+
 type SeoInput = {
   title: string;
   description: string;
@@ -18,6 +34,8 @@ type SeoInput = {
   /** Above-the-fold hero image; emitted as <link rel="preload"> to improve LCP. */
   preloadImage?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** Keeps a page out of search results. Used by the 404. */
+  noindex?: boolean;
 };
 
 function upsertMeta(selector: string, attrs: Record<string, string>) {
@@ -44,7 +62,7 @@ function upsertLink(rel: string, href: string) {
  * captured verbatim by the prerenderer so crawlers see the same tags in the
  * served HTML.
  */
-export function useSeo({ title, description, path, ogImage, preloadImage, jsonLd }: SeoInput) {
+export function useSeo({ title, description, path, ogImage, preloadImage, jsonLd, noindex }: SeoInput) {
   useEffect(() => {
     const url = `${SITE_URL}${path}`;
     const image = ogImage ?? DEFAULT_OG_IMAGE;
@@ -52,6 +70,10 @@ export function useSeo({ title, description, path, ogImage, preloadImage, jsonLd
     document.title = title;
     upsertMeta('meta[name="description"]', { name: "description", content: description });
     upsertLink("canonical", url);
+    upsertMeta('meta[name="robots"]', {
+      name: "robots",
+      content: noindex ? "noindex, follow" : "index, follow, max-image-preview:large",
+    });
 
     upsertMeta('meta[property="og:type"]', { property: "og:type", content: "website" });
     upsertMeta('meta[property="og:site_name"]', { property: "og:site_name", content: SITE_NAME });

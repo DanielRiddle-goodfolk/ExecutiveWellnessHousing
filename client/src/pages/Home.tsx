@@ -1,4 +1,4 @@
-import { useSeo, LODGING_JSONLD } from "@/lib/seo";
+import { useSeo, LODGING_JSONLD, yearsSince } from "@/lib/seo";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Shield, Leaf, Brain, Clock, ChefHat, Dumbbell } from "lucide-react";
@@ -116,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* The Blue Zone statement — Asymmetric left-aligned */}
-      <section className="py-28 lg:py-40">
+      <section className="pt-16 pb-28 lg:py-40">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -128,7 +128,7 @@ export default function Home() {
             <div className="lg:col-span-2 flex flex-col items-start">
               <motion.div variants={fadeUp} className="w-[1px] h-20 bg-[var(--color-brass)] mb-6" />
               <motion.p variants={fadeUp} className="whisper text-base [writing-mode:vertical-lr] rotate-180">
-                128 Years
+                {yearsSince()} Years
               </motion.p>
             </div>
             <div className="lg:col-span-7">
@@ -139,7 +139,7 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-3xl lg:text-[2.5rem] leading-[1.2] mb-8 text-[var(--color-charcoal)]"
               >
-                For 128 years, this mansion and estate has been a veritable blue zone of sorts — a place where people live longer,
+                For {yearsSince()} years, this mansion and estate has been a veritable blue zone of sorts — a place where people live longer,
                 think clearer, and return to who they were meant to be.
               </motion.h2>
               <motion.p
@@ -367,7 +367,7 @@ export default function Home() {
                 <p className="italic">
                   These tables have carried the heart and stories of every love-filled meal served
                   in this house since its inception in 1888. They are the original farm tables —
-                  built for this room, in this house, 136 years ago. There is love and service in every bite.
+                  built for this room, in this house, {yearsSince()} years ago. There is love and service in every bite.
                 </p>
                 <p>
                   Every evening at 6:30, the tables are set. One menu. One collective. Thousands of
@@ -925,7 +925,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="mt-6 text-xs text-[var(--color-muted-foreground)]">
-                  <a href="https://www.714.studio" target="_blank" rel="noopener noreferrer" className="text-[var(--color-brass)] hover:text-[var(--color-brass-light)] transition-colors">www.714.studio</a> · 714 Lincolnway, La Porte, IN · (219) 809-2028 · Mon–Sat 8am–7:14pm, Sun 12pm–7:14pm
+                  <a href="https://www.714.studio" target="_blank" rel="noopener noreferrer" className="text-[var(--color-brass)] hover:text-[var(--color-brass-light)] transition-colors">www.714.studio</a> · 714 Lincolnway, La Porte, IN · (219) 809-2028
                 </p>
               </div>
             </motion.div>
@@ -934,7 +934,7 @@ export default function Home() {
       </section>
 
       {/* The Sanctuary Standards — Asymmetric */}
-      <section className="py-28 lg:py-40">
+      <section className="pt-16 pb-28 lg:py-40">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-12">
             <motion.div
@@ -1164,7 +1164,6 @@ export default function Home() {
             {[
               { img: "/photos/C4aB7WQrS8j5_cdf17919.webp", label: "La Porte County Courthouse" },
               { img: "/photos/gggj1huQwDu1_b6e08859.webp", label: "Historic Downtown" },
-              { img: "/photos/rhIeYTXPMA1J_b9ec47bd.webp", label: "Local Lakes" },
               { img: "/photos/eUXeb0jFjsqE_5c644d9c.webp", label: "Parks & Trails" },
               { img: "/photos/A4fBjGS78xg7_0e007447.webp", label: "Farmers Market" },
               { img: "/photos/vZrg5vP0ZiBT_958c3aac.webp", label: "Pine Lake Sunset" },
@@ -1233,7 +1232,7 @@ export default function Home() {
               <p className="whisper text-lg text-right">
                 30,000 sq. ft.<br />
                 15 Suites<br />
-                128 Years<br />
+                {yearsSince()} Years<br />
                 One Covenant
               </p>
             </motion.div>
