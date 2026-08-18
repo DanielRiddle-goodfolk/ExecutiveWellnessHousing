@@ -1,4 +1,5 @@
 import { useSeo, INQUIRY_EMAIL } from "@/lib/seo";
+import { getAttribution } from "@/lib/attribution";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -31,6 +32,15 @@ export default function Application() {
     const form = e.currentTarget;
     const data = new FormData(form);
     data.set("form-name", "residency-inquiry");
+
+    // Attached here rather than rendered as inputs on purpose: the prerender
+    // pass would otherwise bake this visitor-specific data into the static HTML
+    // shipped to everyone. These three names must stay in step with the hidden
+    // Netlify declaration in client/index.html or they are silently dropped.
+    const attribution = getAttribution();
+    data.set("Landing Page", attribution.landingPage);
+    data.set("Referrer", attribution.referrer);
+    data.set("Campaign", attribution.campaign);
 
     try {
       const res = await fetch("/", {
