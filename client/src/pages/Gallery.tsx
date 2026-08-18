@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useCallback } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-// ─── Animation Variants ────────────────────────────────────────
+// --- Animation Variants ---
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
@@ -19,7 +19,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.08 } },
 };
 
-// ─── Gallery Data ────────────────────────────────────────────
+// --- Gallery Data ---
 interface GalleryImage {
   src: string;
   alt: string;
@@ -118,7 +118,7 @@ const sections: GallerySection[] = [
   },
 ];
 
-// ─── Lightbox Component ────────────────────────────────────────
+// --- Lightbox Component ---
 function Lightbox({
   images,
   currentIndex,
@@ -182,7 +182,7 @@ function Lightbox({
   );
 }
 
-// ─── Gallery Page ────────────────────────────────────────────
+// --- Gallery Page ---
 export default function Gallery() {
   useSeo({
     title: "Photo Gallery | The Old Ruth Executive Wellness Suites | La Porte, IN",
