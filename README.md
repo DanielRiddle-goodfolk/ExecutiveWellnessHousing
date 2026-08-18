@@ -50,7 +50,7 @@ executive-wellness-housing/
 │       │   └── NotFound.tsx          → 404
 │       ├── components/       # shared UI
 │       ├── lib/seo.ts        # per-route meta, and INQUIRY_EMAIL
-│       ├── lib/analytics.ts  # GA4 — dormant until a Measurement ID is set
+│       ├── lib/analytics.ts  # GA4 loader + the production-hostname guard
 │       └── index.css         # Tailwind layer + design tokens
 ├── scripts/
 │   ├── prerender.mjs         # writes crawlable HTML for every route
@@ -130,6 +130,25 @@ data just never arrives. `pnpm run test:form` catches the drift. See `CLAUDE.md`
 Deploy previews capture submissions into the *same* form as production, so a test submission on a
 preview will reach Notion. Useful for verifying the chain; delete the test row afterwards.
 
+## Analytics
+
+**Google Analytics 4**, configured in `client/src/lib/analytics.ts`. The Measurement ID lives in
+`GA_MEASUREMENT_ID`; emptying it disables tracking entirely — nothing loads.
+
+Two deliberate choices:
+
+**Tracking only runs on the production hostnames.** Deploy previews and local development are
+excluded by a hostname check. Without it, every preview build — and there is one per pull request —
+would land in the reports as real traffic.
+
+**`trackPageView` exists but is intentionally unused.** This is a single-page app, so moving from the
+homepage to `/apply` never triggers a real page load. GA4's **Enhanced Measurement** handles that
+through its "page changes based on browser history events" option, which is on by default. Calling
+`trackPageView` as well would double-count every navigation. If Enhanced Measurement is ever turned
+off, wire it up then.
+
+To verify tracking after a deploy: open the live site, then check **GA4 → Reports → Realtime**.
+
 ## Previewing locally
 
 ```
@@ -154,13 +173,10 @@ npx serve dist/public
 
 ## Known open items
 
-- Analytics is wired but dormant: paste a GA4 Measurement ID into `GA_MEASUREMENT_ID` in
-  `client/src/lib/analytics.ts` to switch it on. Tracking is restricted to the production hostname,
-  so deploy previews and local development never appear in the reports.
-- The Zap writing into Notion stamps `Source` as *Website — Corporate Housing*; it should be
-  *Website — Apply*. Also worth knowing: `Source` is a fixed value, so it can never distinguish
-  where a lead came from. Real attribution needs a hidden field on the form capturing the referring
-  page.
+- **The CRM's `Source` field cannot attribute leads.** It's written as a fixed value by the Zap, so
+  every inquiry looks identical regardless of which page the visitor was reading. Real attribution
+  needs a hidden field on the form capturing the referring page — which would also mean adding it to
+  the hidden declaration in `client/index.html` (see Forms above).
 - The live build used a patched `wouter@3.7.1`; the patch file was never delivered and this repo
   uses stock `wouter`. All five routes verify identically, so the patch's effect is not observable.
 
