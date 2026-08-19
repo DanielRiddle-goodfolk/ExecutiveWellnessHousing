@@ -54,7 +54,7 @@ export default function Home() {
             </Link>
             <Link href="/apply">
               <span className="px-6 py-2.5 border border-[var(--color-brass)] text-[var(--color-brass-light)] text-xs tracking-[0.2em] uppercase hover:bg-[var(--color-brass)] hover:text-[var(--color-ivory)] transition-all duration-300">
-                Request Residency
+                Request a Residency
               </span>
             </Link>
           </div>
@@ -96,7 +96,7 @@ export default function Home() {
                 <Link href="/apply">
                   <span className="inline-flex items-center gap-4 group">
                     <span className="px-8 py-4 border border-[var(--color-brass)] bg-[oklch(0.20_0.005_285/0.85)] text-[var(--color-brass-light)] text-xs tracking-[0.2em] uppercase group-hover:bg-[var(--color-brass)] group-hover:text-[var(--color-ivory)] transition-all duration-300">
-                      Request a Private Residency
+                      Request a Residency
                     </span>
                     <span className="w-12 h-[1px] bg-[var(--color-brass)] group-hover:w-20 transition-all duration-300" />
                   </span>
@@ -1220,7 +1220,7 @@ export default function Home() {
                 <Link href="/apply">
                   <span className="inline-flex items-center gap-4 group">
                     <span className="px-8 py-4 bg-[var(--color-brass)] text-[var(--color-ivory)] text-xs tracking-[0.2em] uppercase group-hover:bg-[var(--color-brass-light)] transition-all duration-300">
-                      Inquire About a Master Lease
+                      Request a Residency
                     </span>
                     <span className="w-12 h-[1px] bg-[var(--color-brass)] group-hover:w-20 transition-all duration-300" />
                   </span>

@@ -258,7 +258,7 @@ export default function Gallery() {
             </Link>
             <Link href="/apply">
               <span className="hidden sm:inline-block px-5 py-2 border border-[var(--color-brass)] text-[var(--color-brass)] text-xs tracking-[0.2em] uppercase hover:bg-[var(--color-brass)] hover:text-[var(--color-ivory)] transition-all duration-300">
-                Inquire
+                Request a Residency
               </span>
             </Link>
           </div>
@@ -511,7 +511,7 @@ export default function Gallery() {
           <motion.div variants={fadeUp}>
             <Link href="/apply">
               <span className="inline-block px-8 py-3 border border-[var(--color-brass)] text-[var(--color-brass-light)] text-xs tracking-[0.2em] uppercase hover:bg-[var(--color-brass)] hover:text-[var(--color-ivory)] transition-all duration-300">
-                Request Residency
+                Request a Residency
               </span>
             </Link>
           </motion.div>
