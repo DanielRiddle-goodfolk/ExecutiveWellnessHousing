@@ -47,12 +47,13 @@ reach the prospect. **Do not rename it.**
 6. **Ask when unsure.** Flag anything touching pricing, legal text, the Sanctuary Covenant, or
    licensing for Dan to approve.
 
-## Do not rename the brand
+## Don't rename the brand without asking
 
-The repo and project are called *Executive Wellness Housing*. The **site's visible branding is
-"The Old Ruth — Executive Wellness Suites"**, and it appears in headers, footers, meta titles, Open
-Graph tags, and the `LodgingBusiness` structured data. That is intentional. Do not "fix" it, do not
-harmonize it, do not swap one for the other — it changes SEO and needs Dan's explicit sign-off.
+The repo and project are called *Executive Wellness Housing*. The site's visible branding — in
+headers, footers, meta titles, Open Graph tags, and the `LodgingBusiness` structured data — now
+matches: **"The Old Ruth — Executive Wellness Housing"** (changed from "...Suites" on Dan's
+explicit request, August 19, 2026). Any further change to this phrase still changes SEO and needs
+Dan's explicit sign-off — don't "fix" or harmonize it on your own initiative.
 
 ## Where things live
 
