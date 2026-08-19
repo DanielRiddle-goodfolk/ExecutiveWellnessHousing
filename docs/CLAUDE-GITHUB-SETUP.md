@@ -106,8 +106,9 @@ When you're happy, tell Claude to merge. The live site updates within a couple o
 - **The inquiry form is delicate.** If you want to add or change a field on the apply form, say so
   explicitly — Claude has to update the form in two places or submissions silently lose that field.
   It's written up in `CLAUDE.md`, but flag it out loud anyway.
-- **Don't rename the brand.** The site says "The Old Ruth — Executive Wellness Suites" on purpose,
-  even though the project is called Executive Wellness Housing.
+- **Don't rename the brand without Dan's sign-off.** The site says "The Old Ruth — Executive
+  Wellness Housing" (updated August 19, 2026 to match the project name; it previously read
+  "...Suites"). Changing it again still needs Dan's approval — it affects SEO.
 - **Never paste a password, token, or client secret into a chat.** The client secret from Step 2 goes
   directly into Claude's settings field and nowhere else.
 

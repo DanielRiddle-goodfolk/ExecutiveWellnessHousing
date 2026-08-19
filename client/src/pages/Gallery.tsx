@@ -185,7 +185,7 @@ function Lightbox({
 // --- Gallery Page ---
 export default function Gallery() {
   useSeo({
-    title: "Photo Gallery | The Old Ruth Executive Wellness Suites | La Porte, IN",
+    title: "Photo Gallery | The Old Ruth Executive Wellness Housing | La Porte, IN",
     description: "Inside the estate: suites, common rooms, grounds, and the original 1888 farm tables of a 30,000 sq ft National Historic Registry mansion in La Porte, Indiana.",
     path: "/gallery",
   });

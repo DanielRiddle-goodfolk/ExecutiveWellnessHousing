@@ -8,10 +8,11 @@ circa-1888 National Historic Registry mansion in La Porte, Indiana.
 - **Repo owner / admin:** Dan Riddle
 - **Inquiries go to:** Jennie@goodfolk.com
 
-> **Naming note.** This repo and project are called *Executive Wellness Housing*. The **site's own
-> branding is still "The Old Ruth — Executive Wellness Suites"** and appears in page copy, meta
-> titles, and structured data. That is deliberate — do not rewrite it. "The Old Ruth" is also
-> planned as a separate, non-corporate-facing site later.
+> **Naming note.** This repo and project are called *Executive Wellness Housing*, and as of August
+> 19, 2026 the **site's own branding matches: "The Old Ruth — Executive Wellness Housing"** (it
+> previously read "...Executive Wellness Suites"; Dan requested the change). It appears in page
+> copy, meta titles, and structured data. Any further change to this phrase needs Dan's sign-off —
+> it affects SEO. "The Old Ruth" is also planned as a separate, non-corporate-facing site later.
 
 ## What this is
 

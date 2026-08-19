@@ -19,7 +19,7 @@ const stagger = {
 
 export default function Home() {
   useSeo({
-    title: "Executive Wellness Suites | Corporate Housing in La Porte, IN | The Old Ruth",
+    title: "Executive Wellness Housing | Corporate Housing in La Porte, IN | The Old Ruth",
     description: "Private executive housing in La Porte, Indiana — 15 furnished suites in a 30,000 sq ft historic estate with integrated wellness, organic dining, and strategy spaces. One corporate contract. Everything handled.",
     preloadImage: "/photos/theoldruthmarketingphotos184_d017cadf.webp",
     path: "/",
@@ -684,7 +684,7 @@ export default function Home() {
               {
                 number: "02",
                 title: "A Vintage Working Elevator",
-                description: "Spanning all four floors of the mansion. Original cage. Brass fixtures. Runs as well as the original Edison light bulb \u2014 a prized staple of the house and one of the estate's most unexpected treasures.",
+                description: "Spanning all four floors of the mansion. Original cage. Brass fixtures. Runs as well as the original Edison light bulb — a prized staple of the house and one of the estate's most unexpected treasures.",
               },
               {
                 number: "03",
@@ -719,7 +719,7 @@ export default function Home() {
               {
                 number: "09",
                 title: "Healing Hertz Frequencies",
-                description: "Wafting through the halls \u2014 you feel it before your brain even notices its pleasant effect.",
+                description: "Wafting through the halls — you feel it before your brain even notices its pleasant effect.",
               },
             ].map((item, i) => (
               <motion.div
