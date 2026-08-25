@@ -8,7 +8,8 @@ export const SITE_NAME = "The Old Ruth — Executive Wellness Housing";
  * CHANGE THIS to a real, monitored mailbox — it is the only hardcoded address on the site.
  */
 export const INQUIRY_EMAIL = "Jennie@goodfolk.com";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/photos/TOR-Summer-2025-56_5baec9be.webp`;
+/** The homepage hero photo — what shows when a link to the site is shared. */
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/photos/theoldruthmarketingphotos184_d017cadf.webp`;
 
 /** The mansion was built in 1888. */
 export const FOUNDED_YEAR = 1888;
