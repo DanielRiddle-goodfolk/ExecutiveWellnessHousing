@@ -215,7 +215,7 @@ export default function CorporateHousing() {
             {[
               {
                 title: "Private Furnished Suites",
-                desc: "15 private suites across 30,000 sq ft. National Historic Registry mansion with 10-inch walls, antique furnishings, and 3.3 acres of organic grounds. No strangers. No noise. No pets.",
+                desc: "16 private suites across 30,000 sq ft. National Historic Registry mansion with 10-inch walls, antique furnishings, and 3.3 acres of organic grounds. No strangers. No noise. No pets.",
               },
               {
                 title: "Chef-Prepared Organic Meals",
