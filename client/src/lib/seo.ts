@@ -8,8 +8,31 @@ export const SITE_NAME = "The Old Ruth — Executive Wellness Housing";
  * CHANGE THIS to a real, monitored mailbox — it is the only hardcoded address on the site.
  */
 export const INQUIRY_EMAIL = "Jennie@goodfolk.com";
-/** The homepage hero photo — what shows when a link to the site is shared. */
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/photos/theoldruthmarketingphotos184_d017cadf.webp`;
+
+/**
+ * The social sharing card: the picture people see when a link to this site is
+ * pasted into LinkedIn, Facebook, X, Slack, or a text message.
+ *
+ * THIS FILE MUST STAY A JPEG. Every other photo on the site is WebP, which is
+ * correct for pages — but LinkedIn's crawler does not reliably read WebP, and
+ * when it cannot read the image it shows a card with no picture at all.
+ * LinkedIn is the channel that matters most for corporate housing, so this one
+ * file is a deliberate exception to the "convert everything to WebP" rule in
+ * CLAUDE.md. Do not "optimise" it.
+ *
+ * It is 1200x630 — the shape every platform crops to.
+ *
+ * To replace it: keep 1200x630, keep it JPEG, and give the new file a NEW
+ * filename rather than overwriting this one. The platforms cache the old
+ * picture against the old address for about a week; a new filename makes them
+ * fetch the new one straight away. Update DEFAULT_OG_IMAGE_ALT to match, and
+ * update the same tags in client/index.html.
+ */
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/photos/og-the-old-ruth-exterior-2026-08.jpg`;
+export const DEFAULT_OG_IMAGE_ALT =
+  "The Old Ruth — a circa-1888 brick mansion in La Porte, Indiana, seen across its lawn through mature trees";
+const DEFAULT_OG_IMAGE_WIDTH = "1200";
+const DEFAULT_OG_IMAGE_HEIGHT = "630";
 
 /** The mansion was built in 1888. */
 export const FOUNDED_YEAR = 1888;
@@ -46,6 +69,10 @@ function upsertMeta(selector: string, attrs: Record<string, string>) {
     document.head.appendChild(el);
   }
   for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+}
+
+function removeMeta(selector: string) {
+  document.head.querySelector(selector)?.remove();
 }
 
 function upsertLink(rel: string, href: string) {
@@ -87,6 +114,34 @@ export function useSeo({ title, description, path, ogImage, preloadImage, jsonLd
     upsertMeta('meta[name="twitter:title"]', { name: "twitter:title", content: title });
     upsertMeta('meta[name="twitter:description"]', { name: "twitter:description", content: description });
     upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: image });
+
+    // Dimensions and alt text describe one specific picture, so they are only
+    // emitted for the default card. A page that supplies its own ogImage would
+    // otherwise inherit the wrong numbers and the wrong description, so any
+    // leftover tags are cleared instead.
+    if (image === DEFAULT_OG_IMAGE) {
+      upsertMeta('meta[property="og:image:width"]', {
+        property: "og:image:width",
+        content: DEFAULT_OG_IMAGE_WIDTH,
+      });
+      upsertMeta('meta[property="og:image:height"]', {
+        property: "og:image:height",
+        content: DEFAULT_OG_IMAGE_HEIGHT,
+      });
+      upsertMeta('meta[property="og:image:alt"]', {
+        property: "og:image:alt",
+        content: DEFAULT_OG_IMAGE_ALT,
+      });
+      upsertMeta('meta[name="twitter:image:alt"]', {
+        name: "twitter:image:alt",
+        content: DEFAULT_OG_IMAGE_ALT,
+      });
+    } else {
+      removeMeta('meta[property="og:image:width"]');
+      removeMeta('meta[property="og:image:height"]');
+      removeMeta('meta[property="og:image:alt"]');
+      removeMeta('meta[name="twitter:image:alt"]');
+    }
 
     document.head.querySelectorAll('link[data-seo-preload="true"]').forEach((n) => n.remove());
     if (preloadImage) {
