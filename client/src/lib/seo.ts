@@ -28,7 +28,7 @@ export const INQUIRY_EMAIL = "Jennie@goodfolk.com";
  * fetch the new one straight away. Update DEFAULT_OG_IMAGE_ALT to match, and
  * update the same tags in client/index.html.
  */
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/photos/og-the-old-ruth-exterior-2026-08.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/photos/og-default-2026-08.jpg`;
 export const DEFAULT_OG_IMAGE_ALT =
   "The Old Ruth — a circa-1888 brick mansion in La Porte, Indiana, seen across its lawn through mature trees";
 const DEFAULT_OG_IMAGE_WIDTH = "1200";
