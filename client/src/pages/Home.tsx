@@ -70,7 +70,15 @@ export default function Home() {
             alt="The Old Ruth Estate — a 30,000 sq. ft. historic mansion in La Porte, Indiana, seen across its lawn through mature trees"
             className="w-full h-full object-cover"
           />
+          {/* Bottom-up scrim: carries the headline and the paragraph. */}
           <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.005_285/0.92)] via-[oklch(0.08_0.005_285/0.4)] to-[oklch(0.08_0.005_285/0.2)]" />
+          {/* Top-down scrim: this photo has bright sky and dark foliage in the
+              same band, so the eyebrow and the nav edge sat on wildly different
+              backgrounds. Darkening the top evens it out. Note that darkening
+              alone cannot rescue brass text — brass is a mid-luminance colour
+              and only clears 4.5:1 against a near-white background, which is why
+              the eyebrow below is ivory rather than brass. */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.08_0.005_285/0.85)] via-[oklch(0.08_0.005_285/0.35)] to-transparent" />
         </div>
         <motion.div
           initial="hidden"
@@ -82,7 +90,7 @@ export default function Home() {
             <div className="lg:col-span-7">
               <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-[1px] bg-[var(--color-brass)]" />
-                <span className="text-[11px] tracking-[0.25em] uppercase text-[var(--color-brass)]">
+                <span className="text-[11px] tracking-[0.25em] uppercase text-[var(--color-ivory)]">
                   La Porte, Indiana
                 </span>
               </motion.div>
