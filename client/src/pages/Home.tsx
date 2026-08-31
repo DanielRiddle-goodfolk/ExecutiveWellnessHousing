@@ -20,7 +20,7 @@ const stagger = {
 export default function Home() {
   useSeo({
     title: "Executive Wellness Housing | Corporate Housing in La Porte, IN | The Old Ruth",
-    description: "Private executive housing in La Porte, Indiana — 15 furnished suites in a 30,000 sq ft historic estate with integrated wellness, organic dining, and strategy spaces. One corporate contract. Everything handled.",
+    description: "Private executive housing in La Porte, Indiana — 16 furnished suites in a 30,000 sq ft historic estate with integrated wellness, organic dining, and strategy spaces. One corporate contract. Everything handled.",
     preloadImage: "/photos/theoldruthmarketingphotos184_d017cadf.webp",
     path: "/",
     jsonLd: LODGING_JSONLD,
@@ -139,8 +139,8 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-3xl lg:text-[2.5rem] leading-[1.2] mb-8 text-[var(--color-charcoal)]"
               >
-                For {yearsSince()} years, this mansion and estate has been a veritable blue zone of sorts — a place where people live longer,
-                think clearer, and return to who they were meant to be.
+                For {yearsSince()} years, this sprawling estate has been a coveted veritable blue zone; a home away
+                from home, a place where people live longer and think clearer.
               </motion.h2>
               <motion.p
                 variants={fadeUp}
@@ -190,7 +190,7 @@ export default function Home() {
               variants={fadeUp}
               className="text-3xl lg:text-[2.5rem] text-[var(--color-ivory)] leading-[1.2] max-w-3xl"
             >
-              A turnkey executive headquarters designed for cognitive performance.
+              A turnkey executive headquarters designed for optimal performance.
             </motion.h2>
           </motion.div>
 
@@ -217,7 +217,7 @@ export default function Home() {
                 <div>
                   <h3 className="text-2xl text-[var(--color-ivory)] mb-3">The Residence</h3>
                   <p className="text-xl text-[var(--color-ivory)] mb-4 italic">
-                    15 private suites. 30,000 square feet. A National Historic Registry mansion and estate.
+                    16 private suites. 30,000 square feet. A National Historic Registry mansion and estate.
                   </p>
                   <p className="text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
                     Slip away into an oasis of tranquility. Heaven on earth. Libraries that line the halls
@@ -1231,7 +1231,7 @@ export default function Home() {
               <div className="w-[1px] h-32 bg-[var(--color-brass)] mb-6" />
               <p className="whisper text-lg text-right">
                 30,000 sq. ft.<br />
-                15 Suites<br />
+                16 Suites<br />
                 {yearsSince()} Years<br />
                 One Covenant
               </p>
