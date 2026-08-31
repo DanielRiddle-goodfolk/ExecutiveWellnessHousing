@@ -21,7 +21,7 @@ export default function Home() {
   useSeo({
     title: "Executive Wellness Housing | Corporate Housing in La Porte, IN | The Old Ruth",
     description: "Private executive housing in La Porte, Indiana — 16 furnished suites in a 30,000 sq ft historic estate with integrated wellness, organic dining, and strategy spaces. One corporate contract. Everything handled.",
-    preloadImage: "/photos/theoldruthmarketingphotos184_d017cadf.webp",
+    preloadImage: "/photos/hero-the-old-ruth-summer.webp",
     path: "/",
     jsonLd: LODGING_JSONLD,
   });
@@ -66,8 +66,8 @@ export default function Home() {
         <div className="absolute inset-0">
           <img
           fetchPriority="high"
-            src="/photos/theoldruthmarketingphotos184_d017cadf.webp"
-            alt="The Old Ruth Estate — 30,000 sq. ft. historic mansion in La Porte, Indiana"
+            src="/photos/hero-the-old-ruth-summer.webp"
+            alt="The Old Ruth Estate — a 30,000 sq. ft. historic mansion in La Porte, Indiana, seen across its lawn through mature trees"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.08_0.005_285/0.92)] via-[oklch(0.08_0.005_285/0.4)] to-[oklch(0.08_0.005_285/0.2)]" />
@@ -90,7 +90,7 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] text-[var(--color-ivory)] leading-[1.1] mb-8"
               >
-                Where your highest performers live while they build what's next.
+                Your exclusive residential VIP hub for your team, clients, and guests
               </motion.h1>
               <motion.div variants={fadeUp}>
                 <Link href="/apply">
@@ -146,10 +146,11 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-lg text-[var(--color-muted-foreground)] leading-relaxed"
               >
-                In 1888, this mansion was built as a home for widows. They moved in at age sixty — and
-                in the sanctity and beauty of this giant hug of a house, they lived so well that they
-                lived well into their hundreds, becoming a joyful tribe of centenarians. Something
-                about this place added life to years and years to life. This was their beautiful blue zone.
+                In 1888, this mansion was built, the first of its kind, as a home for widows. They
+                moved in at age sixty — and in the sanctity and beauty of this giant hug of a house,
+                they lived well into their hundreds, becoming a healthy tribe of centenarians.
+                Something about this place added life to years and years to life. This is why we call
+                it a hidden blue zone.
               </motion.p>
               <motion.p
                 variants={fadeUp}
@@ -161,9 +162,9 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-lg text-[var(--color-muted-foreground)] leading-relaxed mt-6"
               >
-                Today, The Old Ruth estate flings wide its doors to a different kind of demographic,
-                but with the same breed of hearty endurance: executives whose work demands an
-                environment as intentional and excellent as their output.
+                Today, The Old Ruth estate flings wide its doors to a different demographic; a breed
+                of hearty executives and leaders, whose work demands an environment as intentional
+                and excellent as their output.
               </motion.p>
             </div>
           </motion.div>
@@ -234,7 +235,7 @@ export default function Home() {
                   <p className="text-xs text-[oklch(0.55_0.01_80)] leading-relaxed mt-4">
                     3.3 acres of mature maples and walnuts · Three grand pianos · Vintage elevator · Reading library ·
                     Thinking games · Easels, paint, and canvas · A setting designed to down-regulate your
-                    nervous system and signal to your body that all is well and safe.
+                    nervous system and signal to your body that all is well.
                   </p>
                 </div>
               </div>
@@ -273,7 +274,6 @@ export default function Home() {
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
                       <span className="text-[var(--color-ivory)] font-medium">Morning PE, Breath & Bodywork</span> —
                       With an OG fitness expert experienced in all levels of endurance and capability.
-                      Morning sessions held on the lawn weather permitting, or at Studio 7:14 when indoor is preferable.
                     </p>
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
                       <span className="text-[var(--color-ivory)] font-medium">Far Infrared Sauna + Red Light Therapy</span> —
@@ -367,23 +367,20 @@ export default function Home() {
                 <p className="italic">
                   These tables have carried the heart and stories of every love-filled meal served
                   in this house since its inception in 1888. They are the original farm tables —
-                  built for this room, in this house, {yearsSince()} years ago. There is love and service in every bite.
+                  built for this room, in this house, {yearsSince()} years ago.
                 </p>
                 <p>
-                  Every evening at 6:30, the tables are set. One menu. One collective. Thousands of
-                  memories made. Food prepared the way your great-grandmother would have made it — whole,
-                  organic, and honest. Certified organic. Seed-oil free. Soy free. Dairy free. Gluten free.
-                </p>
-                <p className="text-[var(--color-ivory)] font-medium">
-                  The Table is where the house becomes a home, and the body becomes itself again.
+                  One menu. Thousands of memories made. Food prepared the way your great-grandmother
+                  would have made it — whole, organic, and honest. We focus on options that are free
+                  of seed-oil, gluten, dairy, and soy.
                 </p>
               </div>
               <div className="mt-8 pt-6 border-t border-[oklch(1_0_0/0.08)]">
                 <p className="text-sm text-[oklch(0.55_0.01_80)] tracking-wide mb-4">
-                  Nightly family-style dinner · 6:30pm · One menu · One long conversation · A lifetime of enriching stories.
+                  Our dining room comfortably seats 40, and meals are all served family style.
                 </p>
                 <p className="text-sm text-[oklch(0.55_0.01_80)] tracking-wide mb-6">
-                  Our dining room seats 40 — available for private corporate events, catered in-house.
+                  The space is available for your additional private corporate event.
                 </p>
                 <Link href="/the-table">
                   <span className="text-xs tracking-[0.2em] uppercase text-[var(--color-brass)] hover:text-[var(--color-ivory)] transition-colors duration-300 cursor-pointer">
@@ -991,7 +988,7 @@ export default function Home() {
                 {
                   title: "Stewardship",
                   icon: Clock,
-                  desc: "Residents are temporary custodians of a 136-year-old historic treasure. Pet-free. Smoke-free.",
+                  desc: `Residents are temporary custodians of a ${yearsSince()}-year-old historic treasure. Pet-free. Smoke-free.`,
                 },
                 {
                   title: "Nutritional Sovereignty",
