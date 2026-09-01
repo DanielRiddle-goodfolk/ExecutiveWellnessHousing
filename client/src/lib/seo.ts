@@ -192,7 +192,9 @@ export const LODGING_JSONLD = {
     { "@type": "LocationFeatureSpecification", name: "Wellness & Recovery Center", value: true },
     { "@type": "LocationFeatureSpecification", name: "Executive Meeting Space", value: true },
   ],
-  numberOfRooms: 20,
+  // Sixteen suites plus five bedrooms. Keep this in step with the room answer
+  // in the Corporate Housing FAQ — both are read by Google.
+  numberOfRooms: 21,
   petsAllowed: false,
   smokingAllowed: false,
 } as const;
