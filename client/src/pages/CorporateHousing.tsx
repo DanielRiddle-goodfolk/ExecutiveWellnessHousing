@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "How many people can you house?",
-    a: "Twenty rooms — fifteen suites and five bedrooms — across 30,000 square feet and 3.3 acres. The dining room seats forty for private corporate events.",
+    a: "Twenty-one rooms — sixteen suites and five bedrooms — across 30,000 square feet and 3.3 acres. The dining room seats forty for private corporate events.",
   },
   {
     q: "What does one corporate contract cover?",
