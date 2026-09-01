@@ -63,7 +63,7 @@ const foodImages = [
 export default function TheTable() {
   useSeo({
     title: "The Table | Organic Chef-Prepared Dining | The Old Ruth, La Porte, IN",
-    description: "Nightly chef-prepared dinner at the original 1888 farm tables. Certified organic, seed-oil free, soy free, dairy free, gluten free — served every evening at 6:30.",
+    description: "Nightly chef-prepared dinner at the original 1888 farm tables. Certified organic, seed-oil free, soy free, dairy free, gluten free — served family style in a dining room that seats 40.",
     preloadImage: "/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp",
     path: "/the-table",
   });
@@ -219,16 +219,11 @@ export default function TheTable() {
           </motion.div>
 
           <motion.div variants={fadeUp} className="mt-12 pt-8 border-t border-[oklch(1_0_0/0.08)]">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <p className="text-[var(--color-brass)] text-sm tracking-[0.15em] uppercase mb-2">Format</p>
                 <p className="text-[var(--color-ivory)]">Family-style dinner</p>
                 <p className="text-[oklch(0.55_0.01_80)] text-sm mt-1">One menu. One long table. One conversation.</p>
-              </div>
-              <div>
-                <p className="text-[var(--color-brass)] text-sm tracking-[0.15em] uppercase mb-2">Time</p>
-                <p className="text-[var(--color-ivory)]">6:30pm nightly</p>
-                <p className="text-[oklch(0.55_0.01_80)] text-sm mt-1">Structured to end the workday with intention.</p>
               </div>
               <div>
                 <p className="text-[var(--color-brass)] text-sm tracking-[0.15em] uppercase mb-2">Standard</p>

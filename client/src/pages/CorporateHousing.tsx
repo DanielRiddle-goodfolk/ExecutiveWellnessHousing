@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "How many people can you house?",
-    a: "Twenty rooms — fifteen suites and five bedrooms — across 30,000 square feet and 3.3 acres. The dining room seats forty for private corporate events.",
+    a: "Twenty-one rooms — sixteen suites and five bedrooms — across 30,000 square feet and 3.3 acres. The dining room seats forty for private corporate events.",
   },
   {
     q: "What does one corporate contract cover?",
@@ -219,7 +219,7 @@ export default function CorporateHousing() {
               },
               {
                 title: "Chef-Prepared Organic Meals",
-                desc: "Nightly family-style dinner at 6:30pm plus daily breakfast provisions. 100% organic, seed-oil free, soy free, dairy free, gluten free. AIP and Keto compliant. Original 1888 farm tables.",
+                desc: "Nightly family-style dinner plus daily breakfast provisions. 100% organic, seed-oil free, soy free, dairy free, gluten free. AIP and Keto compliant. Original 1888 farm tables.",
               },
               {
                 title: "Integrated Wellness & Recovery",
