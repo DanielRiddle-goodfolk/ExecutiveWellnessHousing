@@ -20,42 +20,42 @@ const stagger = {
 const foodImages = [
   {
     src: "/photos/IMG_7317_1cf15c1f.webp",
-    alt: "Charcuterie and harvest table spread with candles, greenery, and crystal",
+    alt: "Charcuterie and harvest table spread with candles, greenery, and crystal at The Table, The Old Ruth",
     span: "col-span-2 row-span-2",
   },
   {
     src: "/photos/IMG_7277_111d51c0.webp",
-    alt: "Abundant charcuterie board with meats, cheeses, fruits, and flowers",
+    alt: "Abundant charcuterie board with meats, cheeses, fruits, and flowers — chef-prepared at The Old Ruth",
     span: "col-span-1",
   },
   {
     src: "/photos/6C6A0B0E-kombucha_4b0f394a.webp",
-    alt: "Homemade kombucha in swing-top bottles — cucumber mint, dreamsicle, strawberry lemon, ginger lime",
+    alt: "Homemade kombucha in swing-top bottles at The Old Ruth — cucumber mint, dreamsicle, strawberry lemon, ginger lime",
     span: "col-span-1",
   },
   {
     src: "/photos/IMG_5504_11886f06.webp",
-    alt: "Prosciutto-wrapped stuffed chicken on zucchini noodles with pesto",
+    alt: "Prosciutto-wrapped stuffed chicken on zucchini noodles with pesto — organic chef dining at The Old Ruth",
     span: "col-span-1",
   },
   {
     src: "/photos/IMG_7001_befe1d93.webp",
-    alt: "Family-style dinner spread — bread board, copper pitcher, asparagus, roasted meat",
+    alt: "Family-style dinner spread at The Old Ruth — bread board, copper pitcher, asparagus, roasted meat",
     span: "col-span-1",
   },
   {
     src: "/photos/IMG_5487_353528ce.webp",
-    alt: "Nut-crusted protein on asparagus with herb cream sauce",
+    alt: "Nut-crusted protein on asparagus with herb cream sauce — chef-prepared meal at The Old Ruth",
     span: "col-span-1",
   },
   {
     src: "/photos/CommunionPreviews-85_f449a6ac.webp",
-    alt: "Formal dining event — long table set with candles, florals, and fine linens",
+    alt: "Formal dining event at The Table, The Old Ruth — long table set with candles, florals, and fine linens",
     span: "col-span-2",
   },
   {
     src: "/photos/IMG_4059_f4880020.webp",
-    alt: "Rustic kitchen shelving with stoneware, vintage bottles, and copper accents",
+    alt: "Rustic kitchen shelving at The Old Ruth with stoneware, vintage bottles, and copper accents",
     span: "col-span-1",
   },
 ];
@@ -165,7 +165,7 @@ export default function TheTable() {
             <img
           fetchPriority="high"
               src="/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp"
-              alt="The formal dining room — two long tables set beneath portraits and fireplace, seating 40"
+              alt="The Table — formal dining room at The Old Ruth, La Porte, Indiana, with two long tables seating 40 beneath portraits and fireplace"
               className="w-full h-full object-cover"
             />
           </div>
