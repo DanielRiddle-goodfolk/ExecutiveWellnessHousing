@@ -103,7 +103,7 @@ export default function CorporateHousing() {
         <div className="absolute inset-0">
           <img
             src="/photos/TOR-Summer-2025-56_63950bc3.webp"
-            alt="The Old Ruth estate — executive corporate housing in La Porte, Indiana"
+            alt="The Old Ruth estate — executive corporate housing in La Porte, Indiana, near the Microsoft data center campus"
             className="w-full h-full object-cover"
             fetchPriority="high"
           />
@@ -308,7 +308,7 @@ export default function CorporateHousing() {
             <div className="aspect-[4/3] overflow-hidden">
               <img
                 src="/photos/IMG_0020_851d9369.webp"
-                alt="Tree-lined sidewalk near The Old Ruth — walkable La Porte neighborhood"
+                alt="Tree-lined sidewalk near The Old Ruth — walkable historic La Porte, Indiana neighborhood"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -395,10 +395,10 @@ export default function CorporateHousing() {
       <section className="py-4">
         <div className="grid grid-cols-4 gap-1">
           {[
-            { src: "/photos/09.13.2023-Theoldruth-12_eaff6bd2.webp", alt: "Grand staircase at The Old Ruth" },
-            { src: "/photos/TOR-Summer-2025-53_78d4fe65.webp", alt: "Private suite at The Old Ruth corporate housing" },
-            { src: "/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp", alt: "Dining room — nightly chef-prepared meals" },
-            { src: "/photos/TOR-Summer-2025-29_2e2b4ff2.webp", alt: "Lounge area for executive residents" },
+            { src: "/photos/09.13.2023-Theoldruth-12_eaff6bd2.webp", alt: "Grand staircase at The Old Ruth — historic corporate housing in La Porte, Indiana" },
+            { src: "/photos/TOR-Summer-2025-53_78d4fe65.webp", alt: "Private furnished suite at The Old Ruth corporate housing" },
+            { src: "/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp", alt: "Dining room at The Old Ruth — nightly chef-prepared meals included with corporate housing" },
+            { src: "/photos/TOR-Summer-2025-29_2e2b4ff2.webp", alt: "Lounge at The Old Ruth for executive residents on extended stays in La Porte" },
           ].map((img, i) => (
             <div key={i} className="aspect-[4/3] overflow-hidden">
               <img src={img.src} alt={img.alt} className="w-full h-full object-cover" loading="lazy"
@@ -494,7 +494,7 @@ export default function CorporateHousing() {
             <div className="lg:col-span-4 flex items-center gap-4">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="EWH"
+                alt="Executive Wellness Housing logo"
                 className="h-12 w-12 object-contain"
               />
               <div className="flex flex-col">
