@@ -119,7 +119,7 @@ export default function NotFound() {
           <div className="flex items-center gap-3">
             <img
               src="/photos/ewh-logo-192.webp"
-              alt="EWH"
+              alt="Executive Wellness Housing logo"
               className="h-10 w-10 object-contain"
             />
             <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">

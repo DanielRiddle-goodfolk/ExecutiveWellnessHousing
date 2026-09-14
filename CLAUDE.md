@@ -106,7 +106,11 @@ Phone photos are 5–12 MB and will wreck page load. Before any image goes in:
 1. **Resize** to **1500px** max on the long edge (matches the existing set).
 2. **Convert to WebP.**
 3. Save to `client/public/photos/` with a lowercase, hyphenated, descriptive filename.
-4. Add meaningful **`alt` text** to every `<img>`.
+4. Add meaningful **`alt` text** to every `<img>`. House style: describe what is actually in the
+   photo, then anchor it with one of *The Old Ruth* / *La Porte, Indiana* / *corporate housing* /
+   *executive housing* where it reads naturally. Under ~125 characters. Vary the phrasing — the
+   same tag on every image reads as spam to Google and to screen readers. Never describe details
+   you haven't seen in the image.
 5. Lazy-load anything below the fold.
 
 ## Before you open a pull request

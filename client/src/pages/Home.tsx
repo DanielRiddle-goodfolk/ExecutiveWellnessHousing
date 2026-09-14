@@ -217,7 +217,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                   src="/photos/09.13.2023-Theoldruth-12_eaff6bd2.webp"
-                  alt="The Old Ruth grand staircase and chandelier"
+                  alt="The Old Ruth grand staircase and chandelier — historic executive housing in La Porte, Indiana"
                   className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
@@ -261,7 +261,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                   src="/photos/TOR-Summer-2025-53_78d4fe65.webp"
-                  alt="The Old Ruth private suite with antique art and period furnishings"
+                  alt="Private furnished suite at The Old Ruth with antique art and period furnishings"
                   className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
                 />
               </div>
@@ -410,7 +410,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                   src="/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp"
-                  alt="The formal dining room — two long tables set beneath portraits and fireplace"
+                  alt="The Table — formal dining room at The Old Ruth with two long tables set beneath portraits and fireplace"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -421,7 +421,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                     src="/photos/IMG_7317_1cf15c1f.webp"
-                    alt="Charcuterie and harvest table spread with candles and greenery"
+                    alt="Charcuterie and harvest table spread with candles and greenery at The Table, The Old Ruth"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -430,7 +430,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                     src="/photos/IMG_7277_111d51c0.webp"
-                    alt="Abundant charcuterie board with meats, cheeses, fruits, and flowers"
+                    alt="Charcuterie board with meats, cheeses, fruits, and flowers — chef-prepared dining at The Old Ruth"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -439,7 +439,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                     src="/photos/IMG_5504_11886f06.webp"
-                    alt="Prosciutto-wrapped stuffed chicken on zucchini noodles with pesto"
+                    alt="Prosciutto-wrapped stuffed chicken on zucchini noodles with pesto — chef-prepared meal at The Old Ruth"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -448,7 +448,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                     src="/photos/6C6A0B0E-kombucha_4b0f394a.webp"
-                    alt="Homemade kombucha in swing-top bottles — cucumber mint, dreamsicle, strawberry lemon, ginger lime"
+                    alt="Homemade kombucha in swing-top bottles at The Old Ruth — cucumber mint, dreamsicle, strawberry lemon, ginger lime"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -457,7 +457,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                     src="/photos/IMG_7001_befe1d93.webp"
-                    alt="Family-style dinner spread — bread board, copper pitcher, asparagus, roasted meat"
+                    alt="Family-style dinner spread at The Old Ruth — bread board, copper pitcher, asparagus, roasted meat"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -466,7 +466,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                     src="/photos/IMG_5487_353528ce.webp"
-                    alt="Nut-crusted protein on asparagus with herb cream sauce"
+                    alt="Nut-crusted protein on asparagus with herb cream sauce — organic dining at The Old Ruth"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -503,7 +503,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                   src="/photos/IMG_4954_35ac147d.webp"
-                  alt="A Whole World of Good — 10,000 sq. ft. downtown executive lounge with tin ceilings, reclaimed wood, and vintage furniture"
+                  alt="A Whole World of Good — 10,000 sq. ft. downtown La Porte executive lounge with tin ceilings, reclaimed wood, and vintage furniture"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -595,17 +595,17 @@ export default function Home() {
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3"
           >
             {[
-              { src: "/photos/TheOldRuthMarketingPhotos87_202c46d6.webp", alt: "Bedroom framed through doorway with warm lamp glow", span: "col-span-2 row-span-2" },
-              { src: "/photos/TOR-Summer-2025-29_2e2b4ff2.webp", alt: "Overhead atrium view with leather seating" },
-              { src: "/photos/TheOldRuthMarketingPhotos75_2635d02c.webp", alt: "Library with leather chair and bookshelves" },
-              { src: "/photos/TOR-Summer-2025-25_81c00b0c.webp", alt: "Chess nook with leather wingback" },
-              { src: "/photos/TheOldRuthMarketingPhotos50_fc88cdb1.webp", alt: "Leather Chesterfield in bright sunroom" },
-              { src: "/photos/IMG_0022_0a4db764.webp", alt: "Red brick mansion through mature trees", span: "col-span-2" },
-              { src: "/photos/TOR-Summer-2025-40_4a31db1a.webp", alt: "Red velvet sofa with equestrian art" },
-              { src: "/photos/TheOldRuthMarketingPhotos103_f4b6ee05.webp", alt: "Modern bed framed by drapery" },
-              { src: "/photos/TheOldRuth08.07.2023-84_fedfed38.webp", alt: "Ornate ironwork veranda", span: "col-span-2" },
-              { src: "/photos/TheOldRuthMarketingPhotos96_f7867015.webp", alt: "Bed scene with glowing lamps" },
-              { src: "/photos/09.13.2023-Theoldruth-6_94509e11.webp", alt: "Layered interior view through rooms" },
+              { src: "/photos/TheOldRuthMarketingPhotos87_202c46d6.webp", alt: "Private bedroom suite at The Old Ruth with warm lamp glow — furnished executive housing in La Porte", span: "col-span-2 row-span-2" },
+              { src: "/photos/TOR-Summer-2025-29_2e2b4ff2.webp", alt: "Overhead view of The Old Ruth atrium with leather seating" },
+              { src: "/photos/TheOldRuthMarketingPhotos75_2635d02c.webp", alt: "Library at The Old Ruth with leather chair and bookshelves" },
+              { src: "/photos/TOR-Summer-2025-25_81c00b0c.webp", alt: "Chess nook with leather wingback at The Old Ruth" },
+              { src: "/photos/TheOldRuthMarketingPhotos50_fc88cdb1.webp", alt: "Leather Chesterfield in the sunroom at The Old Ruth" },
+              { src: "/photos/IMG_0022_0a4db764.webp", alt: "The Old Ruth — red brick historic mansion through mature trees, La Porte, Indiana", span: "col-span-2" },
+              { src: "/photos/TOR-Summer-2025-40_4a31db1a.webp", alt: "Red velvet sofa with equestrian art in a common room at The Old Ruth" },
+              { src: "/photos/TheOldRuthMarketingPhotos103_f4b6ee05.webp", alt: "Modern bed framed by drapery in a furnished suite at The Old Ruth" },
+              { src: "/photos/TheOldRuth08.07.2023-84_fedfed38.webp", alt: "Ornate ironwork veranda of The Old Ruth, circa 1888", span: "col-span-2" },
+              { src: "/photos/TheOldRuthMarketingPhotos96_f7867015.webp", alt: "Furnished bedroom with glowing lamps at The Old Ruth corporate housing" },
+              { src: "/photos/09.13.2023-Theoldruth-6_94509e11.webp", alt: "Layered view through the historic rooms of The Old Ruth" },
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -756,7 +756,7 @@ export default function Home() {
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden">
               <img
                 src="/photos/TOR-Summer-2025-56_63950bc3.webp"
-                alt="The Old Ruth estate grounds in summer — mature trees, manicured lawn, and walking paths"
+                alt="The Old Ruth estate grounds in summer — mature trees, manicured lawn, and walking paths on 3.3 acres in La Porte, Indiana"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -1067,7 +1067,7 @@ export default function Home() {
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
               <img
                 src="/photos/IMG_0020_851d9369.webp"
-                alt="Tree-lined sidewalk on The Old Ruth grounds — dappled spring light"
+                alt="Tree-lined sidewalk on The Old Ruth grounds in dappled spring light — La Porte, Indiana"
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
                 loading="lazy"
               />
@@ -1079,7 +1079,7 @@ export default function Home() {
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
               <img
                 src="/photos/IMG_0017_596b0ad9.webp"
-                alt="Lake Michigan shoreline — 15 minutes from The Old Ruth"
+                alt="Lake Michigan shoreline — 15 minutes from The Old Ruth corporate housing in La Porte"
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
                 loading="lazy"
               />
@@ -1105,17 +1105,17 @@ export default function Home() {
             </motion.h3>
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
               {[
-                { img: "/photos/ItfzMiAKkwTf_e8b0a22d.webp", label: "New Buffalo Lighthouse", distance: "30 min" },
-                { img: "/photos/E1iaw5ZJSugz_f1f64410.webp", label: "Michigan City Pier", distance: "15 min" },
-                { img: "/photos/MEWdzmnUr7Vf_eacdfefe.webp", label: "Amish Country", distance: "35 min" },
-                { img: "/photos/U4BoTDrBCHVP_041c6f25.webp", label: "Notre Dame", distance: "35 min" },
-                { img: "/photos/prPapM7weGsM_8cfa364b.webp", label: "Chicago Skyline", distance: "51 miles" },
+                { img: "/photos/ItfzMiAKkwTf_e8b0a22d.webp", label: "New Buffalo Lighthouse", distance: "30 min", alt: "New Buffalo Lighthouse on Lake Michigan — 30 minutes from The Old Ruth in La Porte, Indiana" },
+                { img: "/photos/E1iaw5ZJSugz_f1f64410.webp", label: "Michigan City Pier", distance: "15 min", alt: "Michigan City Pier on Lake Michigan — 15 minutes from The Old Ruth executive housing" },
+                { img: "/photos/MEWdzmnUr7Vf_eacdfefe.webp", label: "Amish Country", distance: "35 min", alt: "Amish Country in northern Indiana — 35 minutes from The Old Ruth" },
+                { img: "/photos/U4BoTDrBCHVP_041c6f25.webp", label: "Notre Dame", distance: "35 min", alt: "University of Notre Dame — 35 minutes from The Old Ruth in La Porte, Indiana" },
+                { img: "/photos/prPapM7weGsM_8cfa364b.webp", label: "Chicago Skyline", distance: "51 miles", alt: "Chicago skyline — 51 miles from The Old Ruth corporate housing in La Porte, Indiana" },
               ].map((dest, i) => (
                 <motion.div key={i} variants={fadeUp} className="group">
                   <div className="aspect-square overflow-hidden mb-3">
                     <img
                       src={dest.img}
-                      alt={dest.label}
+                      alt={dest.alt}
                       className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
                       loading="lazy"
                     />
@@ -1167,19 +1167,19 @@ export default function Home() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-4"
           >
             {[
-              { img: "/photos/C4aB7WQrS8j5_cdf17919.webp", label: "La Porte County Courthouse" },
-              { img: "/photos/gggj1huQwDu1_b6e08859.webp", label: "Historic Downtown" },
-              { img: "/photos/eUXeb0jFjsqE_5c644d9c.webp", label: "Parks & Trails" },
-              { img: "/photos/A4fBjGS78xg7_0e007447.webp", label: "Farmers Market" },
-              { img: "/photos/vZrg5vP0ZiBT_958c3aac.webp", label: "Pine Lake Sunset" },
-              { img: "/photos/IMG_4954_35ac147d.webp", label: "A Whole World of Good" },
-              { img: "/photos/bPFS6sJMhPMj_ddba9fb4.webp", label: "Studio 7:14" },
+              { img: "/photos/C4aB7WQrS8j5_cdf17919.webp", label: "La Porte County Courthouse", alt: "La Porte County Courthouse — designed by the same architect as The Old Ruth, downtown La Porte, Indiana" },
+              { img: "/photos/gggj1huQwDu1_b6e08859.webp", label: "Historic Downtown", alt: "Historic downtown La Porte, Indiana — minutes from The Old Ruth executive housing" },
+              { img: "/photos/eUXeb0jFjsqE_5c644d9c.webp", label: "Parks & Trails", alt: "Parks and trails in La Porte, Indiana, near The Old Ruth" },
+              { img: "/photos/A4fBjGS78xg7_0e007447.webp", label: "Farmers Market", alt: "La Porte farmers market — local produce near The Old Ruth corporate housing" },
+              { img: "/photos/vZrg5vP0ZiBT_958c3aac.webp", label: "Pine Lake Sunset", alt: "Sunset over Pine Lake in La Porte, Indiana" },
+              { img: "/photos/IMG_4954_35ac147d.webp", label: "A Whole World of Good", alt: "A Whole World of Good — downtown La Porte coffeehouse and mercantile, a Good Folk brand" },
+              { img: "/photos/bPFS6sJMhPMj_ddba9fb4.webp", label: "Studio 7:14", alt: "Studio 7:14 — 10,000 sq. ft. wellness studio at 714 Lincolnway, La Porte, Indiana" },
             ].map((item, i) => (
               <motion.div key={i} variants={fadeUp} className="group">
                 <div className="aspect-[4/3] overflow-hidden mb-3">
                   <img
                     src={item.img}
-                    alt={item.label}
+                    alt={item.alt}
                     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
                     loading="lazy"
                   />
@@ -1252,7 +1252,7 @@ export default function Home() {
             <div className="lg:col-span-4 flex items-center gap-4">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="EWH"
+                alt="Executive Wellness Housing logo"
                 className="h-14 w-14 object-contain"
               />
               <div className="flex flex-col">
