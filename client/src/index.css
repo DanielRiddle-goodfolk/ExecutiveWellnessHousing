@@ -83,6 +83,11 @@
   --sidebar-ring: oklch(0.55 0.06 70);
   --sidebar-primary: oklch(0.55 0.06 70);
   --sidebar-primary-foreground: oklch(0.98 0.005 80);
+
+  /* Overwritten at runtime by publishBuildVersion() in client/src/lib/version.ts
+     with the real build number. The literal here is the fallback shown if that
+     never runs — it should not appear on a deployed page. */
+  --build-version: "dev";
 }
 
 @layer base {
@@ -148,5 +153,30 @@
     font-style: italic;
     font-weight: 400;
     color: var(--color-brass);
+  }
+
+  /* Build stamp — "v1.17" under the footer of every page.
+
+     Rendered as generated content on whatever <footer> the page already has,
+     rather than as a component pasted into each one. The five pages carry five
+     separate hand-written footers on two different backgrounds; a stamp copied
+     into all of them is a stamp that eventually lives in four of them, and each
+     copy would need its own colour. As an ::after it inherits the footer's own
+     colour, so it is legible on the ivory pages and the charcoal ones with no
+     per-page variant.
+
+     The value comes from --build-version, set on <html> by
+     publishBuildVersion() in client/src/lib/version.ts. */
+  footer::after {
+    content: "v" var(--build-version, "dev");
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.45;
   }
 }
