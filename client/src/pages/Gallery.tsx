@@ -39,14 +39,14 @@ const sections: GallerySection[] = [
     title: "The Estate",
     subtitle: "Four acres of century-old trees, brick, and quiet.",
     images: [
-      { src: "/photos/theoldruthmarketingphotos184_d017cadf.webp", alt: "The Old Ruth in winter — full facade with American flag and snow-covered grounds", aspect: "landscape" },
-      { src: "/photos/IMG_0022_0a4db764.webp", alt: "Red brick mansion through mature trees with rhododendrons in bloom", aspect: "landscape" },
-      { src: "/photos/IMG_0948_d203ed6f.webp", alt: "Autumn exterior with golden lawn and low sun", aspect: "landscape" },
-      { src: "/photos/TheOldRuth08.07.2023-84_fedfed38.webp", alt: "Ornate ironwork veranda beneath mature trees", aspect: "landscape" },
-      { src: "/photos/TOR-Summer-2025-56_5baec9be.webp", alt: "Side angle of the estate showing lush green grounds", aspect: "portrait" },
-      { src: "/photos/TheOldRuth-10.21.2023-9_026aaebb.webp", alt: "White porch columns framing autumn trees", aspect: "landscape" },
-      { src: "/photos/IMG_0007_424b1f78.webp", alt: "Winter porch with sun flare through bare branches", aspect: "landscape" },
-      { src: "/photos/TheOldRuth08.07.2023-81_31fd3b90.webp", alt: "Screened porch with wicker chairs and colorful textiles", aspect: "landscape" },
+      { src: "/photos/theoldruthmarketingphotos184_d017cadf.webp", alt: "The Old Ruth mansion in winter — circa-1888 brick facade with American flag and snow-covered grounds, La Porte, Indiana", aspect: "landscape" },
+      { src: "/photos/IMG_0022_0a4db764.webp", alt: "The Old Ruth, a red brick historic mansion in La Porte, Indiana, seen through mature trees with rhododendrons in bloom", aspect: "landscape" },
+      { src: "/photos/IMG_0948_d203ed6f.webp", alt: "Autumn exterior of The Old Ruth executive housing — golden lawn and low sun on the 3.3-acre grounds", aspect: "landscape" },
+      { src: "/photos/TheOldRuth08.07.2023-84_fedfed38.webp", alt: "Ornate ironwork veranda at The Old Ruth, a National Historic Registry mansion in La Porte", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-56_5baec9be.webp", alt: "Side view of The Old Ruth estate and its green grounds — private corporate housing in La Porte, Indiana", aspect: "portrait" },
+      { src: "/photos/TheOldRuth-10.21.2023-9_026aaebb.webp", alt: "White porch columns at The Old Ruth framing autumn trees in La Porte, Indiana", aspect: "landscape" },
+      { src: "/photos/IMG_0007_424b1f78.webp", alt: "Winter porch at The Old Ruth with sun flare through bare branches", aspect: "landscape" },
+      { src: "/photos/TheOldRuth08.07.2023-81_31fd3b90.webp", alt: "Screened porch at The Old Ruth with wicker chairs and colorful textiles — outdoor living for executive residents", aspect: "landscape" },
     ],
   },
   {
@@ -54,19 +54,19 @@ const sections: GallerySection[] = [
     title: "The Grand Interior",
     subtitle: `Room after room of curated beauty, layered over ${yearsSince()} years.`,
     images: [
-      { src: "/photos/09.13.2023-Theoldruth-12_eaff6bd2.webp", alt: "Grand staircase with patterned carpet runner and chandelier", aspect: "portrait" },
-      { src: "/photos/TOR-Summer-2025-29_2e2b4ff2.webp", alt: "Overhead atrium view with leather seating and balcony railing", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos60_06822fbb.webp", alt: "Lamps glowing across layered lounge with long sightlines", aspect: "landscape" },
-      { src: "/photos/09.13.2023-Theoldruth-6_94509e11.webp", alt: "Layered interior view through rooms with lamp and architectural depth", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos75_2635d02c.webp", alt: "Library sitting area with leather chair and bookshelves", aspect: "landscape" },
-      { src: "/photos/TOR-Summer-2025-25_81c00b0c.webp", alt: "Chess nook with leather wingback and hanging lantern", aspect: "landscape" },
-      { src: "/photos/TOR-Summer-2025-38_c454ae2c.webp", alt: "Long hallway with antique armoire and sitting area", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos50_fc88cdb1.webp", alt: "Leather Chesterfield in bright sunroom with plants", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos38_00b743a2.webp", alt: "Piano corner with cozy chair, throw, and layered textures", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos46_62af9e97.webp", alt: "Mustard sofa with layered pillows and bright windows", aspect: "landscape" },
-      { src: "/photos/TOR-Summer-2025-40_4a31db1a.webp", alt: "Red velvet sofa with equestrian art and stained glass", aspect: "landscape" },
-      { src: "/photos/PlayingGrandPianoColorEditNOCROP_14b4e390.webp", alt: "Grand piano in the writing studio", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos54_bd5364ab.webp", alt: "Plush armchair with amber pillow and soft lamp", aspect: "landscape" },
+      { src: "/photos/09.13.2023-Theoldruth-12_eaff6bd2.webp", alt: "Grand staircase at The Old Ruth with patterned carpet runner and chandelier — historic corporate housing in La Porte", aspect: "portrait" },
+      { src: "/photos/TOR-Summer-2025-29_2e2b4ff2.webp", alt: "Overhead view of The Old Ruth atrium with leather seating and balcony railing", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos60_06822fbb.webp", alt: "Lamplit lounge at The Old Ruth with long sightlines — shared living space for executive residents", aspect: "landscape" },
+      { src: "/photos/09.13.2023-Theoldruth-6_94509e11.webp", alt: "Layered interior view through the rooms of The Old Ruth, a circa-1888 mansion in La Porte, Indiana", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos75_2635d02c.webp", alt: "Library sitting area at The Old Ruth with leather chair and bookshelves — quiet workspace for executives", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-25_81c00b0c.webp", alt: "Chess nook at The Old Ruth with leather wingback and hanging lantern", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-38_c454ae2c.webp", alt: "Long hallway at The Old Ruth with antique armoire and sitting area", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos50_fc88cdb1.webp", alt: "Leather Chesterfield in the bright sunroom at The Old Ruth executive housing", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos38_00b743a2.webp", alt: "Piano corner at The Old Ruth with cozy chair, throw, and layered textures", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos46_62af9e97.webp", alt: "Mustard sofa with layered pillows and bright windows in a furnished common room at The Old Ruth", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-40_4a31db1a.webp", alt: "Red velvet sofa with equestrian art and stained glass at The Old Ruth, La Porte, Indiana", aspect: "landscape" },
+      { src: "/photos/PlayingGrandPianoColorEditNOCROP_14b4e390.webp", alt: "Grand piano in the writing studio at The Old Ruth — creative space for executive residents", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos54_bd5364ab.webp", alt: "Plush armchair with amber pillow and soft lamp at The Old Ruth", aspect: "landscape" },
     ],
   },
   {
@@ -74,16 +74,16 @@ const sections: GallerySection[] = [
     title: "The Suites",
     subtitle: "Each room has its own story. None are alike.",
     images: [
-      { src: "/photos/TOR-Summer-2025-53_78d4fe65.webp", alt: "Gold-framed paintings, white daybed, warm lamp, and macrame", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos87_202c46d6.webp", alt: "Bedroom framed through doorway with warm lamp glow", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos103_f4b6ee05.webp", alt: "Modern bed framed by drapery with tall walls", aspect: "portrait" },
-      { src: "/photos/TheOldRuthMarketingPhotos96_f7867015.webp", alt: "Bed scene with glowing lamps and textile detail", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos118_ee45be15.webp", alt: "Bright bed beside stained-glass panel window", aspect: "landscape" },
-      { src: "/photos/TOR-Summer-2025-5_5bb854e9.webp", alt: "Iron bed with vintage chair, radiator, and warm lamp", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos10_c62eb55b.webp", alt: "Bedroom through doorway with trunk and folded towels", aspect: "landscape" },
-      { src: "/photos/TOR-Summer-2025-14_6f0b7c2a.webp", alt: "Compact room with black-and-white palette through doorway", aspect: "landscape" },
-      { src: "/photos/TOR-Summer-2025-41_8f96368b.webp", alt: "Iron bed with Don Quixote art and curtain framing", aspect: "landscape" },
-      { src: "/photos/TOR-Summer-2025-18_c9f66902.webp", alt: "Dark wall with artwork and dresser vignette", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-53_78d4fe65.webp", alt: "Furnished executive suite at The Old Ruth — gold-framed paintings, white daybed, warm lamp, and macrame", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos87_202c46d6.webp", alt: "Private bedroom suite at The Old Ruth framed through a doorway with warm lamp glow", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos103_f4b6ee05.webp", alt: "Modern bed framed by drapery in a tall-walled suite at The Old Ruth corporate housing", aspect: "portrait" },
+      { src: "/photos/TheOldRuthMarketingPhotos96_f7867015.webp", alt: "Furnished bedroom at The Old Ruth with glowing lamps and textile detail", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos118_ee45be15.webp", alt: "Bright bedroom beside a stained-glass panel window at The Old Ruth, La Porte, Indiana", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-5_5bb854e9.webp", alt: "Iron bed with vintage chair, radiator, and warm lamp in a private suite at The Old Ruth", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos10_c62eb55b.webp", alt: "Bedroom at The Old Ruth through the doorway with trunk and folded towels — turnkey furnished housing", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-14_6f0b7c2a.webp", alt: "Compact black-and-white bedroom at The Old Ruth seen through the doorway", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-41_8f96368b.webp", alt: "Iron bed with Don Quixote art and curtain framing in an executive suite at The Old Ruth", aspect: "landscape" },
+      { src: "/photos/TOR-Summer-2025-18_c9f66902.webp", alt: "Dark-walled bedroom vignette with artwork and dresser at The Old Ruth", aspect: "landscape" },
     ],
   },
   {
@@ -91,9 +91,9 @@ const sections: GallerySection[] = [
     title: "The Details",
     subtitle: "The things you notice on the second look.",
     images: [
-      { src: "/photos/theoldruth08.07.2023-36_b2e50d1d.webp", alt: "Green and gold tile kitchenette", aspect: "landscape" },
-      { src: "/photos/TheOldRuthMarketingPhotos117_2e5aac24.webp", alt: "Game table with golden rug and patterned drapery", aspect: "landscape" },
-      { src: "/photos/theoldruth08.07.2023-43_039032e8.webp", alt: "Architectural detail and period furnishings", aspect: "landscape" },
+      { src: "/photos/theoldruth08.07.2023-36_b2e50d1d.webp", alt: "Green and gold tile kitchenette at The Old Ruth — extended-stay corporate housing in La Porte", aspect: "landscape" },
+      { src: "/photos/TheOldRuthMarketingPhotos117_2e5aac24.webp", alt: "Game table with golden rug and patterned drapery at The Old Ruth", aspect: "landscape" },
+      { src: "/photos/theoldruth08.07.2023-43_039032e8.webp", alt: "Period architectural detail and furnishings inside The Old Ruth, a circa-1888 La Porte mansion", aspect: "landscape" },
     ],
   },
   {
@@ -101,8 +101,8 @@ const sections: GallerySection[] = [
     title: "The Wellness Ecosystem",
     subtitle: "Studio 7:14 — adjacent to the estate.",
     images: [
-      { src: "/photos/10.21.2025-4_c0e84efa.webp", alt: "Spa treatment room with massage table and robe", aspect: "landscape" },
-      { src: "/photos/10.21.2025-7_8b328fff.webp", alt: "Organic oils, herbs, and wellness ingredients", aspect: "landscape" },
+      { src: "/photos/10.21.2025-4_c0e84efa.webp", alt: "Spa treatment room with massage table and robe — wellness services for executive residents at The Old Ruth", aspect: "landscape" },
+      { src: "/photos/10.21.2025-7_8b328fff.webp", alt: "Organic oils, herbs, and wellness ingredients at The Old Ruth executive wellness housing", aspect: "landscape" },
     ],
   },
   {
@@ -110,10 +110,10 @@ const sections: GallerySection[] = [
     title: "The Setting",
     subtitle: "La Porte, Indiana — 60 miles from Chicago, a world apart.",
     images: [
-      { src: "/photos/IMG_0952_542bd31f.webp", alt: "Autumn sidewalk under golden canopy", aspect: "landscape" },
-      { src: "/photos/IMG_0951_e3ce5103.webp", alt: "Golden fall sidewalk with sunbeam", aspect: "landscape" },
-      { src: "/photos/IMG_0020_9e390603.webp", alt: "Tree-lined neighborhood sidewalk in summer", aspect: "landscape" },
-      { src: "/photos/IMG_0017_f0a0a623.webp", alt: "Lake Michigan water and sky", aspect: "landscape" },
+      { src: "/photos/IMG_0952_542bd31f.webp", alt: "Autumn sidewalk under a golden canopy near The Old Ruth in La Porte, Indiana", aspect: "landscape" },
+      { src: "/photos/IMG_0951_e3ce5103.webp", alt: "Golden fall sidewalk with sunbeam in the historic La Porte neighborhood around The Old Ruth", aspect: "landscape" },
+      { src: "/photos/IMG_0020_9e390603.webp", alt: "Tree-lined neighborhood sidewalk in summer near The Old Ruth corporate housing, La Porte, Indiana", aspect: "landscape" },
+      { src: "/photos/IMG_0017_f0a0a623.webp", alt: "Lake Michigan water and sky — 15 minutes from The Old Ruth in La Porte, Indiana", aspect: "landscape" },
     ],
   },
 ];
@@ -524,7 +524,7 @@ export default function Gallery() {
           <div className="flex items-center gap-3">
             <img
               src="/photos/ewh-logo-192.webp"
-              alt="EWH"
+              alt="Executive Wellness Housing logo"
               className="h-10 w-10 object-contain"
             />
             <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
