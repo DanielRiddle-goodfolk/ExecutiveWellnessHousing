@@ -6,16 +6,19 @@
  * existing React/Vite app and its design completely untouched.
  *
  * Run after `vite build`:  node scripts/prerender.mjs
+ *
+ * The route list lives in scripts/routes.mjs, shared with sitemap.mjs and
+ * verify.mjs so the three cannot drift apart.
  */
 import { createServer } from "node:http";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright";
+import { ROUTE_PATHS } from "./routes.mjs";
 
 const DIST = path.resolve(import.meta.dirname, "..", "dist", "public");
 const PORT = 4173;
-const ROUTES = ["/", "/corporate-housing", "/the-table", "/gallery", "/apply"];
 
 const MIME = {
   ".html": "text/html", ".js": "text/javascript", ".css": "text/css",
@@ -44,7 +47,7 @@ const browser = await chromium.launch(
 );
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 
-for (const route of ROUTES) {
+for (const route of ROUTE_PATHS) {
   await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: "networkidle" });
 
   // Drive every whileInView animation to completion so the captured markup is

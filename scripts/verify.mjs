@@ -1,9 +1,10 @@
 /**
  * Serves dist/public the way Netlify would and checks every route:
- * HTTP errors, JS errors, broken images, and full-page screenshots.
+ * HTTP errors, JS errors, broken images, and the head tags that carry all of
+ * this site's SEO.
  *
- * Also checks that every form named residency-inquiry declares every expected
- * field — see checkFormDeclarations() for why that matters.
+ * Also checks the generated sitemap and that every form named
+ * residency-inquiry declares every expected field.
  *
  *   node scripts/verify.mjs
  */
@@ -12,10 +13,22 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright";
+import { ROUTE_PATHS, SITE_URL, routeName } from "./routes.mjs";
 
 const DIST = path.resolve(import.meta.dirname, "..", "dist", "public");
 const SHOTS = process.env.SHOT_DIR ?? path.resolve(import.meta.dirname, "..", "shots");
 const PORT = 4174;
+
+/**
+ * Floor for prerendered visible text, in characters.
+ *
+ * The entire point of the prerender pass is that crawlers receive real content
+ * instead of an empty React shell. When prerender half-fails it does not throw
+ * — it writes a valid HTML file containing the shell and nothing else, which
+ * passed every previous check in this file. The thinnest real page renders in
+ * the low thousands, an empty shell in the low hundreds.
+ */
+const MIN_PRERENDERED_TEXT = 800;
 
 /**
  * Every field the inquiry form must declare. Netlify builds its form definition
@@ -74,6 +87,35 @@ async function checkFormDeclarations() {
   return bad;
 }
 
+/**
+ * The sitemap is generated from the same route table this file reads, so a
+ * mismatch means scripts/sitemap.mjs did not run, or a stale hand-written
+ * sitemap.xml is still being copied out of client/public and shadowing it.
+ */
+async function checkSitemap() {
+  const file = path.join(DIST, "sitemap.xml");
+  if (!existsSync(file)) {
+    console.log("FAIL  sitemap.xml missing from the build — did scripts/sitemap.mjs run?");
+    return 1;
+  }
+  const xml = await readFile(file, "utf8");
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  const expected = ROUTE_PATHS.map((p) => `${SITE_URL}${p}`);
+  const missing = expected.filter((u) => !locs.includes(u));
+  const extra = locs.filter((u) => !expected.includes(u));
+  const stale = /<lastmod>2026-08-12<\/lastmod>/.test(xml) ? "lastmod still 2026-08-12 — not generated" : "";
+
+  if (missing.length || extra.length || stale) {
+    console.log(
+      `FAIL  sitemap.xml — missing: ${missing.join(", ") || "none"} · unexpected: ${extra.join(", ") || "none"}${stale ? ` · ${stale}` : ""}`,
+    );
+    return 1;
+  }
+  const lastmod = xml.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1] ?? "?";
+  console.log(`PASS  sitemap.xml — ${locs.length} urls match the route table, lastmod ${lastmod}`);
+  return 0;
+}
+
 const MIME = {
   ".html": "text/html", ".js": "text/javascript", ".css": "text/css",
   ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
@@ -109,10 +151,13 @@ await new Promise((r) => server.listen(PORT, r));
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH });
 let failures = 0;
 
-for (const [route, name] of [
-  ["/", "home"], ["/corporate-housing", "corp"], ["/the-table", "table"],
-  ["/gallery", "gal"], ["/apply", "apply"],
-]) {
+// Titles and descriptions must be unique per route. Two pages sharing either
+// is how a five-page site ends up with two pages indexed.
+const seenTitles = new Map();
+const seenDescriptions = new Map();
+
+for (const route of ROUTE_PATHS) {
+  const name = routeName(route);
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   const http4xx = [];
   const jsErrors = [];
@@ -136,17 +181,47 @@ for (const [route, name] of [
   const broken = await page.evaluate(() =>
     [...document.images].filter((i) => i.complete && i.naturalWidth === 0).map((i) => i.currentSrc || i.src));
   const title = await page.title();
-  const canonical = await page.$eval('link[rel="canonical"]', (e) => e.getAttribute("href")).catch(() => "MISSING");
   const h1 = await page.$$eval("h1", (n) => n.length);
+  const canonical = await page
+    .$eval('link[rel="canonical"]', (e) => e.getAttribute("href"))
+    .catch(() => "MISSING");
+  const description = await page
+    .$eval('meta[name="description"]', (e) => e.getAttribute("content") ?? "")
+    .catch(() => "");
+  const jsonLd = await page.$$eval('script[type="application/ld+json"]', (n) => n.length);
+  const textLength = await page.evaluate(() => document.body.innerText.length);
+  const expectedCanonical = `${SITE_URL}${route}`;
 
   await page.screenshot({ path: `${SHOTS}/v-${name}.png`, fullPage: true });
 
-  const ok =
-    http4xx.length === 0 && jsErrors.length === 0 && broken.length === 0 && h1 === 1 && title.length > 10;
+  const problems = [];
+  if (http4xx.length) problems.push(`${http4xx.length} 4xx`);
+  if (jsErrors.length) problems.push(`${jsErrors.length} js errors`);
+  if (broken.length) problems.push(`${broken.length} broken images`);
+  if (h1 !== 1) problems.push(`h1 count is ${h1}, expected 1`);
+  if (title.length < 10) problems.push("title missing or too short");
+  if (canonical !== expectedCanonical) problems.push(`canonical is ${canonical}, expected ${expectedCanonical}`);
+  if (description.length < 50) problems.push(`description is ${description.length} chars, expected 50+`);
+  if (jsonLd === 0) problems.push("no JSON-LD block");
+  if (textLength < MIN_PRERENDERED_TEXT) {
+    problems.push(`only ${textLength} chars of text — prerender likely produced a shell`);
+  }
+  if (seenTitles.has(title)) problems.push(`title duplicates ${seenTitles.get(title)}`);
+  if (description && seenDescriptions.has(description)) {
+    problems.push(`description duplicates ${seenDescriptions.get(description)}`);
+  }
+  seenTitles.set(title, route);
+  if (description) seenDescriptions.set(description, route);
+
+  const ok = problems.length === 0;
   if (!ok) failures++;
-  console.log(`${ok ? "PASS" : "FAIL"}  ${route.padEnd(20)} h1=${h1} 4xx=${http4xx.length} js=${jsErrors.length} img=${broken.length}`);
+  console.log(
+    `${ok ? "PASS" : "FAIL"}  ${route.padEnd(20)} h1=${h1} 4xx=${http4xx.length} js=${jsErrors.length} img=${broken.length} jsonld=${jsonLd} text=${textLength}`,
+  );
   console.log(`        title:     ${title}`);
   console.log(`        canonical: ${canonical}`);
+  console.log(`        desc:      ${description.slice(0, 90)}${description.length > 90 ? "…" : ""}`);
+  for (const p of problems) console.log(`        ✗ ${p}`);
   if (http4xx.length) console.log("        4xx:", http4xx.slice(0, 4).join(" | "));
   if (jsErrors.length) console.log("        js: ", jsErrors.slice(0, 2).join(" | "));
   if (broken.length) console.log("        img:", broken.slice(0, 4).join(" | "));
@@ -157,9 +232,12 @@ for (const [route, name] of [
 await browser.close();
 server.close();
 
+console.log("\n--- sitemap ---");
+const sitemapFailures = await checkSitemap();
+
 console.log("\n--- inquiry form field declarations ---");
 const formFailures = await checkFormDeclarations();
 
 console.log(failures === 0 ? "\nAll routes passed." : `\n${failures} route(s) failed.`);
 if (formFailures) console.log(`${formFailures} form(s) missing declared fields.`);
-process.exit(failures === 0 && formFailures === 0 ? 0 : 1);
+process.exit(failures === 0 && formFailures === 0 && sitemapFailures === 0 ? 0 : 1);
