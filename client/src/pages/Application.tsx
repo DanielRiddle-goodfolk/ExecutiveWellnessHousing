@@ -17,7 +17,7 @@ const stagger = {
 export default function Application() {
   useSeo({
     title: "Request a Residency | Executive Housing in La Porte, IN | The Old Ruth",
-    description: "Inquire about a Master Lease for corporate teams deployed to La Porte, Indiana. Private suites, chef-prepared organic meals, and wellness infrastructure under one agreement.",
+    description: "Inquire about a Master Lease for corporate teams deployed to La Porte, Indiana. Private suites and wellness infrastructure under one agreement, with chef-prepared organic meals by arrangement.",
     path: "/apply",
   });
 

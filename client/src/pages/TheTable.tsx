@@ -63,7 +63,7 @@ const foodImages = [
 export default function TheTable() {
   useSeo({
     title: "The Table | Organic Chef-Prepared Dining | The Old Ruth, La Porte, IN",
-    description: "Nightly chef-prepared dinner at the original 1888 farm tables. Certified organic, seed-oil free, soy free, dairy free, gluten free — served family style in a dining room that seats 40.",
+    description: "Chef-prepared meals by arrangement at the original 1888 farm tables. Custom food and beverage packages — certified organic, seed-oil free, soy free, dairy free, gluten free — served family style in a dining room that seats 40.",
     preloadImage: "/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp",
     path: "/the-table",
   });
@@ -134,6 +134,13 @@ export default function TheTable() {
           >
             The Table
           </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-lg md:text-xl text-[var(--color-ivory)] leading-relaxed max-w-2xl mx-auto mb-6"
+          >
+            Should your gathering of guests call for meals, custom food and beverage packages can be thoughtfully designed and arranged in advance for an additional fee.
+          </motion.p>
 
           <motion.p
             variants={fadeUp}
@@ -214,7 +221,7 @@ export default function TheTable() {
               making them sick, slow, and tired.
             </p>
             <p className="text-[var(--color-ivory)] font-medium text-xl">
-              We chose a different standard. Our residents feel the difference within days.
+              We chose a different standard. Those who dine with us feel the difference within days.
             </p>
           </motion.div>
 
@@ -222,8 +229,8 @@ export default function TheTable() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <p className="text-[var(--color-brass)] text-sm tracking-[0.15em] uppercase mb-2">Format</p>
-                <p className="text-[var(--color-ivory)]">Family-style dinner</p>
-                <p className="text-[oklch(0.55_0.01_80)] text-sm mt-1">One menu. One long table. One conversation.</p>
+                <p className="text-[var(--color-ivory)]">Family-style, by arrangement</p>
+                <p className="text-[oklch(0.55_0.01_80)] text-sm mt-1">Arranged in advance. One long table. One conversation.</p>
               </div>
               <div>
                 <p className="text-[var(--color-brass)] text-sm tracking-[0.15em] uppercase mb-2">Standard</p>
@@ -333,10 +340,10 @@ export default function TheTable() {
         >
           <div className="w-16 h-[1px] bg-[var(--color-brass)] mx-auto mb-10" />
           <p className="text-xl md:text-2xl text-[var(--color-ivory)] leading-relaxed mb-4 font-[var(--font-display)]">
-            The menu for the day is the menu for the day.
+            Every menu is designed in advance, with intention.
           </p>
           <p className="text-[oklch(0.55_0.01_80)] text-sm tracking-wide">
-            That's not a limitation. It's a statement.
+            Food service is an addition to your stay, arranged for an additional fee.
           </p>
         </motion.div>
       </section>
