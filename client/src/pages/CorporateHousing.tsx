@@ -27,7 +27,11 @@ const FAQS = [
   },
   {
     q: "What does one corporate contract cover?",
-    a: "Furnished private suites, a nightly chef-prepared organic dinner, daily wellness and recovery modalities, weekly housekeeping with organic linens, on-site laundry, and private strategy and meeting space. Your team arrives with luggage and nothing else to arrange.",
+    a: "Furnished private suites, daily wellness and recovery modalities, weekly housekeeping with organic linens, on-site laundry, and private strategy and meeting space. Food service is not included, but can be added on.",
+  },
+  {
+    q: "Are meals included?",
+    a: "No. Should your team or gathering call for meals, custom food and beverage packages can be thoughtfully designed and arranged in advance for an additional fee — prepared to the house standard: certified organic, seed-oil free, soy free, dairy free, gluten free. Residents also have access to a kitchenette for their own use.",
   },
   {
     q: "How far is La Porte from Chicago and South Bend?",
@@ -43,7 +47,7 @@ export default function CorporateHousing() {
   useSeo({
     title: "Corporate Housing Near Microsoft Data Center | La Porte, IN | The Old Ruth",
     description:
-      "Executive housing for teams deployed to the La Porte, Indiana Microsoft data center campus. Private suites, chef-prepared organic meals, wellness infrastructure, and meeting spaces — all under one corporate agreement.",
+      "Executive housing for teams deployed to the La Porte, Indiana Microsoft data center campus. Private suites, wellness infrastructure, and meeting spaces under one corporate agreement — with chef-prepared organic meals available by arrangement.",
     path: "/corporate-housing",
     ogImage: `${SITE_URL}/photos/TOR-Summer-2025-56_63950bc3.webp`,
     preloadImage: "/photos/TOR-Summer-2025-56_63950bc3.webp",
@@ -131,9 +135,9 @@ export default function CorporateHousing() {
             variants={fadeUp}
             className="text-lg text-[oklch(0.78_0.01_80)] leading-relaxed max-w-2xl"
           >
-            Private furnished suites in a 30,000 sq ft historic estate — with integrated wellness,
-            chef-prepared organic meals, and dedicated strategy spaces. One corporate agreement.
-            Everything handled.
+            Private furnished suites in a 30,000 sq ft historic estate — with integrated wellness
+            and dedicated strategy spaces, plus chef-prepared organic meals by arrangement. One
+            corporate agreement.
           </motion.p>
         </motion.div>
       </section>
@@ -218,8 +222,8 @@ export default function CorporateHousing() {
                 desc: "16 private suites across 30,000 sq ft. National Historic Registry mansion with 10-inch walls, antique furnishings, and 3.3 acres of organic grounds. No strangers. No noise. No pets.",
               },
               {
-                title: "Chef-Prepared Organic Meals",
-                desc: "Nightly family-style dinner plus daily breakfast provisions. 100% organic, seed-oil free, soy free, dairy free, gluten free. AIP and Keto compliant. Original 1888 farm tables.",
+                title: "Chef-Prepared Meals, By Arrangement",
+                desc: "Food service is not included. Should your team call for meals, custom food and beverage packages can be designed and arranged in advance for an additional fee. 100% organic, seed-oil free, soy free, dairy free, gluten free. AIP and Keto compliant. Original 1888 farm tables.",
               },
               {
                 title: "Integrated Wellness & Recovery",
@@ -235,7 +239,7 @@ export default function CorporateHousing() {
               },
               {
                 title: "One Corporate Agreement",
-                desc: "Master Lease structure. One contract covers everything — housing, meals, wellness, meeting space. No individual leases. No per-diem paperwork. Your people simply arrive.",
+                desc: "Master Lease structure. One contract covers housing, wellness, and meeting space. No individual leases. No per-diem paperwork. Your people simply arrive.",
               },
             ].map((item, i) => (
               <motion.div
@@ -377,7 +381,7 @@ export default function CorporateHousing() {
               <div className="space-y-4 text-[var(--color-muted-foreground)] leading-relaxed">
                 <p>
                   A private estate where the environment itself is engineered for sustained performance.
-                  Clean food every night. Recovery modalities every morning. Peace and quiet enforced by
+                  Clean, chef-prepared food by arrangement. Recovery modalities every morning. Peace and quiet enforced by
                   covenant. A community of like-minded professionals who understand the weight of the work.
                 </p>
                 <p>
@@ -397,7 +401,7 @@ export default function CorporateHousing() {
           {[
             { src: "/photos/09.13.2023-Theoldruth-12_eaff6bd2.webp", alt: "Grand staircase at The Old Ruth — historic corporate housing in La Porte, Indiana" },
             { src: "/photos/TOR-Summer-2025-53_78d4fe65.webp", alt: "Private furnished suite at The Old Ruth corporate housing" },
-            { src: "/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp", alt: "Dining room at The Old Ruth — nightly chef-prepared meals included with corporate housing" },
+            { src: "/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp", alt: "Dining room at The Old Ruth — chef-prepared meals available by arrangement for corporate residents" },
             { src: "/photos/TOR-Summer-2025-29_2e2b4ff2.webp", alt: "Lounge at The Old Ruth for executive residents on extended stays in La Porte" },
           ].map((img, i) => (
             <div key={i} className="aspect-[4/3] overflow-hidden">
