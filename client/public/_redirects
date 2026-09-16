@@ -1,3 +1,10 @@
+# Old domain → new domain. The site was renamed from Executive Wellness Housing
+# to Executive Wellness Suites in September 2026. Keep these 301s as long as the
+# old domain is registered so links, bookmarks and Google's index carry over.
+# The old domain must remain attached to the Netlify site for these to fire.
+https://executivewellnesshousing.com/*      https://executivewellnesssuites.com/:splat  301!
+https://www.executivewellnesshousing.com/*  https://executivewellnesssuites.com/:splat  301!
+
 # Netlify serves existing static files first; this is the last-resort SPA fallback
 # so deep links and refreshes never 404.
 /*    /index.html   200

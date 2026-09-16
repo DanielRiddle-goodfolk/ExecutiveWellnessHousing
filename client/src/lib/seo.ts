@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-export const SITE_URL = "https://executivewellnesshousing.com";
-export const SITE_NAME = "The Old Ruth — Executive Wellness Housing";
+export const SITE_URL = "https://executivewellnesssuites.com";
+export const SITE_NAME = "The Old Ruth — Executive Wellness Suites";
 
 /**
  * Shown to a visitor if a form submission fails, so they have a way to reach you.

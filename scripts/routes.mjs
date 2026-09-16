@@ -11,7 +11,7 @@
  * the sitemap entry, the <link rel="canonical"> tag and the prerendered file
  * agree by construction rather than by anyone remembering.
  */
-export const SITE_URL = "https://executivewellnesshousing.com";
+export const SITE_URL = "https://executivewellnesssuites.com";
 
 export const ROUTES = [
   { path: "/", priority: "1.0", changefreq: "monthly" },
