@@ -66,12 +66,12 @@ export default function Application() {
             <span className="flex items-center gap-4">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="Executive Wellness Housing"
+                alt="Executive Wellness Suites"
                 className="h-12 w-12 object-contain"
               />
               <div className="hidden sm:flex flex-col">
                 <span className="font-[var(--font-display)] text-[var(--color-charcoal)] text-base tracking-[0.08em]">
-                  Executive Wellness Housing
+                  Executive Wellness Suites
                 </span>
                 <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
                   Residency Inquiry
@@ -371,7 +371,7 @@ export default function Application() {
           <div className="flex items-center gap-3">
             <img
               src="/photos/ewh-logo-192.webp"
-              alt="EWH"
+              alt="Executive Wellness Suites"
               className="h-10 w-10 object-contain"
             />
             <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">

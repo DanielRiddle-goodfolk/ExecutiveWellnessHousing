@@ -1,6 +1,6 @@
-# CLAUDE.md — Executive Wellness Housing
+# CLAUDE.md — Executive Wellness Suites
 
-You are editing the website for **Executive Wellness Housing** — private corporate housing at The
+You are editing the website for **Executive Wellness Suites** — private corporate housing at The
 Old Ruth, a circa-1888 historic mansion in La Porte, Indiana. The person talking to you is likely
 **not a coder**. They will describe changes in plain English. Make the change safely, then explain
 what you did in plain language, never in jargon.
@@ -49,11 +49,17 @@ reach the prospect. **Do not rename it.**
 
 ## Don't rename the brand without asking
 
-The repo and project are called *Executive Wellness Housing*. The site's visible branding — in
-headers, footers, meta titles, Open Graph tags, and the `LodgingBusiness` structured data — now
-matches: **"The Old Ruth — Executive Wellness Housing"** (changed from "...Suites" on Dan's
-explicit request, August 19, 2026). Any further change to this phrase still changes SEO and needs
-Dan's explicit sign-off — don't "fix" or harmonize it on your own initiative.
+The brand is **"The Old Ruth — Executive Wellness Suites"** and the domain is
+**executivewellnesssuites.com** (renamed from "Executive Wellness Housing" /
+executivewellnesshousing.com on September 16, 2026, at Dan's request). It appears in headers,
+footers, meta titles, Open Graph tags, and the `LodgingBusiness` structured data. The GitHub repo
+and Netlify site are still named `ExecutiveWellnessHousing` — that is intentional, don't "fix" it.
+Any further change to the brand phrase or domain changes SEO and needs Dan's explicit sign-off.
+
+When the domain changes, these must all move together: `SITE_URL` in `client/src/lib/seo.ts` **and**
+`scripts/routes.mjs`, `PRODUCTION_HOSTS` in `client/src/lib/analytics.ts`, the canonical/OG tags in
+`client/index.html`, `client/public/robots.txt`, and the old-domain redirects in
+`client/public/_redirects`.
 
 ## Where things live
 

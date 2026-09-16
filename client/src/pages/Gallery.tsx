@@ -102,7 +102,7 @@ const sections: GallerySection[] = [
     subtitle: "Studio 7:14 — adjacent to the estate.",
     images: [
       { src: "/photos/10.21.2025-4_c0e84efa.webp", alt: "Spa treatment room with massage table and robe — wellness services for executive residents at The Old Ruth", aspect: "landscape" },
-      { src: "/photos/10.21.2025-7_8b328fff.webp", alt: "Organic oils, herbs, and wellness ingredients at The Old Ruth executive wellness housing", aspect: "landscape" },
+      { src: "/photos/10.21.2025-7_8b328fff.webp", alt: "Organic oils, herbs, and wellness ingredients at The Old Ruth executive wellness suites", aspect: "landscape" },
     ],
   },
   {
@@ -185,7 +185,7 @@ function Lightbox({
 // --- Gallery Page ---
 export default function Gallery() {
   useSeo({
-    title: "Photo Gallery | The Old Ruth Executive Wellness Housing | La Porte, IN",
+    title: "Photo Gallery | The Old Ruth Executive Wellness Suites | La Porte, IN",
     description: "Inside the estate: suites, common rooms, grounds, and the original 1888 farm tables of a 30,000 sq ft National Historic Registry mansion in La Porte, Indiana.",
     path: "/gallery",
   });
@@ -237,12 +237,12 @@ export default function Gallery() {
             <span className="flex items-center gap-4">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="Executive Wellness Housing"
+                alt="Executive Wellness Suites"
                 className="h-12 w-12 object-contain"
               />
               <div className="hidden sm:flex flex-col">
                 <span className="font-[var(--font-display)] text-[var(--color-charcoal)] text-base tracking-[0.08em]">
-                  Executive Wellness Housing
+                  Executive Wellness Suites
                 </span>
                 <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
                   A Private Tour
@@ -524,7 +524,7 @@ export default function Gallery() {
           <div className="flex items-center gap-3">
             <img
               src="/photos/ewh-logo-192.webp"
-              alt="Executive Wellness Housing logo"
+              alt="Executive Wellness Suites logo"
               className="h-10 w-10 object-contain"
             />
             <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">

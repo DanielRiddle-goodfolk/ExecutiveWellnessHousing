@@ -8,7 +8,7 @@
  * Because it is baked in rather than fetched, the prerendered HTML carries it
  * too, so it can be read without opening a browser:
  *
- *   curl -s https://executivewellnesshousing.com/ | grep -o '\-\-build-version:[^;"]*'
+ *   curl -s https://executivewellnesssuites.com/ | grep -o '\-\-build-version:[^;"]*'
  */
 declare const __BUILD_VERSION__: string;
 

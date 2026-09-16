@@ -1,18 +1,21 @@
-# Executive Wellness Housing
+# Executive Wellness Suites
 
-Marketing website for **Executive Wellness Housing** — private corporate housing at The Old Ruth, a
+Marketing website for **Executive Wellness Suites** — private corporate housing at The Old Ruth, a
 circa-1888 National Historic Registry mansion in La Porte, Indiana.
 
-- **Live site:** https://executivewellnesshousing.com
+- **Live site:** https://executivewellnesssuites.com
 - **Hosting:** Netlify (auto-deploys from this repo)
 - **Repo owner / admin:** Dan Riddle
 - **Inquiries go to:** Jennie@goodfolk.com
 
-> **Naming note.** This repo and project are called *Executive Wellness Housing*, and as of August
-> 19, 2026 the **site's own branding matches: "The Old Ruth — Executive Wellness Housing"** (it
-> previously read "...Executive Wellness Suites"; Dan requested the change). It appears in page
-> copy, meta titles, and structured data. Any further change to this phrase needs Dan's sign-off —
-> it affects SEO. "The Old Ruth" is also planned as a separate, non-corporate-facing site later.
+> **Naming note.** The brand is **"The Old Ruth — Executive Wellness Suites"** at
+> **executivewellnesssuites.com** (renamed from "Executive Wellness Housing" /
+> executivewellnesshousing.com on September 16, 2026, at Dan's request). The GitHub repo and the
+> Netlify site are still named `ExecutiveWellnessHousing` / `executivewellnesshousing` — those are
+> internal identifiers and were deliberately left alone; renaming them changes deploy-preview URLs
+> and the required status check. The brand phrase appears in page copy, meta titles, and structured
+> data. Any further change to it needs Dan's sign-off — it affects SEO. "The Old Ruth" is also
+> planned as a separate, non-corporate-facing site later.
 
 ## What this is
 
@@ -166,7 +169,10 @@ npx serve dist/public
 
 ## Domain & DNS
 
-- **Domain:** executivewellnesshousing.com
+- **Domain:** executivewellnesssuites.com (primary). The old domain, executivewellnesshousing.com,
+  stays registered and 301-redirects every path to the new one — see `client/public/_redirects`.
+  Keep it as a domain alias on the Netlify site; if it's removed there, the redirect rules stop
+  matching and old links go dead.
 - **DNS managed at:** GoDaddy
 - **Notes:** redirects live in `client/public/_redirects`; custom headers in `client/public/_headers`
 

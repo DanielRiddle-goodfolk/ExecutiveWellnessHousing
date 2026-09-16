@@ -11,7 +11,7 @@
 
 export const GA_MEASUREMENT_ID = "G-RQ8W0NEY7H";
 
-const PRODUCTION_HOSTS = ["executivewellnesshousing.com", "www.executivewellnesshousing.com"];
+const PRODUCTION_HOSTS = ["executivewellnesssuites.com", "www.executivewellnesssuites.com"];
 
 declare global {
   interface Window {

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://executivewellnesshousing.com/sitemap.xml
+Sitemap: https://executivewellnesssuites.com/sitemap.xml

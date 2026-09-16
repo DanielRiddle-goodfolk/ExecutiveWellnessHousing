@@ -70,13 +70,13 @@ export default function CorporateHousing() {
             <Link href="/">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="Executive Wellness Housing"
+                alt="Executive Wellness Suites"
                 className="h-12 w-12 object-contain cursor-pointer"
               />
             </Link>
             <div className="hidden sm:flex flex-col">
               <span className="font-[var(--font-display)] text-[var(--color-ivory)] text-base tracking-[0.08em]">
-                Executive Wellness Housing
+                Executive Wellness Suites
               </span>
               <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
                 The Old Ruth — Circa 1888
@@ -494,12 +494,12 @@ export default function CorporateHousing() {
             <div className="lg:col-span-4 flex items-center gap-4">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="Executive Wellness Housing logo"
+                alt="Executive Wellness Suites logo"
                 className="h-12 w-12 object-contain"
               />
               <div className="flex flex-col">
                 <span className="font-[var(--font-display)] text-sm tracking-[0.08em] text-[var(--color-charcoal)]">
-                  Executive Wellness Housing
+                  Executive Wellness Suites
                 </span>
                 <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
                   The Old Ruth — Circa 1888
