@@ -1,6 +1,6 @@
-# CLAUDE.md — Executive Wellness Housing
+# CLAUDE.md — Executive Wellness Suites
 
-You are editing the website for **Executive Wellness Housing** — private corporate housing at The
+You are editing the website for **Executive Wellness Suites** — private corporate housing at The
 Old Ruth, a circa-1888 historic mansion in La Porte, Indiana. The person talking to you is likely
 **not a coder**. They will describe changes in plain English. Make the change safely, then explain
 what you did in plain language, never in jargon.
@@ -49,11 +49,13 @@ reach the prospect. **Do not rename it.**
 
 ## Don't rename the brand without asking
 
-The repo and project are called *Executive Wellness Housing*. The site's visible branding — in
-headers, footers, meta titles, Open Graph tags, and the `LodgingBusiness` structured data — now
-matches: **"The Old Ruth — Executive Wellness Housing"** (changed from "...Suites" on Dan's
-explicit request, August 19, 2026). Any further change to this phrase still changes SEO and needs
-Dan's explicit sign-off — don't "fix" or harmonize it on your own initiative.
+The site's visible branding — in headers, footers, meta titles, Open Graph tags, and the
+`LodgingBusiness` structured data — is **"The Old Ruth — Executive Wellness Suites"**, and the
+domain is **executivewellnesssuites.com** (both set on Dan's explicit request, September 16, 2026;
+the brand had been "...Housing" since August 19, 2026). The GitHub repo and Netlify site keep their
+old `ExecutiveWellnessHousing` names deliberately — don't rename them. Any further change to the
+brand phrase or domain changes SEO and needs Dan's explicit sign-off — don't "fix" or harmonize it
+on your own initiative.
 
 ## Where things live
 

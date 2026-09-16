@@ -15,7 +15,7 @@ export default function NotFound() {
   useSeo({
     title: "Page Not Found | The Old Ruth, La Porte, IN",
     description:
-      "This page could not be found. Return to Executive Wellness Housing at The Old Ruth in La Porte, Indiana.",
+      "This page could not be found. Return to Executive Wellness Suites at The Old Ruth in La Porte, Indiana.",
     path: "/404",
     // Netlify's SPA fallback serves this with a 200, so without this a crawler
     // would treat every mistyped URL as a real, indexable page.
@@ -31,12 +31,12 @@ export default function NotFound() {
             <span className="flex items-center gap-4">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="Executive Wellness Housing"
+                alt="Executive Wellness Suites"
                 className="h-12 w-12 object-contain"
               />
               <div className="hidden sm:flex flex-col">
                 <span className="font-[var(--font-display)] text-[var(--color-ivory)] text-base tracking-[0.08em]">
-                  Executive Wellness Housing
+                  Executive Wellness Suites
                 </span>
                 <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
                   The Old Ruth — Circa 1888
@@ -119,7 +119,7 @@ export default function NotFound() {
           <div className="flex items-center gap-3">
             <img
               src="/photos/ewh-logo-192.webp"
-              alt="Executive Wellness Housing logo"
+              alt="Executive Wellness Suites logo"
               className="h-10 w-10 object-contain"
             />
             <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
