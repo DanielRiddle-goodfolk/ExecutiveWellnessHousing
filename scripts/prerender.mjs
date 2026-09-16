@@ -64,9 +64,14 @@ for (const route of ROUTE_PATHS) {
 
   const html = await page.evaluate(() => `<!doctype html>\n${document.documentElement.outerHTML}`);
 
-  const outDir = route === "/" ? DIST : path.join(DIST, route);
-  await mkdir(outDir, { recursive: true });
-  await writeFile(path.join(outDir, "index.html"), html, "utf-8");
+  // Write /corporate-housing as corporate-housing.html, NOT corporate-housing/index.html.
+  // Netlify answers a request for a folder's index with a 301 to the trailing-slash
+  // URL, while the canonical tag and sitemap use the slash-less path. Google then
+  // sees every inner page canonicalise to a URL that redirects away, and indexes
+  // none of them. A sibling .html file is served at the slash-less URL directly.
+  const outFile = route === "/" ? path.join(DIST, "index.html") : path.join(DIST, `${route}.html`);
+  await mkdir(path.dirname(outFile), { recursive: true });
+  await writeFile(outFile, html, "utf-8");
 
   const text = await page.evaluate(() => document.body.innerText.length);
   console.log(`prerendered ${route.padEnd(20)} ${(html.length / 1024).toFixed(0)} kB html, ${text} chars of text`);

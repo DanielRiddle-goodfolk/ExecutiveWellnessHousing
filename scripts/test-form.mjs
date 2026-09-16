@@ -40,7 +40,9 @@ const server = createServer(async (req, res) => {
   }
   const url = decodeURIComponent((req.url ?? "/").split("?")[0]);
   let file = path.join(DIST, url);
-  if (existsSync(file)) {
+  const sibling = path.join(DIST, `${url.replace(/\/$/, "")}.html`);
+  if (url !== "/" && existsSync(sibling)) file = sibling;
+  else if (existsSync(file)) {
     const s = await stat(file);
     if (!s.isFile()) {
       const idx = path.join(file, "index.html");
