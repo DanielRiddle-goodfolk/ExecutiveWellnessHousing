@@ -19,7 +19,7 @@ const stagger = {
 
 export default function Home() {
   useSeo({
-    title: "Executive Wellness Housing | Corporate Housing in La Porte, IN | The Old Ruth",
+    title: "Executive Wellness Suites | Corporate Housing in La Porte, IN | The Old Ruth",
     description: "Private executive housing in La Porte, Indiana — 16 furnished suites in a 30,000 sq ft historic estate with integrated wellness, organic dining, and strategy spaces. One corporate contract. Everything handled.",
     preloadImage: "/photos/hero-the-old-ruth-summer.webp",
     path: "/",
@@ -34,12 +34,12 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <img
               src="/photos/ewh-logo-192.webp"
-              alt="Executive Wellness Housing"
+              alt="Executive Wellness Suites"
               className="h-12 w-12 object-contain"
             />
             <div className="hidden sm:flex flex-col">
               <span className="font-[var(--font-display)] text-[var(--color-ivory)] text-base tracking-[0.08em]">
-                Executive Wellness Housing
+                Executive Wellness Suites
               </span>
               <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
                 The Old Ruth — Circa 1888
@@ -1252,12 +1252,12 @@ export default function Home() {
             <div className="lg:col-span-4 flex items-center gap-4">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="Executive Wellness Housing logo"
+                alt="Executive Wellness Suites logo"
                 className="h-14 w-14 object-contain"
               />
               <div className="flex flex-col">
                 <span className="font-[var(--font-display)] text-sm tracking-[0.08em] text-[var(--color-charcoal)]">
-                  Executive Wellness Housing
+                  Executive Wellness Suites
                 </span>
                 <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
                   The Old Ruth — Circa 1888
