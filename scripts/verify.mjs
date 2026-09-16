@@ -124,6 +124,9 @@ const MIME = {
 };
 
 async function resolveFile(url) {
+  // Netlify serves /foo from foo.html without a redirect — mirror that first.
+  const sibling = path.join(DIST, `${url.replace(/\/$/, "")}.html`);
+  if (url !== "/" && existsSync(sibling)) return sibling;
   const direct = path.join(DIST, url);
   if (existsSync(direct)) {
     const s = await stat(direct);
