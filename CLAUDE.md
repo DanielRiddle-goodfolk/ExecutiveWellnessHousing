@@ -90,6 +90,9 @@ marketing verbs ("unlock," "elevate," "supercharge"). Match the cadence of the s
 **Fixed language rules:**
 
 - "La Porte" is always two words.
+- **Food service is not included** in a residency. It is an add-on: custom food and beverage
+  packages, arranged in advance for an additional fee. Never write copy, alt text, meta
+  descriptions, or structured data that says or implies meals come with a stay (Dan, Sept 2026).
 - "Circa 1888," never "Est. 1888."
 
 ## Text over photographs

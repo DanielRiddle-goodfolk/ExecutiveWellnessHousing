@@ -174,7 +174,7 @@ export const LODGING_JSONLD = {
   "@type": "LodgingBusiness",
   name: SITE_NAME,
   description:
-    "Private executive housing in a 30,000 sq ft National Historic Registry mansion. Corporate wellness suites with organic dining, integrated recovery modalities, and private strategy spaces.",
+    "Private executive housing in a 30,000 sq ft National Historic Registry mansion. Corporate wellness suites with integrated recovery modalities, private strategy spaces, and chef-prepared organic meals available by arrangement.",
   url: SITE_URL,
   image: DEFAULT_OG_IMAGE,
   address: {
@@ -188,7 +188,7 @@ export const LODGING_JSONLD = {
   geo: { "@type": "GeoCoordinates", latitude: 41.6106, longitude: -86.7225 },
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "Private Suites", value: true },
-    { "@type": "LocationFeatureSpecification", name: "Chef-Prepared Organic Meals", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Chef-Prepared Organic Meals (by arrangement, additional fee)", value: true },
     { "@type": "LocationFeatureSpecification", name: "Wellness & Recovery Center", value: true },
     { "@type": "LocationFeatureSpecification", name: "Executive Meeting Space", value: true },
   ],
