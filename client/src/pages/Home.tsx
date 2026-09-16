@@ -1,7 +1,7 @@
 import { useSeo, LODGING_JSONLD, yearsSince } from "@/lib/seo";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Shield, Leaf, Brain, Clock, ChefHat, Dumbbell } from "lucide-react";
+import { Shield, Leaf, Brain, Clock, Dumbbell } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -20,7 +20,7 @@ const stagger = {
 export default function Home() {
   useSeo({
     title: "Executive Wellness Suites | Corporate Housing in La Porte, IN | The Old Ruth",
-    description: "Private executive housing in La Porte, Indiana — 16 furnished suites in a 30,000 sq ft historic estate with integrated wellness, organic dining, and strategy spaces. One corporate contract. Everything handled.",
+    description: "Private executive housing in La Porte, Indiana — 16 furnished suites in a 30,000 sq ft historic estate with integrated wellness and strategy spaces. Chef-prepared organic meals available by arrangement. One corporate contract.",
     preloadImage: "/photos/hero-the-old-ruth-summer.webp",
     path: "/",
     jsonLd: LODGING_JSONLD,
@@ -113,8 +113,8 @@ export default function Home() {
             </div>
             <motion.div variants={fadeLeft} className="lg:col-span-5 lg:text-right">
               <p className="text-base text-[oklch(0.78_0.01_80)] leading-relaxed max-w-md lg:ml-auto">
-                A 30,000 square-foot executive residence with integrated wellness, a nightly
-                chef-prepared table, and private strategy spaces — designed to keep your best
+                A 30,000 square-foot executive residence with integrated wellness, chef-prepared
+                dining by arrangement, and private strategy spaces — designed to keep your best
                 people performing at their best for the full duration of your project.
                 51 miles from Chicago. 35 minutes from Notre Dame. 15 minutes from Lake Michigan.
               </p>
@@ -334,7 +334,7 @@ export default function Home() {
             </motion.p>
             <motion.div variants={fadeUp} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { label: "Organic in the Kitchen", detail: "Whole foods, certified organic. No seed oils, no soy, no gluten, no dairy." },
+                { label: "Organic in the Kitchen", detail: "Every arranged meal is whole-food and certified organic. No seed oils, no soy, no gluten, no dairy." },
                 { label: "Organic in the Laundry", detail: "Chemical-free detergent for every sheet, every towel, every load." },
                 { label: "Organic in the Cleaning", detail: "Natural products throughout. No synthetic fragrances. No harsh chemicals." },
                 { label: "Organic in the Fragrance", detail: "Essential oils only. Nothing artificial enters the air you breathe." },
@@ -372,6 +372,9 @@ export default function Home() {
                 Real food that optimizes high capacity people.
               </h3>
               <div className="space-y-5 text-[oklch(0.72_0.01_80)] leading-relaxed">
+                <p className="text-[var(--color-ivory)]">
+                  Should your gathering of guests call for meals, custom food and beverage packages can be thoughtfully designed and arranged in advance for an additional fee.
+                </p>
                 <p className="italic">
                   These tables have carried the heart and stories of every love-filled meal served
                   in this house since its inception in 1888. They are the original farm tables —
@@ -385,7 +388,7 @@ export default function Home() {
               </div>
               <div className="mt-8 pt-6 border-t border-[oklch(1_0_0/0.08)]">
                 <p className="text-sm text-[oklch(0.55_0.01_80)] tracking-wide mb-4">
-                  Our dining room comfortably seats 40, and meals are all served family style.
+                  Our dining room comfortably seats 40, and arranged meals are served family style.
                 </p>
                 <p className="text-sm text-[oklch(0.55_0.01_80)] tracking-wide mb-6">
                   The space is available for your additional private corporate event.
@@ -849,6 +852,10 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+                <p className="mt-6 text-sm text-[var(--color-muted-foreground)] italic">
+                  Food service is not included. Custom food and beverage packages can be designed
+                  and arranged in advance for an additional fee.
+                </p>
               </div>
 
               {/* Studio 7:14 Partner Section */}
@@ -997,11 +1004,6 @@ export default function Home() {
                   title: "Stewardship",
                   icon: Clock,
                   desc: `Residents are temporary custodians of a ${yearsSince()}-year-old historic treasure. Pet-free. Smoke-free.`,
-                },
-                {
-                  title: "Nutritional Sovereignty",
-                  icon: ChefHat,
-                  desc: "No outside food violating the organic/seed-oil-free, soy-free, dairy-free, gluten-free standard in shared spaces.",
                 },
                 {
                   title: "30-Day Minimum",
