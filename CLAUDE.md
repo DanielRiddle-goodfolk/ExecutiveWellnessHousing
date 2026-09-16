@@ -49,13 +49,17 @@ reach the prospect. **Do not rename it.**
 
 ## Don't rename the brand without asking
 
-The site's visible branding — in headers, footers, meta titles, Open Graph tags, and the
-`LodgingBusiness` structured data — is **"The Old Ruth — Executive Wellness Suites"**, and the
-domain is **executivewellnesssuites.com** (both set on Dan's explicit request, September 16, 2026;
-the brand had been "...Housing" since August 19, 2026). The GitHub repo and Netlify site keep their
-old `ExecutiveWellnessHousing` names deliberately — don't rename them. Any further change to the
-brand phrase or domain changes SEO and needs Dan's explicit sign-off — don't "fix" or harmonize it
-on your own initiative.
+The brand is **"The Old Ruth — Executive Wellness Suites"** and the domain is
+**executivewellnesssuites.com** (renamed from "Executive Wellness Housing" /
+executivewellnesshousing.com on September 16, 2026, at Dan's request). It appears in headers,
+footers, meta titles, Open Graph tags, and the `LodgingBusiness` structured data. The GitHub repo
+and Netlify site are still named `ExecutiveWellnessHousing` — that is intentional, don't "fix" it.
+Any further change to the brand phrase or domain changes SEO and needs Dan's explicit sign-off.
+
+When the domain changes, these must all move together: `SITE_URL` in `client/src/lib/seo.ts` **and**
+`scripts/routes.mjs`, `PRODUCTION_HOSTS` in `client/src/lib/analytics.ts`, the canonical/OG tags in
+`client/index.html`, `client/public/robots.txt`, and the old-domain redirects in
+`client/public/_redirects`.
 
 ## Where things live
 

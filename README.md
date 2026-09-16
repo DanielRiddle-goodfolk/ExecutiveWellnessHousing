@@ -8,13 +8,14 @@ circa-1888 National Historic Registry mansion in La Porte, Indiana.
 - **Repo owner / admin:** Dan Riddle
 - **Inquiries go to:** Jennie@goodfolk.com
 
-> **Naming note.** As of September 16, 2026 the brand is **"The Old Ruth — Executive Wellness
-> Suites"** at **executivewellnesssuites.com** (Dan's request). The GitHub repo and the Netlify site
-> are still named `ExecutiveWellnessHousing` / `executivewellnesshousing` — renaming them would break
-> the required `netlify/executivewellnesshousing/deploy-preview` status check, so they were left
-> alone on purpose. The name appears in page copy, meta titles, and structured data; any further
-> change needs Dan's sign-off — it affects SEO. "The Old Ruth" is also planned as a separate,
-> non-corporate-facing site later.
+> **Naming note.** The brand is **"The Old Ruth — Executive Wellness Suites"** at
+> **executivewellnesssuites.com** (renamed from "Executive Wellness Housing" /
+> executivewellnesshousing.com on September 16, 2026, at Dan's request). The GitHub repo and the
+> Netlify site are still named `ExecutiveWellnessHousing` / `executivewellnesshousing` — those are
+> internal identifiers and were deliberately left alone; renaming them changes deploy-preview URLs
+> and the required status check. The brand phrase appears in page copy, meta titles, and structured
+> data. Any further change to it needs Dan's sign-off — it affects SEO. "The Old Ruth" is also
+> planned as a separate, non-corporate-facing site later.
 
 ## What this is
 
@@ -168,8 +169,10 @@ npx serve dist/public
 
 ## Domain & DNS
 
-- **Domain:** executivewellnesssuites.com (primary). The old executivewellnesshousing.com stays
-  attached to the Netlify site as a domain alias so the 301s in `_redirects` can send it here.
+- **Domain:** executivewellnesssuites.com (primary). The old domain, executivewellnesshousing.com,
+  stays registered and 301-redirects every path to the new one — see `client/public/_redirects`.
+  Keep it as a domain alias on the Netlify site; if it's removed there, the redirect rules stop
+  matching and old links go dead.
 - **DNS managed at:** GoDaddy
 - **Notes:** redirects live in `client/public/_redirects`; custom headers in `client/public/_headers`
 

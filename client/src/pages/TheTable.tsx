@@ -77,13 +77,13 @@ export default function TheTable() {
             <Link href="/">
               <img
                 src="/photos/ewh-logo-192.webp"
-                alt="Executive Wellness Housing"
+                alt="Executive Wellness Suites"
                 className="h-12 w-12 object-contain cursor-pointer"
               />
             </Link>
             <div className="hidden sm:flex flex-col">
               <span className="font-[var(--font-display)] text-[var(--color-ivory)] text-base tracking-[0.08em]">
-                Executive Wellness Housing
+                Executive Wellness Suites
               </span>
               <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--color-brass)]">
                 The Old Ruth — Circa 1888
@@ -345,7 +345,7 @@ export default function TheTable() {
       <footer className="border-t border-[oklch(1_0_0/0.06)] py-12 px-6">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[11px] tracking-[0.2em] uppercase text-[oklch(0.45_0.01_80)]">
-            Executive Wellness Housing — The Old Ruth Sanctuary
+            Executive Wellness Suites — The Old Ruth Sanctuary
           </p>
           <div className="flex items-center gap-6">
             <Link href="/">
