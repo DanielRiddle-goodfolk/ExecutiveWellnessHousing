@@ -17,10 +17,13 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
+// Organic by Design section is hidden but preserved below. Set true to restore.
+const SHOW_ORGANIC_BY_DESIGN = false;
+
 export default function Home() {
   useSeo({
     title: "Executive Wellness Suites | Corporate Housing in La Porte, IN | The Old Ruth",
-    description: "Private executive housing in La Porte, Indiana — 16 furnished suites in a 30,000 sq ft historic estate with integrated wellness and strategy spaces. Chef-prepared organic meals available by arrangement. One corporate contract.",
+    description: "Private executive housing in La Porte, Indiana — 14 furnished suites in a sprawling historic estate with integrated wellness and strategy spaces. Chef-prepared organic meals available by arrangement. One corporate contract.",
     preloadImage: "/photos/hero-the-old-ruth-summer.webp",
     path: "/",
     jsonLd: LODGING_JSONLD,
@@ -67,7 +70,7 @@ export default function Home() {
           <img
           fetchPriority="high"
             src="/photos/hero-the-old-ruth-summer.webp"
-            alt="The Old Ruth Estate — a 30,000 sq. ft. historic mansion in La Porte, Indiana, seen across its lawn through mature trees"
+            alt="The Old Ruth Estate — a sprawling historic mansion in La Porte, Indiana, seen across its lawn through mature trees"
             className="w-full h-full object-cover"
           />
           {/* Bottom-up scrim: carries the headline and the paragraph. */}
@@ -113,10 +116,10 @@ export default function Home() {
             </div>
             <motion.div variants={fadeLeft} className="lg:col-span-5 lg:text-right">
               <p className="text-base text-[oklch(0.78_0.01_80)] leading-relaxed max-w-md lg:ml-auto">
-                A 30,000 square-foot executive residence with integrated wellness, chef-prepared
+                A sprawling executive residence with integrated wellness, chef-prepared
                 dining by arrangement, and private strategy spaces — designed to keep your best
                 people performing at their best for the full duration of your project.
-                51 miles from Chicago. 35 minutes from Notre Dame. 15 minutes from Lake Michigan.
+                51 miles from Chicago. 35 minutes from Notre Dame and South Bend International Airport. 15 minutes from Lake Michigan.
               </p>
             </motion.div>
           </div>
@@ -141,7 +144,7 @@ export default function Home() {
             </div>
             <div className="lg:col-span-7">
               <motion.p variants={fadeUp} className="whisper text-2xl lg:text-3xl mb-8">
-                Love echoes off every wall.
+                History echoes off every wall.
               </motion.p>
               <motion.h2
                 variants={fadeUp}
@@ -155,7 +158,7 @@ export default function Home() {
                 className="text-lg text-[var(--color-muted-foreground)] leading-relaxed"
               >
                 In 1888, this mansion was built, the first of its kind, as a home for widows. They
-                moved in at age sixty — and in the sanctity and beauty of this giant hug of a house,
+                moved in at age sixty — and in the sanctity and beauty within these walls,
                 they lived well into their hundreds, becoming a healthy tribe of centenarians.
                 Something about this place added life to years and years to life. This is why we call
                 it a hidden blue zone.
@@ -226,12 +229,11 @@ export default function Home() {
                 <div>
                   <h3 className="text-2xl text-[var(--color-ivory)] mb-3">The Residence</h3>
                   <p className="text-xl text-[var(--color-ivory)] mb-4 italic">
-                    16 private suites. 30,000 square feet. A National Historic Registry mansion and estate.
+                    14 private suites. A sprawling National Historic Registry mansion and estate.
                   </p>
                   <p className="text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
-                    Slip away into an oasis of tranquility. Heaven on earth. Libraries that line the halls
-                    and enliven the soul. Antique treasures in every room. The exclusivity of a "Residents Only"
-                    estate with the peaceful escape that only 10-inch thick historic walls could afford.
+                    Slip away into an oasis of tranquility. Heaven on earth. The exclusivity of a
+                    "Residents Only" estate, a peaceful escape.
                   </p>
                   <p className="text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
                     Designed by the same architect who designed the iconic La Porte Courthouse.
@@ -242,7 +244,7 @@ export default function Home() {
                   </p>
                   <p className="text-xs text-[oklch(0.55_0.01_80)] leading-relaxed mt-4">
                     3.3 acres of mature maples and walnuts · Three grand pianos · Vintage elevator · Reading library ·
-                    Thinking games · Easels, paint, and canvas · A setting designed to down-regulate your
+                    Thinking games · A setting designed to down-regulate your
                     nervous system and signal to your body that all is well.
                   </p>
                 </div>
@@ -269,20 +271,10 @@ export default function Home() {
                 <div className="w-8 h-[1px] bg-[var(--color-brass)] mt-3 shrink-0" />
                 <div>
                   <h3 className="text-2xl text-[var(--color-ivory)] mb-3">The Restoration Philosophy</h3>
-                  <p className="text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
-                    The Old Ruth is not a place that offers wellness. It is a place that <em>is</em> wellness.
-                    The halls are filled with healing Hertz frequencies that stimulate the vagus nerve.
-                    The environment itself is designed to down-regulate your nervous system — to signal
-                    to your body that you are home and safe.
-                  </p>
-                  <p className="text-xs tracking-[0.15em] uppercase text-[var(--color-brass)] mb-3 mt-6">
+                  <p className="text-xs tracking-[0.15em] uppercase text-[var(--color-brass)] mb-3">
                     Complimentary — For Daily Use
                   </p>
                   <div className="space-y-3">
-                    <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
-                      <span className="text-[var(--color-ivory)] font-medium">Morning PE, Breath & Bodywork</span> —
-                      With an OG fitness expert experienced in all levels of endurance and capability.
-                    </p>
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
                       <span className="text-[var(--color-ivory)] font-medium">Far Infrared Sauna + Red Light Therapy</span> —
                       Private sessions at The Old Ruth or Studio 7:14.
@@ -295,7 +287,7 @@ export default function Home() {
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
                       <span className="text-[var(--color-ivory)] font-medium">The Chair (Nervous System Trainer)</span> —
                       This is where your body finally exhales. The Chair gently guides your nervous system
-                      out of chaos and back into peace. Come sit, breathe, and be restored.
+                      out of chaos and back into peace. Come relax, breathe, and be restored.
                     </p>
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
                       <span className="text-[var(--color-ivory)] font-medium">Rebounding</span> —
@@ -303,13 +295,21 @@ export default function Home() {
                       and coordination, strengthens the musculoskeletal system, and boosts cellular
                       oxygenation — all without joint strain.
                     </p>
+                    <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
+                      <span className="text-[var(--color-ivory)] font-medium">Kloud PEMA</span> —
+                      Whole-body pulsating electromagnetic activation. Twenty minutes a day to support
+                      circulation, nervous-system regulation, muscular recovery, and sleep — without
+                      physical exertion.
+                    </p>
                   </div>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Organic by Design — Philosophy */}
+          {/* Organic by Design — Philosophy. Hidden Sept 2026; kept for later reuse.
+              Flip SHOW_ORGANIC_BY_DESIGN to true to restore. */}
+          {SHOW_ORGANIC_BY_DESIGN && (
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -352,6 +352,7 @@ export default function Home() {
               Additional housekeeping and offsite laundry service available through the Concierge.
             </motion.p>
           </motion.div>
+          )}
 
           {/* The Table — Full Section */}
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-20">
@@ -488,7 +489,7 @@ export default function Home() {
             <div className="flex items-center gap-4 mb-10">
               <div className="w-12 h-[1px] bg-[var(--color-brass)]" />
               <span className="text-[11px] tracking-[0.25em] uppercase text-[var(--color-brass)]">
-                Downtown — A Whole World of Good
+                Downtown — A Whole World of Good — The Upper Room
               </span>
             </div>
           </motion.div>
@@ -528,10 +529,6 @@ export default function Home() {
                       Walkable from The Old Ruth · Directly across the street from Studio 7:14
                     </p>
                     <p className="text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
-                      10,000 square feet of community, discovery, and daily delight in historic downtown
-                      La Porte. It has earned its name well — because it is.
-                    </p>
-                    <p className="text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
                       Is it an excellently sourced craft coffeehouse with single-origin, first-wave, organic
                       daily supplies of caffeine? Is it a mercantile with AIP-friendly grab-and-go snacks and
                       imported European delicacies? Is it a fashion-forward clothing boutique that in itself is
@@ -557,7 +554,7 @@ export default function Home() {
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
                       Above A Whole World of Good sits a 3,000 square-foot lounge — available exclusively
                       to Old Ruth residents for executive meetings, strategy sessions, and whatever else
-                      might be needed. Projector wall. Flexible configuration. The quiet of a private floor
+                      might be needed. Flexible configuration. The quiet of a private floor
                       above the life of downtown. Reserved at an additional day or monthly rate.
                     </p>
                   </div>
@@ -686,48 +683,43 @@ export default function Home() {
             {[
               {
                 number: "01",
-                title: "Three Grand Pianos",
-                description: "Placed throughout the estate for whoever feels moved to play. No audience required. No performance expected. Just the instrument and the peace around it.",
+                title: "A Vintage Working Elevator",
+                description: "Spanning all four floors of the mansion. Original cage. Runs as well as the original Edison light bulb — a prized staple of the house and one of the estate's most unexpected treasures.",
               },
               {
                 number: "02",
-                title: "A Vintage Working Elevator",
-                description: "Spanning all four floors of the mansion. Original cage. Brass fixtures. Runs as well as the original Edison light bulb — a prized staple of the house and one of the estate's most unexpected treasures.",
+                title: "Libraries That Line the Halls",
+                description: "Not a shelf. Collections. Wholesome literature and excellent food for thought — having stood the test of time in minds and hearts.",
               },
               {
                 number: "03",
-                title: "Libraries That Line the Halls",
-                description: "Not a shelf. Collections. Wholesome literature and excellent food for thought — richly bound, having stood the test of time in minds and hearts. One hour feels like a grand passing of time, great adventure, and decades of wisdom.",
+                title: "Thinking Games & Quiet Strategy",
+                description: "Chess. Settlers of Catan. Scrabble. Cribbage. Backgammon. Dominoes. Puzzles. The analog entertainments of people who use their minds all day and want to use them differently in the evening.",
               },
               {
                 number: "04",
-                title: "Thinking Games & Quiet Strategy",
-                description: "Settlers of Catan. Scrabble. Cribbage. Chess. Backgammon. Card tables. Puzzles. The analog entertainments of people who use their minds all day and want to use them differently in the evening.",
-              },
-              {
-                number: "05",
                 title: "Easels, Paint & Canvas",
                 description: "Available for anyone who wants to try their hand. No skill required. No judgment. Just color, texture, and the permission to make something that didn't exist an hour ago.",
               },
               {
-                number: "06",
+                number: "05",
                 title: "No Televisions",
                 description: "Screens available upon request only. Elimination of distraction by design. Forced cognitive recovery every evening.",
               },
               {
-                number: "07",
+                number: "06",
                 title: "3.3 Acres of Maples, Walnuts, and Ferns",
                 description: "Daily grounding. Dawn to dusk stillness. Establish your early morning breath and bodywork routines before the rest of the world even wakes up.",
               },
               {
-                number: "08",
+                number: "07",
                 title: "The Innkeeper's Prized Kombucha, Maple Syrup & Walnut Wine",
                 description: "Made on-site by hand. Shared from time to time over good stories, laughter, and a healthy game of chess. Enjoyed by chance.",
               },
               {
-                number: "09",
-                title: "Healing Hertz Frequencies",
-                description: "Wafting through the halls — you feel it before your brain even notices its pleasant effect.",
+                number: "08",
+                title: "Music That Down-Regulates Your Nervous System",
+                description: "Wafting through the halls — you feel it before you even realize it.",
               },
             ].map((item, i) => (
               <motion.div
@@ -765,18 +757,6 @@ export default function Home() {
               />
             </motion.div>
           </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="mt-16 pt-12 border-t border-[var(--color-border)]"
-          >
-            <p className="whisper text-lg max-w-2xl italic">
-              "Love echoes off every wall — because of the rich history of laughter they've held."
-            </p>
-          </motion.div>
         </div>
       </section>
 
@@ -807,8 +787,8 @@ export default function Home() {
                 variants={fadeUp}
                 className="text-base text-[var(--color-muted-foreground)] leading-relaxed"
               >
-                Every residency includes access to the full ecosystem — wellness, community,
-                and the daily rhythms that make this place what it is.
+                Every residency includes access to the full ecosystem of wellness, community,
+                and welcome.
               </motion.p>
             </div>
 
@@ -819,7 +799,7 @@ export default function Home() {
                 </p>
                 <div className="space-y-3">
                   {[
-                    "Wellness and Spa Services (Far Infrared Sauna, Red Light, Leg Compression, The Chair, Rebounding, Morning PE)",
+                    "Wellness and Spa Services (Far Infrared Sauna, Red Light, Kloud PEMA, Leg Compression, The Chair, Rebounding, Morning PE upon request)",
                     "Organic cleaning supplies throughout",
                     "On-site laundromat with chemical-free organic detergent",
                     "Iron & ironing board",
@@ -854,7 +834,7 @@ export default function Home() {
                 </div>
                 <p className="mt-6 text-sm text-[var(--color-muted-foreground)] italic">
                   Food service is not included. Custom food and beverage packages can be designed
-                  and arranged in advance for an additional fee.
+                  and arranged in advance as an add-on.
                 </p>
               </div>
 
@@ -869,7 +849,7 @@ export default function Home() {
                 <p className="text-sm text-[var(--color-muted-foreground)] leading-relaxed mb-6">
                   10,000 square feet of deliberate wellness modalities for body, soul, mind and spirit —
                   directly across the street from A Whole World of Good in historic downtown La Porte.
-                  A beautiful and low-impact walk from your front door.
+                  A beautiful, perfect mile — a low-impact walk from your front door.
                 </p>
 
                 {/* Complimentary for residents */}
@@ -879,11 +859,15 @@ export default function Home() {
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                   <div className="p-4 border border-[var(--color-brass)] bg-[oklch(0.98_0.008_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Far Infrared Sauna</h5>
-                    <p className="text-xs text-[var(--color-muted-foreground)]">Two additional saunas for daily use or back-to-back sessions.</p>
+                    <p className="text-xs text-[var(--color-muted-foreground)]">Deep, penetrating heat that raises core temperature, supports detoxification through sweat, eases muscle tension, and improves circulation. Two saunas for daily use or back-to-back sessions.</p>
                   </div>
                   <div className="p-4 border border-[var(--color-brass)] bg-[oklch(0.98_0.008_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Red Light Therapy</h5>
                     <p className="text-xs text-[var(--color-muted-foreground)]">Targeted wavelengths to support cellular recovery and skin health.</p>
+                  </div>
+                  <div className="p-4 border border-[var(--color-brass)] bg-[oklch(0.98_0.008_80)]">
+                    <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Kloud PEMA</h5>
+                    <p className="text-xs text-[var(--color-muted-foreground)]">Whole-body pulsating electromagnetic activation. Patented layered signals support circulation, nervous-system regulation, recovery, and sleep. 20-minute daily sessions.</p>
                   </div>
                   <div className="p-4 border border-[var(--color-brass)] bg-[oklch(0.98_0.008_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Leg Compression</h5>
@@ -905,10 +889,10 @@ export default function Home() {
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Full-Scale Apothecary</h5>
-                    <p className="text-xs text-[var(--color-muted-foreground)]">Organic herbs, teas, and nutraceuticals — specifically curated for those battling chronic autoimmune dysregulation.</p>
+                    <p className="text-xs text-[var(--color-muted-foreground)]">Organic herbs, teas, nutraceuticals, and supplements — specifically curated for those battling chronic autoimmune dysregulation and cellular dysfunction.</p>
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
-                    <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Halotherapy</h5>
+                    <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Wellness Chamber</h5>
                     <p className="text-xs text-[var(--color-muted-foreground)]">Private salt-air environment for respiratory and skin support.</p>
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
@@ -917,7 +901,7 @@ export default function Home() {
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Cryotherapy</h5>
-                    <p className="text-xs text-[var(--color-muted-foreground)]">Cold therapy for inflammation reduction and nervous system activation.</p>
+                    <p className="text-xs text-[var(--color-muted-foreground)]">Cold therapy spot treatment for inflammation and pain reduction.</p>
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Full-Scale Massage Studio</h5>
@@ -933,7 +917,7 @@ export default function Home() {
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Nutrition Services</h5>
-                    <p className="text-xs text-[var(--color-muted-foreground)]">Personalized guidance for residents seeking targeted nutritional support.</p>
+                    <p className="text-xs text-[var(--color-muted-foreground)]">Personalized guidance for residents seeking targeted nutritional support. Private apothecary consultations available.</p>
                   </div>
                 </div>
                 <p className="mt-6 text-xs text-[var(--color-muted-foreground)]">
@@ -988,27 +972,27 @@ export default function Home() {
                 {
                   icon: Shield,
                   title: "Residents Only",
-                  desc: "No outside guests, family members, or business associates on the grounds. Zero-stranger environment beyond the constraints of the negotiated agreement.",
+                  desc: "No outside guests. This home is set aside for your employees, special guests, managers, contractors, and business associates, who will enjoy privacy and safety in a wellness community. Meeting spaces are available as you need them, for all the moments that require team bonding or exclusivity. Our staff is on site 24/7 to serve the needs of guests and home. A zero-stranger environment beyond the constraints of the negotiated agreement.",
                 },
                 {
                   icon: Brain,
                   title: "Low-Decibel Living",
-                  desc: "The mansion is a quiet zone. Business calls and meetings happen at the downtown lounge unless otherwise negotiated ahead of time for the needs of all.",
+                  desc: "The mansion is a quiet zone for peaceful living, personal and business calls, and scheduled meetings. The downtown Upper Room lounge is available for more lively events, negotiated ahead of time for the needs of all.",
                 },
                 {
                   title: "Kind, Wise & Tasteful",
                   icon: Leaf,
-                  desc: "Profanity, aggression, or disrespect is a material breach. Immediate termination of residency.",
+                  desc: "Our culture exists for the protection of yours. Profanity, aggression, or disrespect are unwelcome. Continued intrusive behavior can be considered a material breach warranting immediate expulsion.",
                 },
                 {
                   title: "Stewardship",
                   icon: Clock,
-                  desc: `Residents are temporary custodians of a ${yearsSince()}-year-old historic treasure. Pet-free. Smoke-free.`,
+                  desc: "It is expected that all guests will respect the rich heritage and culture of this home. Pet-free. Smoke-free.",
                 },
                 {
                   title: "30-Day Minimum",
                   icon: Shield,
-                  desc: "This is a season, not a stopover. Transformation requires time.",
+                  desc: "This is a season, not a stopover.",
                 },
               ].map((item, i) => (
                 <motion.div
@@ -1068,6 +1052,18 @@ export default function Home() {
           >
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
               <img
+                src="/photos/estate-front-summer-2026-09.webp"
+                alt="Front lawn and screened porch of The Old Ruth, a circa-1888 brick mansion in La Porte, Indiana"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <p className="text-sm text-white/90 font-medium">The Front Lawn</p>
+                <p className="text-xs text-white/70">Mature trees and a wraparound screened porch</p>
+              </div>
+            </motion.div>
+            <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
+              <img
                 src="/photos/IMG_0020_851d9369.webp"
                 alt="Tree-lined sidewalk on The Old Ruth grounds in dappled spring light — La Porte, Indiana"
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
@@ -1076,6 +1072,18 @@ export default function Home() {
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
                 <p className="text-sm text-white/90 font-medium">The Old Ruth Grounds</p>
                 <p className="text-xs text-white/70">Walkable to historic downtown</p>
+              </div>
+            </motion.div>
+            <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
+              <img
+                src="/photos/garden-walk-bench-2026-09.webp"
+                alt="Garden path with a white cast-iron bench and birdbath beside The Old Ruth in La Porte, Indiana"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <p className="text-sm text-white/90 font-medium">The Garden Walk</p>
+                <p className="text-xs text-white/70">A quiet bench for morning coffee</p>
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
@@ -1237,8 +1245,8 @@ export default function Home() {
             <motion.div variants={fadeLeft} className="lg:col-span-5 hidden lg:flex flex-col items-end">
               <div className="w-[1px] h-32 bg-[var(--color-brass)] mb-6" />
               <p className="whisper text-lg text-right">
-                30,000 sq. ft.<br />
-                16 Suites<br />
+                A Sprawling Estate<br />
+                14 Suites<br />
                 {yearsSince()} Years<br />
                 One Covenant
               </p>
@@ -1268,7 +1276,7 @@ export default function Home() {
             </div>
             <div className="lg:col-span-4 text-center">
               <p className="text-sm text-[var(--color-muted-foreground)]">
-                La Porte, Indiana — 51 miles from Chicago · 35 min from Notre Dame · 15 min from Lake Michigan
+                La Porte, Indiana — 51 miles from Chicago · 35 min from Notre Dame &amp; South Bend International Airport · 15 min from Lake Michigan
               </p>
               <div className="brass-rule w-16 mx-auto mt-3" />
             </div>
