@@ -38,10 +38,9 @@ const MIN_PRERENDERED_TEXT = 800;
  * Keep this in step with client/index.html and the inputs in Application.tsx.
  */
 const REQUIRED_FORM_FIELDS = [
-  "First Name", "Last Name", "email", "Phone",
-  "Reason for Inquiry", "Length of Stay",
-  "Contribution to the Peace", "Services of Interest",
-  "Covenant Acknowledged",
+  "First Name", "Last Name", "Company", "Job Title", "email", "Phone",
+  "Number of People", "Target Move-In", "Length of Stay", "Lease Type",
+  "Decision Timeline", "Services of Interest", "Notes",
   "Landing Page", "Traffic Source", "Campaign",
   "company-website",
 ];

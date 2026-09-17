@@ -70,17 +70,23 @@ await page.waitForTimeout(1500);
 
 await page.fill('input[name="First Name"]', "Dana");
 await page.fill('input[name="Last Name"]', "Whitfield");
+await page.fill('input[name="Company"]', "Meridian Build Group");
+await page.fill('input[name="Job Title"]', "Director of Facilities");
 await page.fill('input[name="email"]', "d.whitfield@example.com");
 await page.fill('input[name="Phone"]', "(312) 555-0148");
-await page.fill('textarea[name="Reason for Inquiry"]', "Relocating a build team for 18 months.");
-await page.selectOption('select[name="Length of Stay"]', "Corporate Master Lease");
-await page.fill('textarea[name="Contribution to the Peace"]', "We keep quiet hours and clean up after ourselves.");
-await page.fill('textarea[name="Services of Interest"]', "Infrared sauna, PEMF");
-// the checkboxes are sr-only with a styled proxy, so click the label the way a visitor does
-const covenantLabels = await page.$$('label:has(input[name="Covenant Acknowledged"])');
-for (const label of covenantLabels) await label.click();
-const checkedCount = await page.$$eval('input[name="Covenant Acknowledged"]', (n) => n.filter((i) => i.checked).length);
-console.log(`covenant boxes checked via label click: ${checkedCount}/${covenantLabels.length}`);
+await page.fill('input[name="Number of People"]', "12");
+await page.fill('input[name="Target Move-In"]', "2026-11-02");
+await page.selectOption('select[name="Length of Stay"]', "1 Year");
+await page.selectOption('select[name="Lease Type"]', "Corporate Master Lease");
+await page.selectOption('select[name="Decision Timeline"]', "Within 30 Days");
+await page.fill('textarea[name="Notes"]', "Crew arrives in two waves. Need parking for six vehicles.");
+
+// the checkboxes are sr-only with a styled proxy, so click the label the way a
+// visitor does — .check() times out on a visually hidden input
+const serviceLabels = await page.$$('label:has(input[name="Services of Interest"])');
+for (const label of serviceLabels.slice(0, 2)) await label.click();
+const checkedCount = await page.$$eval('input[name="Services of Interest"]', (n) => n.filter((i) => i.checked).length);
+console.log(`service boxes checked via label click: ${checkedCount}/${serviceLabels.length}`);
 
 await page.click('button[type="submit"]');
 await page.waitForTimeout(2000);
@@ -95,7 +101,7 @@ if (!received) {
   console.log("content-type:", received.contentType);
   const parsed = new URLSearchParams(received.body);
   for (const key of [...new Set(parsed.keys())]) {
-    console.log(`  ${key.padEnd(16)} = ${parsed.getAll(key).join(" | ")}`);
+    console.log(`  ${key.padEnd(20)} = ${parsed.getAll(key).join(" | ")}`);
   }
 }
 console.log("\n=== what the visitor saw ===");
@@ -107,7 +113,11 @@ await page.screenshot({ path: `/mnt/user-data/working/shots/form-${SIMULATE_FAIL
 await browser.close();
 server.close();
 
-const expected = ["form-name", "First Name", "Last Name", "email", "Phone", "Reason for Inquiry", "Length of Stay", "Contribution to the Peace", "Services of Interest", "Covenant Acknowledged"];
+const expected = [
+  "form-name", "First Name", "Last Name", "Company", "Job Title", "email", "Phone",
+  "Number of People", "Target Move-In", "Length of Stay", "Lease Type",
+  "Decision Timeline", "Services of Interest", "Notes",
+];
 const got = received ? new Set(new URLSearchParams(received.body).keys()) : new Set();
 const missing = expected.filter((f) => !got.has(f));
 const passed = SIMULATE_FAILURE
