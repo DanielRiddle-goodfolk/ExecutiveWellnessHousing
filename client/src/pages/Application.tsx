@@ -14,6 +14,34 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
+/* Inputs are bordered boxes, not underlines. The previous underline styling
+   put a horizontal rule under every field, and combined with the decorative
+   rules in the section headers the page read as a stack of lines with no
+   obvious place to type. Fields are filled ivory so they sit visibly inset
+   against the lighter section cards. */
+const fieldClass =
+  "w-full px-4 py-3 border border-[var(--color-border)] bg-[var(--color-ivory)] text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none focus:ring-1 focus:ring-[var(--color-brass)]/30 transition-colors text-base placeholder:text-[var(--color-muted-foreground)]/60";
+
+const labelClass =
+  "block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2";
+
+const sectionClass =
+  "p-8 lg:p-10 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]";
+
+/* Broad categories rather than individual modalities. Someone arranging
+   housing for a team is choosing which parts of the estate they want in the
+   agreement, not picking a spa treatment — the specific modalities get
+   discussed on the call. The field NAME stays "Services of Interest" because
+   Netlify and the Notion property are keyed to it. */
+const SERVICES = [
+  "Wellness & Recovery Services",
+  "Counseling & Coaching",
+  "Food & Beverage Packages",
+  "Private Dining & Gatherings",
+  "Meeting & Strategy Space",
+  "Executive Lounge Access",
+];
+
 export default function Application() {
   useSeo({
     title: "Request a Residency | Executive Housing in La Porte, IN | The Old Ruth",
@@ -91,7 +119,7 @@ export default function Application() {
       <section className="pt-36 pb-28">
         <div className="container">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-            {/* Left Column — The Dossier Context */}
+            {/* Left Column — Context */}
             <motion.div
               initial="hidden"
               animate="visible"
@@ -108,15 +136,15 @@ export default function Application() {
                 variants={fadeUp}
                 className="text-3xl lg:text-[2.25rem] leading-[1.2] mb-6 text-[var(--color-charcoal)]"
               >
-                For those who have earned the right to rest.
+                Tell us who is coming, and when.
               </motion.h1>
               <motion.p
                 variants={fadeUp}
                 className="text-base text-[var(--color-muted-foreground)] leading-relaxed mb-8"
               >
-                The Old Ruth is a sanctuary of kindness, peace and quiet, and restoration.
-                This inquiry helps us ensure that every resident contributes to the peace
-                of the environment.
+                A few details are enough to check availability and put a proposal
+                together. If you are arranging housing for a team, the headcount and
+                the start date are the two that matter most.
               </motion.p>
               <motion.div variants={fadeUp} className="hidden lg:block">
                 <div className="w-[1px] h-20 bg-[var(--color-brass)] mb-6" />
@@ -143,7 +171,7 @@ export default function Application() {
                   <p className="whisper text-2xl mb-6">Thank you.</p>
                   <p className="text-[var(--color-muted-foreground)] leading-relaxed text-base">
                     Your inquiry has been received. A member of our team will reach out
-                    within 48 hours to discuss your season of restoration.
+                    within 48 hours with availability and next steps.
                   </p>
                 </motion.div>
               ) : (
@@ -152,7 +180,7 @@ export default function Application() {
                   animate="visible"
                   variants={stagger}
                   onSubmit={handleSubmit}
-                  className="space-y-0"
+                  className="space-y-6"
                   name="residency-inquiry"
                   method="POST"
                   data-netlify="true"
@@ -172,183 +200,184 @@ export default function Application() {
                       <input name="company-website" tabIndex={-1} autoComplete="off" />
                     </label>
                   </p>
+
                   {/* Section 1: Contact */}
-                  <motion.div variants={fadeUp} className="p-8 lg:p-10 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
-                    <div className="flex items-center gap-4 mb-8">
+                  <motion.div variants={fadeUp} className={sectionClass}>
+                    <div className="flex items-baseline gap-4 mb-8">
                       <span className="text-[11px] tracking-[0.25em] uppercase text-[var(--color-brass)]">01</span>
-                      <div className="flex-1 h-[1px] bg-[var(--color-brass)]/30" />
                       <span className="font-[var(--font-display)] text-lg text-[var(--color-charcoal)]">
-                        Contact Information
+                        Contact
                       </span>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2">
-                          First Name
-                        </label>
+                        <label className={labelClass}>First Name</label>
                         <input
                           type="text"
                           required
                           name="First Name"
                           autoComplete="given-name"
-                          className="w-full px-0 py-3 border-0 border-b border-[var(--color-border)] bg-transparent text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none transition-colors text-base"
+                          className={fieldClass}
                         />
                       </div>
                       <div>
-                        <label className="block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2">
-                          Last Name
-                        </label>
+                        <label className={labelClass}>Last Name</label>
                         <input
                           type="text"
                           required
                           name="Last Name"
                           autoComplete="family-name"
-                          className="w-full px-0 py-3 border-0 border-b border-[var(--color-border)] bg-transparent text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none transition-colors text-base"
+                          className={fieldClass}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Company</label>
+                        <input
+                          type="text"
+                          name="Company"
+                          autoComplete="organization"
+                          className={fieldClass}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Job Title</label>
+                        <input
+                          type="text"
+                          name="Job Title"
+                          autoComplete="organization-title"
+                          className={fieldClass}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Email Address</label>
+                        <input
+                          type="email"
+                          required
+                          name="email"
+                          autoComplete="email"
+                          className={fieldClass}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Phone Number</label>
+                        <input
+                          type="tel"
+                          name="Phone"
+                          autoComplete="tel"
+                          className={fieldClass}
                         />
                       </div>
                     </div>
-                    <div className="mt-6">
-                      <label className="block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        name="email"
-                        autoComplete="email"
-                        className="w-full px-0 py-3 border-0 border-b border-[var(--color-border)] bg-transparent text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none transition-colors text-base"
-                      />
-                    </div>
-                    <div className="mt-6">
-                      <label className="block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        name="Phone"
-                        autoComplete="tel"
-                        className="w-full px-0 py-3 border-0 border-b border-[var(--color-border)] bg-transparent text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none transition-colors text-base"
-                      />
-                    </div>
                   </motion.div>
 
-                  {/* Section 2: Your Season */}
-                  <motion.div variants={fadeUp} className="p-8 lg:p-10 border border-t-0 border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
-                    <div className="flex items-center gap-4 mb-8">
+                  {/* Section 2: The Stay */}
+                  <motion.div variants={fadeUp} className={sectionClass}>
+                    <div className="flex items-baseline gap-4 mb-8">
                       <span className="text-[11px] tracking-[0.25em] uppercase text-[var(--color-brass)]">02</span>
-                      <div className="flex-1 h-[1px] bg-[var(--color-brass)]/30" />
                       <span className="font-[var(--font-display)] text-lg text-[var(--color-charcoal)]">
-                        Your Season
+                        The Stay
                       </span>
                     </div>
-                    <div>
-                      <label className="block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2">
-                        What brings you to a season of rest?
-                      </label>
-                      <textarea
-                        rows={3}
-                        required
-                        name="Reason for Inquiry"
-                        placeholder="Sabbatical, transition, relocation, or simply the opportunity to exhale..."
-                        className="w-full px-0 py-3 border-0 border-b border-[var(--color-border)] bg-transparent text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none transition-colors resize-none text-base placeholder:text-[var(--color-muted-foreground)]/60"
-                      />
-                    </div>
-                    <div className="mt-6">
-                      <label className="block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2">
-                        Desired Length of Stay
-                      </label>
-                      <select
-                        required
-                        name="Length of Stay"
-                        className="w-full px-0 py-3 border-0 border-b border-[var(--color-border)] bg-transparent text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none transition-colors text-base"
-                      >
-                        <option value="">Select duration</option>
-                        <option value="30 Days">30 Days</option>
-                        <option value="60 Days">60 Days</option>
-                        <option value="90 Days (One Season)">90 Days (One Season)</option>
-                        <option value="6 Months">6 Months</option>
-                        <option value="1 Year">1 Year</option>
-                        <option value="Corporate Master Lease">Corporate Master Lease</option>
-                      </select>
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className={labelClass}>Number of People</label>
+                        <input
+                          type="number"
+                          required
+                          min={1}
+                          name="Number of People"
+                          placeholder="1"
+                          className={fieldClass}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Target Move-In</label>
+                        <input
+                          type="date"
+                          required
+                          name="Target Move-In"
+                          className={fieldClass}
+                        />
+                      </div>
+                      <div>
+                        <label className={labelClass}>Length of Stay</label>
+                        <select required name="Length of Stay" className={fieldClass}>
+                          <option value="">Select duration</option>
+                          <option value="30 Days">30 Days</option>
+                          <option value="60 Days">60 Days</option>
+                          <option value="90 Days (One Season)">90 Days</option>
+                          <option value="6 Months">6 Months</option>
+                          <option value="1 Year">1 Year or longer</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className={labelClass}>Lease Type</label>
+                        <select required name="Lease Type" className={fieldClass}>
+                          <option value="">Select type</option>
+                          <option value="Corporate Master Lease">Corporate Master Lease</option>
+                          <option value="Individual Executive">Individual Executive</option>
+                          <option value="Not Sure Yet">Not sure yet</option>
+                        </select>
+                      </div>
+                      <div className="sm:col-span-2">
+                        <label className={labelClass}>Decision Timeline</label>
+                        <select name="Decision Timeline" className={fieldClass}>
+                          <option value="">Select timeline</option>
+                          <option value="Immediate">Immediate</option>
+                          <option value="Within 30 Days">Within 30 days</option>
+                          <option value="60-90 Days">60–90 days</option>
+                          <option value="Exploring Options">Exploring options</option>
+                        </select>
+                      </div>
                     </div>
                   </motion.div>
 
-                  {/* Section 3: The Atmosphere */}
-                  <motion.div variants={fadeUp} className="p-8 lg:p-10 border border-t-0 border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
-                    <div className="flex items-center gap-4 mb-8">
+                  {/* Section 3: Anything Else */}
+                  <motion.div variants={fadeUp} className={sectionClass}>
+                    <div className="flex items-baseline gap-4 mb-8">
                       <span className="text-[11px] tracking-[0.25em] uppercase text-[var(--color-brass)]">03</span>
-                      <div className="flex-1 h-[1px] bg-[var(--color-brass)]/30" />
                       <span className="font-[var(--font-display)] text-lg text-[var(--color-charcoal)]">
-                        The Atmosphere
+                        Anything Else
                       </span>
                     </div>
-                    <div>
-                      <label className="block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2">
-                        How do you contribute to the peace of the environments you inhabit?
-                      </label>
-                      <textarea
-                        rows={3}
-                        required
-                        name="Contribution to the Peace"
-                        className="w-full px-0 py-3 border-0 border-b border-[var(--color-border)] bg-transparent text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none transition-colors resize-none text-base"
-                      />
-                    </div>
-                    <div className="mt-6">
-                      <label className="block text-[11px] tracking-[0.15em] uppercase text-[var(--color-muted-foreground)] mb-2">
-                        Which restorative services are you most looking forward to?
-                      </label>
-                      <textarea
-                        rows={3}
-                        name="Services of Interest"
-                        placeholder="Infrared Sauna, Halotherapy, Red Light Therapy, Massage, PEMF, Counseling &amp; Coaching..."
-                        className="w-full px-0 py-3 border-0 border-b border-[var(--color-border)] bg-transparent text-[var(--color-charcoal)] focus:border-[var(--color-brass)] focus:outline-none transition-colors resize-none text-base placeholder:text-[var(--color-muted-foreground)]/60"
-                      />
-                    </div>
-                  </motion.div>
-
-                  {/* Section 4: The Covenant */}
-                  <motion.div variants={fadeUp} className="p-8 lg:p-10 border border-t-0 border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
-                    <div className="flex items-center gap-4 mb-8">
-                      <span className="text-[11px] tracking-[0.25em] uppercase text-[var(--color-brass)]">04</span>
-                      <div className="flex-1 h-[1px] bg-[var(--color-brass)]/30" />
-                      <span className="font-[var(--font-display)] text-lg text-[var(--color-charcoal)]">
-                        The Sanctuary Covenant
-                      </span>
-                    </div>
-                    <p className="text-sm text-[var(--color-muted-foreground)] leading-relaxed mb-8">
-                      By submitting this inquiry, you acknowledge and embrace the following standards:
-                    </p>
-                    <div className="space-y-4">
-                      {[
-                        "I understand this is a 30-day minimum residency.",
-                        "I embrace the 'Residents Only' policy — no outside guests on the grounds.",
-                        "I commit to kind and gentle language at all times.",
-                        "I acknowledge this is a pet-free and smoke-free sanctuary.",
-                        "I respect the peace and quiet of the environment.",
-                      ].map((item, i) => (
-                        <label key={i} className="flex items-start gap-4 cursor-pointer group">
-                          <div className="relative mt-0.5">
+                    <label className={labelClass}>Services &amp; Add-Ons of Interest (optional)</label>
+                    <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                      {SERVICES.map((item) => (
+                        <label key={item} className="flex items-center gap-3 cursor-pointer group">
+                          <span className="relative flex">
                             <input
                               type="checkbox"
-                              required
-                              name="Covenant Acknowledged"
+                              name="Services of Interest"
                               value={item}
                               className="peer sr-only"
                             />
-                            <div className="w-5 h-5 border border-[var(--color-border)] peer-checked:border-[var(--color-brass)] peer-checked:bg-[var(--color-brass)] transition-all duration-200 flex items-center justify-center">
+                            <span className="w-5 h-5 shrink-0 border border-[var(--color-border)] bg-[var(--color-ivory)] peer-checked:border-[var(--color-brass)] peer-checked:bg-[var(--color-brass)] transition-all duration-200 flex items-center justify-center">
                               <svg className="w-3 h-3 text-[var(--color-ivory)] opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                               </svg>
-                            </div>
-                          </div>
-                          <span className="text-sm text-[var(--color-charcoal)] leading-relaxed group-hover:text-[var(--color-brass)] transition-colors duration-200">{item}</span>
+                            </span>
+                          </span>
+                          <span className="text-sm text-[var(--color-charcoal)] group-hover:text-[var(--color-brass)] transition-colors duration-200">
+                            {item}
+                          </span>
                         </label>
                       ))}
                     </div>
+                    <label className={labelClass}>Notes (optional)</label>
+                    <textarea
+                      rows={4}
+                      name="Notes"
+                      placeholder="Anything we should know — accessibility needs, arrival logistics, parking, meeting space, food and beverage arrangements."
+                      className={`${fieldClass} resize-none`}
+                    />
                   </motion.div>
 
                   {/* Submit */}
-                  <motion.div variants={fadeUp} className="pt-8">
+                  <motion.div variants={fadeUp} className="pt-2">
+                    <p className="text-sm text-[var(--color-muted-foreground)] leading-relaxed mb-6">
+                      Residencies are 30 days minimum. The estate is residents only,
+                      pet-free and smoke-free.
+                    </p>
                     <button
                       type="submit"
                       disabled={sending}
