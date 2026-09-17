@@ -37,7 +37,7 @@ const sections: GallerySection[] = [
   {
     id: "estate",
     title: "The Estate",
-    subtitle: "Four acres of century-old trees, brick, and quiet.",
+    subtitle: "3.3 acres of century-old trees, brick, and quiet.",
     images: [
       { src: "/photos/theoldruthmarketingphotos184_d017cadf.webp", alt: "The Old Ruth mansion in winter — circa-1888 brick facade with American flag and snow-covered grounds, La Porte, Indiana", aspect: "landscape" },
       { src: "/photos/IMG_0022_0a4db764.webp", alt: "The Old Ruth, a red brick historic mansion in La Porte, Indiana, seen through mature trees with rhododendrons in bloom", aspect: "landscape" },
@@ -186,7 +186,7 @@ function Lightbox({
 export default function Gallery() {
   useSeo({
     title: "Photo Gallery | The Old Ruth Executive Wellness Suites | La Porte, IN",
-    description: "Inside the estate: suites, common rooms, grounds, and the original 1888 farm tables of a 30,000 sq ft National Historic Registry mansion in La Porte, Indiana.",
+    description: "Inside the estate: suites, common rooms, grounds, and the original 1888 farm tables of a sprawling National Historic Registry mansion in La Porte, Indiana.",
     path: "/gallery",
   });
 
@@ -290,7 +290,7 @@ export default function Gallery() {
             variants={fadeUp}
             className="whisper text-lg sm:text-xl"
           >
-            Sixteen suites. Four acres. {yearsSince()} years of story.
+            Fourteen suites. 3.3 acres. {yearsSince()} years of story.
           </motion.p>
         </motion.div>
       </section>
