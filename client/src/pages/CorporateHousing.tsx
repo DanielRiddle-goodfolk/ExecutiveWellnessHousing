@@ -235,7 +235,7 @@ export default function CorporateHousing() {
               },
               {
                 title: "Organic Environment",
-                desc: "Organic in the kitchen, laundry, cleaning, fragrances, and lawn. No synthetic chemicals enter the air your people breathe. 132 Hz healing frequencies throughout the halls.",
+                desc: "Organic in the kitchen, laundry, cleaning, fragrances, and lawn. No synthetic chemicals enter the air your people breathe.",
               },
               {
                 title: "One Corporate Agreement",
@@ -359,23 +359,8 @@ export default function CorporateHousing() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={stagger}
-            className="grid lg:grid-cols-2 gap-12"
+            className="max-w-3xl"
           >
-            <motion.div variants={fadeUp}>
-              <h3 className="text-xl text-[var(--color-charcoal)] mb-4">The Standard Option</h3>
-              <div className="space-y-4 text-[var(--color-muted-foreground)] leading-relaxed">
-                <p>
-                  A hotel room. A $75/day food stipend that buys inflammatory, gut-distressing meals,
-                  gas station coffee, and carb-laden snacks. No community. No recovery infrastructure.
-                  No protection from the cumulative damage of chronic work stress.
-                </p>
-                <p>
-                  Over 18–36 months, this environment produces executive burnout, key-person departure,
-                  and project delays. The cost of replacing a single senior leader mid-project:
-                  $500K–$1.5M in search, onboarding, lost momentum, and repeat.
-                </p>
-              </div>
-            </motion.div>
             <motion.div variants={fadeUp}>
               <h3 className="text-xl text-[var(--color-charcoal)] mb-4">The Old Ruth</h3>
               <div className="space-y-4 text-[var(--color-muted-foreground)] leading-relaxed">
