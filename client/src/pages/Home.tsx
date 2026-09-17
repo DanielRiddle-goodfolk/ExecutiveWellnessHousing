@@ -982,17 +982,17 @@ export default function Home() {
                 {
                   title: "Kind, Wise & Tasteful",
                   icon: Leaf,
-                  desc: "Profanity, aggression, or disrespect is a material breach. Immediate termination of residency.",
+                  desc: "Our culture exists for the protection of yours. Profanity, aggression, or disrespect are unwelcome. Continued intrusive behavior can be considered a material breach warranting immediate expulsion.",
                 },
                 {
                   title: "Stewardship",
                   icon: Clock,
-                  desc: `Residents are temporary custodians of a ${yearsSince()}-year-old historic treasure. Pet-free. Smoke-free.`,
+                  desc: "It is expected that all guests will respect the rich heritage and culture of this home. Pet-free. Smoke-free.",
                 },
                 {
                   title: "30-Day Minimum",
                   icon: Shield,
-                  desc: "This is a season, not a stopover. Transformation requires time.",
+                  desc: "This is a season, not a stopover.",
                 },
               ].map((item, i) => (
                 <motion.div
@@ -1052,6 +1052,18 @@ export default function Home() {
           >
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
               <img
+                src="/photos/estate-front-summer-2026-09.webp"
+                alt="Front lawn and screened porch of The Old Ruth, a circa-1888 brick mansion in La Porte, Indiana"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <p className="text-sm text-white/90 font-medium">The Front Lawn</p>
+                <p className="text-xs text-white/70">Mature trees and a wraparound screened porch</p>
+              </div>
+            </motion.div>
+            <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
+              <img
                 src="/photos/IMG_0020_851d9369.webp"
                 alt="Tree-lined sidewalk on The Old Ruth grounds in dappled spring light — La Porte, Indiana"
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
@@ -1060,6 +1072,18 @@ export default function Home() {
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
                 <p className="text-sm text-white/90 font-medium">The Old Ruth Grounds</p>
                 <p className="text-xs text-white/70">Walkable to historic downtown</p>
+              </div>
+            </motion.div>
+            <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
+              <img
+                src="/photos/garden-walk-bench-2026-09.webp"
+                alt="Garden path with a white cast-iron bench and birdbath beside The Old Ruth in La Porte, Indiana"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <p className="text-sm text-white/90 font-medium">The Garden Walk</p>
+                <p className="text-xs text-white/70">A quiet bench for morning coffee</p>
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
