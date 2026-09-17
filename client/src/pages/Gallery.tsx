@@ -108,9 +108,9 @@ const sections: GallerySection[] = [
   {
     id: "setting",
     title: "The Setting",
-    subtitle: "La Porte, Indiana — 60 miles from Chicago, a world apart.",
+    subtitle: "La Porte, Indiana — 51 miles from Chicago, a world apart.",
     images: [
-      { src: "/photos/IMG_0952_542bd31f.webp", alt: "Autumn sidewalk under a golden canopy near The Old Ruth in La Porte, Indiana", aspect: "landscape" },
+      { src: "/photos/garden-walk-bench-2026-09.webp", alt: "Garden path with a white cast-iron bench and birdbath beside The Old Ruth in La Porte, Indiana", aspect: "landscape" },
       { src: "/photos/IMG_0951_e3ce5103.webp", alt: "Golden fall sidewalk with sunbeam in the historic La Porte neighborhood around The Old Ruth", aspect: "landscape" },
       { src: "/photos/IMG_0020_9e390603.webp", alt: "Tree-lined neighborhood sidewalk in summer near The Old Ruth corporate housing, La Porte, Indiana", aspect: "landscape" },
       { src: "/photos/IMG_0017_f0a0a623.webp", alt: "Lake Michigan water and sky — 15 minutes from The Old Ruth in La Porte, Indiana", aspect: "landscape" },
