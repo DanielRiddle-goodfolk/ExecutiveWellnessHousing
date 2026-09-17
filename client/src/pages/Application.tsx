@@ -39,6 +39,7 @@ const SERVICES = [
   "Food & Beverage Packages",
   "Private Dining & Gatherings",
   "Meeting & Strategy Space",
+  "Executive Lounge Access",
 ];
 
 export default function Application() {
