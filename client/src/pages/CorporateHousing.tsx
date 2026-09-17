@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "How many people can you house?",
-    a: "Twenty-one rooms — sixteen suites and five bedrooms — across 30,000 square feet and 3.3 acres. The dining room seats forty for private corporate events.",
+    a: "Seventeen rooms — fourteen suites and three bedrooms — across a sprawling historic mansion and 3.3 acres. The dining room seats forty for private corporate events.",
   },
   {
     q: "What does one corporate contract cover?",
@@ -35,7 +35,7 @@ const FAQS = [
   },
   {
     q: "How far is La Porte from Chicago and South Bend?",
-    a: "Fifty-one miles from Chicago, thirty-five minutes from Notre Dame and South Bend, and fifteen minutes from Lake Michigan.",
+    a: "Fifty-one miles from Chicago, thirty-five minutes from Notre Dame and South Bend International Airport, and fifteen minutes from Lake Michigan.",
   },
   {
     q: "Is this an extended-stay hotel or a corporate apartment?",
@@ -135,7 +135,7 @@ export default function CorporateHousing() {
             variants={fadeUp}
             className="text-lg text-[oklch(0.78_0.01_80)] leading-relaxed max-w-2xl"
           >
-            Private furnished suites in a 30,000 sq ft historic estate — with integrated wellness
+            Private furnished suites in a sprawling historic estate — with integrated wellness
             and dedicated strategy spaces, plus chef-prepared organic meals by arrangement. One
             corporate agreement.
           </motion.p>
@@ -219,7 +219,7 @@ export default function CorporateHousing() {
             {[
               {
                 title: "Private Furnished Suites",
-                desc: "16 private suites across 30,000 sq ft. National Historic Registry mansion with 10-inch walls, antique furnishings, and 3.3 acres of organic grounds. No strangers. No noise. No pets.",
+                desc: "14 private suites in a sprawling National Historic Registry mansion with 10-inch walls, antique furnishings, and 3.3 acres of organic grounds. No strangers. No noise. No pets.",
               },
               {
                 title: "Chef-Prepared Meals, By Arrangement",
@@ -227,11 +227,11 @@ export default function CorporateHousing() {
               },
               {
                 title: "Integrated Wellness & Recovery",
-                desc: "Complimentary daily access: Far Infrared Sauna, Red Light Therapy, Leg Compression, Nervous System Trainer, Morning PE & Breathwork. 10,000 sq ft Studio 7:14 wellness center walkable from the estate.",
+                desc: "Complimentary daily access: Far Infrared Sauna, Red Light Therapy, Kloud PEMA, Leg Compression, Nervous System Trainer, Morning PE (upon request). 10,000 sq ft Studio 7:14 wellness center walkable from the estate.",
               },
               {
                 title: "Executive Meeting Space",
-                desc: "3,000 sq ft private lounge above A Whole World of Good — 5 minutes on foot. Projector wall, flexible configuration, the quiet of a private floor above downtown. Reserved for residents.",
+                desc: "The Upper Room, a 3,000 sq ft private lounge above A Whole World of Good — 5 minutes on foot. Flexible configuration, the quiet of a private floor above downtown. Reserved for residents.",
               },
               {
                 title: "Organic Environment",
