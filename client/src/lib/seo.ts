@@ -174,7 +174,7 @@ export const LODGING_JSONLD = {
   "@type": "LodgingBusiness",
   name: SITE_NAME,
   description:
-    "Private executive housing in a 30,000 sq ft National Historic Registry mansion. Corporate wellness suites with integrated recovery modalities, private strategy spaces, and chef-prepared organic meals available by arrangement.",
+    "Private executive housing in a sprawling National Historic Registry mansion. Corporate wellness suites with integrated recovery modalities, private strategy spaces, and chef-prepared organic meals available by arrangement.",
   url: SITE_URL,
   image: DEFAULT_OG_IMAGE,
   address: {
@@ -192,9 +192,9 @@ export const LODGING_JSONLD = {
     { "@type": "LocationFeatureSpecification", name: "Wellness & Recovery Center", value: true },
     { "@type": "LocationFeatureSpecification", name: "Executive Meeting Space", value: true },
   ],
-  // Sixteen suites plus five bedrooms. Keep this in step with the room answer
+  // Fourteen suites plus three bedrooms. Keep this in step with the room answer
   // in the Corporate Housing FAQ — both are read by Google.
-  numberOfRooms: 21,
+  numberOfRooms: 17,
   petsAllowed: false,
   smokingAllowed: false,
 } as const;
