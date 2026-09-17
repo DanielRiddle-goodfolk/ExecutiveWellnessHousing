@@ -236,7 +236,7 @@ export default function Gallery() {
           <Link href="/">
             <span className="flex items-center gap-4">
               <img
-                src="/photos/ewh-logo-192.webp"
+                src="/photos/ews-monogram.svg"
                 alt="Executive Wellness Suites"
                 className="h-12 w-12 object-contain"
               />
@@ -523,7 +523,7 @@ export default function Gallery() {
         <div className="container flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
-              src="/photos/ewh-logo-192.webp"
+              src="/photos/ews-monogram-ivory.svg"
               alt="Executive Wellness Suites logo"
               className="h-10 w-10 object-contain"
             />

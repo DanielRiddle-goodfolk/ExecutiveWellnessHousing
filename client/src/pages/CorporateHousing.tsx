@@ -73,7 +73,7 @@ export default function CorporateHousing() {
           <div className="flex items-center gap-4">
             <Link href="/">
               <img
-                src="/photos/ewh-logo-192.webp"
+                src="/photos/ews-monogram-ivory.svg"
                 alt="Executive Wellness Suites"
                 className="h-12 w-12 object-contain cursor-pointer"
               />
@@ -497,7 +497,7 @@ export default function CorporateHousing() {
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-4 flex items-center gap-4">
               <img
-                src="/photos/ewh-logo-192.webp"
+                src="/photos/ews-monogram.svg"
                 alt="Executive Wellness Suites logo"
                 className="h-12 w-12 object-contain"
               />
