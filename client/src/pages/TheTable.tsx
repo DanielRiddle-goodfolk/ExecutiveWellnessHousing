@@ -172,7 +172,7 @@ export default function TheTable() {
             <img
           fetchPriority="high"
               src="/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp"
-              alt="The Table — formal dining room at The Old Ruth, La Porte, Indiana, with two long tables seating 40 beneath portraits and fireplace"
+              alt="The Table — formal dining room at The Old Ruth, La Porte, Indiana, with two long tables seating 40 beneath original portraits"
               className="w-full h-full object-cover"
             />
           </div>
@@ -311,8 +311,8 @@ export default function TheTable() {
               <p>
                 Board dinners. Investor meetings. Team celebrations. Strategy retreats that end
                 with a meal worth remembering. Our formal dining room seats 40 beneath original
-                portraits and a working fireplace — catered in-house by our executive chef with
-                the same uncompromising standard applied to every plate.
+                portraits — catered in-house by our executive chef with the same uncompromising
+                standard applied to every plate.
               </p>
               <p>
                 Available as an add-on for estate residents or as a standalone private event booking.
