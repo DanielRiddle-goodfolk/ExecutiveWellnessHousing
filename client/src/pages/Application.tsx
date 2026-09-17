@@ -28,13 +28,17 @@ const labelClass =
 const sectionClass =
   "p-8 lg:p-10 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]";
 
+/* Broad categories rather than individual modalities. Someone arranging
+   housing for a team is choosing which parts of the estate they want in the
+   agreement, not picking a spa treatment — the specific modalities get
+   discussed on the call. The field NAME stays "Services of Interest" because
+   Netlify and the Notion property are keyed to it. */
 const SERVICES = [
-  "Infrared Sauna",
-  "Halotherapy",
-  "Red Light Therapy",
-  "Massage",
-  "PEMF",
+  "Wellness & Recovery Services",
   "Counseling & Coaching",
+  "Food & Beverage Packages",
+  "Private Dining & Gatherings",
+  "Meeting & Strategy Space",
 ];
 
 export default function Application() {
@@ -335,7 +339,7 @@ export default function Application() {
                         Anything Else
                       </span>
                     </div>
-                    <label className={labelClass}>Services of Interest (optional)</label>
+                    <label className={labelClass}>Services &amp; Add-Ons of Interest (optional)</label>
                     <div className="grid sm:grid-cols-2 gap-3 mb-8">
                       {SERVICES.map((item) => (
                         <label key={item} className="flex items-center gap-3 cursor-pointer group">
@@ -346,7 +350,7 @@ export default function Application() {
                               value={item}
                               className="peer sr-only"
                             />
-                            <span className="w-5 h-5 border border-[var(--color-border)] bg-[var(--color-ivory)] peer-checked:border-[var(--color-brass)] peer-checked:bg-[var(--color-brass)] transition-all duration-200 flex items-center justify-center">
+                            <span className="w-5 h-5 shrink-0 border border-[var(--color-border)] bg-[var(--color-ivory)] peer-checked:border-[var(--color-brass)] peer-checked:bg-[var(--color-brass)] transition-all duration-200 flex items-center justify-center">
                               <svg className="w-3 h-3 text-[var(--color-ivory)] opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                               </svg>
