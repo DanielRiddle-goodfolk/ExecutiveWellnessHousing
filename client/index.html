@@ -10,8 +10,12 @@
     <link rel="canonical" href="https://executivewellnesssuites.com/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#1C1C1E" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- Favicons use new filenames (not overwrites) so browsers drop the cached
+         old logo. The SVG adapts to light/dark browser tabs; the ICO is the
+         fallback for browsers without SVG favicon support. -->
+    <link rel="icon" href="/ews-favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/ews-favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/ews-apple-touch-icon.png" />
 
     <!-- Social sharing card. The image is a JPEG on purpose — LinkedIn's crawler
          does not reliably read WebP and drops the picture when it cannot. These
