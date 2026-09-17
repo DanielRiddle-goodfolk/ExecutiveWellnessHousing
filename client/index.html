@@ -50,17 +50,24 @@
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- Static declaration so Netlify registers the form at deploy time.
-         The live form lives at /apply and posts to this name. -->
+         The live form lives at /apply and posts to this name.
+         Every name here must also appear on a real input in the RENDERED form
+         in client/src/pages/Application.tsx — declaring a field only here is
+         not enough, and Netlify drops it without an error. -->
     <form name="residency-inquiry" netlify netlify-honeypot="company-website" hidden>
       <input type="text" name="First Name" />
       <input type="text" name="Last Name" />
+      <input type="text" name="Company" />
+      <input type="text" name="Job Title" />
       <input type="email" name="email" />
       <input type="tel" name="Phone" />
-      <textarea name="Reason for Inquiry"></textarea>
+      <input type="number" name="Number of People" />
+      <input type="date" name="Target Move-In" />
       <select name="Length of Stay"></select>
-      <textarea name="Contribution to the Peace"></textarea>
-      <textarea name="Services of Interest"></textarea>
-      <input type="checkbox" name="Covenant Acknowledged" />
+      <select name="Lease Type"></select>
+      <select name="Decision Timeline"></select>
+      <input type="checkbox" name="Services of Interest" />
+      <textarea name="Notes"></textarea>
       <input type="text" name="Landing Page" />
       <input type="text" name="Traffic Source" />
       <input type="text" name="Campaign" />
