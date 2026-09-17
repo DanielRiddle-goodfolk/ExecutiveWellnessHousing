@@ -414,7 +414,7 @@ export default function Home() {
           loading="lazy"
           decoding="async"
                   src="/photos/theoldruth08.07.2023-43(1)_f8d90acd.webp"
-                  alt="The Table — formal dining room at The Old Ruth with two long tables set beneath portraits and fireplace"
+                  alt="The Table — formal dining room at The Old Ruth with two long tables set beneath original portraits"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -893,7 +893,7 @@ export default function Home() {
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Wellness Chamber</h5>
-                    <p className="text-xs text-[var(--color-muted-foreground)]">Private salt-air environment for respiratory and skin support.</p>
+                    <p className="text-xs text-[var(--color-muted-foreground)]">Full-spectrum infrared sauna paired with complementary technologies in one private session — circulation, lymphatic flow, recovery, muscle and joint comfort, cellular function, and nervous-system regulation together.</p>
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">PEMF Therapy</h5>
@@ -1100,7 +1100,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Destination Ring */}
+          {/* Within Reach */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -1111,7 +1111,7 @@ export default function Home() {
               variants={fadeUp}
               className="text-lg text-[var(--color-charcoal)] mb-8 tracking-wide"
             >
-              The Destination Ring
+              Within Reach
             </motion.h3>
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
               {[
