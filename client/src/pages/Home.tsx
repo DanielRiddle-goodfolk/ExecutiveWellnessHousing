@@ -206,7 +206,7 @@ export default function Home() {
             </motion.h2>
           </motion.div>
 
-          {/* Residence + Restoration — Staggered Grid */}
+          {/* Mansion + Restoration — Staggered Grid */}
           <div className="grid lg:grid-cols-12 gap-8 mb-16">
             <motion.div
               initial="hidden"
@@ -227,13 +227,13 @@ export default function Home() {
               <div className="flex items-start gap-4">
                 <div className="w-8 h-[1px] bg-[var(--color-brass)] mt-3 shrink-0" />
                 <div>
-                  <h3 className="text-2xl text-[var(--color-ivory)] mb-3">The Residence</h3>
+                  <h3 className="text-2xl text-[var(--color-ivory)] mb-3">The Mansion</h3>
                   <p className="text-xl text-[var(--color-ivory)] mb-4 italic">
                     14 private suites. A sprawling National Historic Registry mansion and estate.
                   </p>
                   <p className="text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
-                    Slip away into an oasis of tranquility. Heaven on earth. The exclusivity of a
-                    "Residents Only" estate, a peaceful escape.
+                    Slip into the tranquil exclusivity of a residence-only estate, a peaceful
+                    escape. Heaven on earth.
                   </p>
                   <p className="text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
                     Designed by the same architect who designed the iconic La Porte Courthouse.
@@ -277,6 +277,9 @@ export default function Home() {
                   <div className="space-y-3">
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
                       <span className="text-[var(--color-ivory)] font-medium">Far Infrared Sauna + Red Light Therapy</span> —
+                      Deep, penetrating heat that raises core temperature, drives detoxification
+                      through sweat, eases muscle tension, and improves circulation — paired with
+                      targeted red wavelengths that support cellular recovery and skin health.
                       Private sessions at The Old Ruth or Studio 7:14.
                     </p>
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
@@ -495,12 +498,39 @@ export default function Home() {
           </motion.div>
 
           <div className="grid lg:grid-cols-12 gap-8 items-center">
+            {/* The Executive Lounge — first on mobile (directly under the eyebrow),
+                below the main card on desktop. */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeUp}
-              className="lg:col-span-5"
+              className="lg:order-3 lg:col-start-6 lg:col-span-7"
+            >
+              <div className="p-10 lg:p-14 border border-[oklch(1_0_0/0.08)]">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-[1px] bg-[var(--color-brass)] mt-3 shrink-0" />
+                  <div>
+                    <p className="text-xs tracking-[0.15em] uppercase text-[var(--color-brass)] mb-2">
+                      The Executive Lounge (Upgrade — Exclusively for Old Ruth Residents)
+                    </p>
+                    <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
+                      Above A Whole World of Good sits a 3,000 square-foot lounge — available exclusively
+                      to Old Ruth residents for executive meetings, strategy sessions, and whatever else
+                      might be needed. Flexible configuration. The quiet of a private floor
+                      above the life of downtown. Reserved at an additional day or monthly rate.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={fadeUp}
+              className="lg:order-1 lg:col-span-5"
             >
               <div className="aspect-[3/4] overflow-hidden">
                 <img
@@ -518,7 +548,7 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={fadeUp}
-              className="lg:col-span-7"
+              className="lg:order-2 lg:col-span-7"
             >
               <div className="p-10 lg:p-14 border border-[oklch(1_0_0/0.08)]">
                 <div className="flex items-start gap-4 mb-8">
@@ -547,15 +577,6 @@ export default function Home() {
                     <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed mb-4">
                       • One complimentary craft coffee or specialty drink daily per resident.<br />
                       • 15% off all products and services for the entirety of your stay.
-                    </p>
-                    <p className="text-xs tracking-[0.15em] uppercase text-[var(--color-brass)] mb-2 mt-6">
-                      The Executive Lounge (Upgrade — Exclusively for Old Ruth Residents)
-                    </p>
-                    <p className="text-sm text-[oklch(0.68_0.01_80)] leading-relaxed">
-                      Above A Whole World of Good sits a 3,000 square-foot lounge — available exclusively
-                      to Old Ruth residents for executive meetings, strategy sessions, and whatever else
-                      might be needed. Flexible configuration. The quiet of a private floor
-                      above the life of downtown. Reserved at an additional day or monthly rate.
                     </p>
                   </div>
                 </div>
@@ -822,9 +843,6 @@ export default function Home() {
                   {[
                     "Offsite laundry service (concierge drop-off and pick-up)",
                     "Concierge maid service (additional cleans beyond weekly)",
-                    "Hyperbaric Chamber (appointment required)",
-                    "On-site massage (appointment required)",
-                    "Executive Lounge at A Whole World of Good (day or monthly rate)",
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3 py-3 border-b border-[var(--color-border)] last:border-b-0">
                       <span className="text-[var(--color-brass)] mt-0.5">+</span>
@@ -849,12 +867,14 @@ export default function Home() {
                 <p className="text-sm text-[var(--color-muted-foreground)] leading-relaxed mb-6">
                   10,000 square feet of deliberate wellness modalities for body, soul, mind and spirit —
                   directly across the street from A Whole World of Good in historic downtown La Porte.
+                </p>
+                <p className="text-sm text-[var(--color-charcoal)] leading-relaxed mb-6 italic">
                   A beautiful, perfect mile — a low-impact walk from your front door.
                 </p>
 
                 {/* Complimentary for residents */}
                 <p className="text-xs tracking-[0.15em] uppercase text-[var(--color-brass)] mb-3">
-                  Unlimited &amp; Complimentary for Residents
+                  Complimentary, Daily Use for Residents
                 </p>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                   <div className="p-4 border border-[var(--color-brass)] bg-[oklch(0.98_0.008_80)]">
@@ -888,6 +908,10 @@ export default function Home() {
                 </p>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
+                    <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Hyperbaric Chamber</h5>
+                    <p className="text-xs text-[var(--color-muted-foreground)]">Pressurized oxygen therapy that saturates blood and tissue with oxygen to speed healing, lower inflammation, sharpen mental clarity, and shorten recovery from travel, exertion, and chronic fatigue. Appointment required.</p>
+                  </div>
+                  <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
                     <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Full-Scale Apothecary</h5>
                     <p className="text-xs text-[var(--color-muted-foreground)]">Organic herbs, teas, nutraceuticals, and supplements — specifically curated for those battling chronic autoimmune dysregulation and cellular dysfunction.</p>
                   </div>
@@ -908,7 +932,7 @@ export default function Home() {
                     <p className="text-xs text-[var(--color-muted-foreground)]">An array of massages to aid all recovery and mobility needs of all systems: circulatory, muscular, skeletal, breath, lymphatic, and cellular.</p>
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
-                    <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Counseling & Coaching</h5>
+                    <h5 className="text-sm font-medium text-[var(--color-charcoal)] mb-1">Biblical Counseling &amp; Life Coaching</h5>
                     <p className="text-xs text-[var(--color-muted-foreground)]">Marriage, family, wellness, and executive-level life coaching. Individual and couples sessions available.</p>
                   </div>
                   <div className="p-4 border border-[var(--color-border)] bg-[oklch(0.98_0.005_80)]">
@@ -1070,8 +1094,8 @@ export default function Home() {
                 loading="lazy"
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-                <p className="text-sm text-white/90 font-medium">The Old Ruth Grounds</p>
-                <p className="text-xs text-white/70">Walkable to historic downtown</p>
+                <p className="text-sm text-white/90 font-medium">The Historic District</p>
+                <p className="text-xs text-white/70">A perfect walkable mile to downtown</p>
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
@@ -1083,7 +1107,7 @@ export default function Home() {
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
                 <p className="text-sm text-white/90 font-medium">The Garden Walk</p>
-                <p className="text-xs text-white/70">A quiet bench for morning coffee</p>
+                <p className="text-xs text-white/70">Lush landscaping on 3.3 acres</p>
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="aspect-[4/3] overflow-hidden relative group">
@@ -1165,7 +1189,7 @@ export default function Home() {
               variants={fadeUp}
               className="mt-4 text-base text-[var(--color-muted-foreground)] max-w-2xl leading-relaxed"
             >
-              La Porte is a town of lakes, parks, farmers markets, and live music nights. Your executives will discover a rhythm here — one that makes them want to stay.
+              La Porte is a town of lakes, parks, festivals, church bells, farmers markets, vibrant church communities, and live music nights. Your executives will discover a rhythm here that makes them want to stay.
             </motion.p>
           </motion.div>
 
@@ -1178,11 +1202,13 @@ export default function Home() {
           >
             {[
               { img: "/photos/C4aB7WQrS8j5_cdf17919.webp", label: "La Porte County Courthouse", alt: "La Porte County Courthouse — designed by the same architect as The Old Ruth, downtown La Porte, Indiana" },
-              { img: "/photos/gggj1huQwDu1_b6e08859.webp", label: "Historic Downtown", alt: "Historic downtown La Porte, Indiana — minutes from The Old Ruth executive housing" },
+              // TODO: swap in the new downtown photo Dan is supplying → /photos/historic-downtown-2026-09.webp
+              { img: "/photos/gggj1huQwDu1_b6e08859.webp", label: "Historic Downtown", alt: "Historic downtown La Porte, Indiana — a walkable mile from The Old Ruth executive housing" },
               { img: "/photos/eUXeb0jFjsqE_5c644d9c.webp", label: "Parks & Trails", alt: "Parks and trails in La Porte, Indiana, near The Old Ruth" },
               { img: "/photos/A4fBjGS78xg7_0e007447.webp", label: "Farmers Market", alt: "La Porte farmers market — local produce near The Old Ruth corporate housing" },
               { img: "/photos/vZrg5vP0ZiBT_958c3aac.webp", label: "Pine Lake Sunset", alt: "Sunset over Pine Lake in La Porte, Indiana" },
-              { img: "/photos/IMG_4954_35ac147d.webp", label: "A Whole World of Good", alt: "A Whole World of Good — downtown La Porte coffeehouse and mercantile, a Good Folk brand" },
+              { img: "/photos/arts-in-the-park-2026-09.webp", label: "Arts in the Park", alt: "Arts in the Park summer concert crowd on the lawn at the lakeside band shell in La Porte, Indiana" },
+              { img: "/photos/awwog-interior-2026-09.webp", label: "A Whole World of Good", alt: "Inside A Whole World of Good — downtown La Porte mercantile and craft coffeehouse with vintage furniture and curated gifts, a Good Folk brand" },
               { img: "/photos/bPFS6sJMhPMj_ddba9fb4.webp", label: "Studio 7:14", alt: "Studio 7:14 — 10,000 sq. ft. wellness studio at 714 Lincolnway, La Porte, Indiana" },
             ].map((item, i) => (
               <motion.div key={i} variants={fadeUp} className="group">
