@@ -35,7 +35,7 @@ const sectionClass =
    Netlify and the Notion property are keyed to it. */
 const SERVICES = [
   "Wellness & Recovery Services",
-  "Counseling & Coaching",
+  "Biblical Counseling & Life Coaching",
   "Food & Beverage Packages",
   "Private Dining & Gatherings",
   "Meeting & Strategy Space",

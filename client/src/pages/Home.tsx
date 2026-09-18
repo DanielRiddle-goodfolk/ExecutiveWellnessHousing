@@ -899,6 +899,42 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Studio 7:14 — the rooms themselves */}
+                <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-10">
+                  {[
+                    {
+                      img: "/photos/studio-714-infrared-sauna-2026-09.webp",
+                      label: "Far Infrared Sauna",
+                      alt: "Cedar far infrared sauna lit warm beside a lounge chair and rebounder at Studio 7:14 in La Porte, Indiana",
+                    },
+                    {
+                      img: "/photos/studio-714-neurospa-chair-2026-09.webp",
+                      label: "The Chair",
+                      alt: "NeuroSpa zero-gravity nervous system trainer chair in a quiet lamplit room at Studio 7:14",
+                    },
+                    {
+                      img: "/photos/studio-714-rebounding-2026-09.webp",
+                      label: "The Rebounding Studio",
+                      alt: "Studio floor of rebounders with support bars at Studio 7:14, 714 Lincolnway, La Porte, Indiana",
+                    },
+                  ].map((shot, i) => (
+                    <figure key={i} className="group">
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                          src={shot.img}
+                          alt={shot.alt}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                        />
+                      </div>
+                      <figcaption className="mt-2 text-xs text-[var(--color-muted-foreground)]">
+                        {shot.label}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+
                 {/* Additional modalities */}
                 <p className="text-xs tracking-[0.15em] uppercase text-[var(--color-brass)] mb-1">
                   Additional Modalities Available
@@ -1202,7 +1238,6 @@ export default function Home() {
           >
             {[
               { img: "/photos/C4aB7WQrS8j5_cdf17919.webp", label: "La Porte County Courthouse", alt: "La Porte County Courthouse — designed by the same architect as The Old Ruth, downtown La Porte, Indiana" },
-              // TODO: swap in the new downtown photo Dan is supplying → /photos/historic-downtown-2026-09.webp
               { img: "/photos/gggj1huQwDu1_b6e08859.webp", label: "Historic Downtown", alt: "Historic downtown La Porte, Indiana — a walkable mile from The Old Ruth executive housing" },
               { img: "/photos/eUXeb0jFjsqE_5c644d9c.webp", label: "Parks & Trails", alt: "Parks and trails in La Porte, Indiana, near The Old Ruth" },
               { img: "/photos/A4fBjGS78xg7_0e007447.webp", label: "Farmers Market", alt: "La Porte farmers market — local produce near The Old Ruth corporate housing" },
