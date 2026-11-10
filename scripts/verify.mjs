@@ -40,7 +40,8 @@ const MIN_PRERENDERED_TEXT = 800;
 const REQUIRED_FORM_FIELDS = [
   "First Name", "Last Name", "Company", "Job Title", "email", "Phone",
   "Number of People", "Target Move-In", "Length of Stay", "Lease Type",
-  "Decision Timeline", "Services of Interest", "Notes",
+  "Decision Timeline", "Services of Interest",
+  "Referred By", "Travel Nurse", "Wellness Sabbatical", "Notes",
   "Landing Page", "Traffic Source", "Campaign",
   "company-website",
 ];

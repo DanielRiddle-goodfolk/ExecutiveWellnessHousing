@@ -151,6 +151,11 @@ it saw to `/apply` in the URL (`ews_lp`, `ews_ref`, plus any campaign tags), and
 `client/src/lib/attribution.ts` reads them back. Those leads arrive with **Landing Page =
 `housing.executivewellnesssuites.com`** and the real traffic source and campaign.
 
+**Self-reported fields.** Visitors can also say where they came from themselves: `Referred By`
+(any of six partner names, several allowed — the list is `REFERRERS` in `Application.tsx`), plus
+`Travel Nurse` and `Wellness Sabbatical`, each `Yes` when ticked and empty otherwise. Renaming a
+partner changes the value that reaches Jennie's email and the CRM.
+
 ## Analytics
 
 **Google Analytics 4**, configured in `client/src/lib/analytics.ts`. The Measurement ID lives in

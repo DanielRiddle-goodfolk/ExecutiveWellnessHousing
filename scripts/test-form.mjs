@@ -88,6 +88,12 @@ for (const label of serviceLabels.slice(0, 2)) await label.click();
 const checkedCount = await page.$$eval('input[name="Services of Interest"]', (n) => n.filter((i) => i.checked).length);
 console.log(`service boxes checked via label click: ${checkedCount}/${serviceLabels.length}`);
 
+// Two referral sources, and Travel Nurse ticked while Wellness Sabbatical is
+// left alone — an unticked yes-box must arrive empty, not as "No".
+const referrerLabels = await page.$$('label:has(input[name="Referred By"])');
+for (const label of referrerLabels.slice(0, 2)) await label.click();
+await page.click('label:has(input[name="Travel Nurse"])');
+
 await page.click('button[type="submit"]');
 await page.waitForTimeout(2000);
 
@@ -116,12 +122,20 @@ server.close();
 const expected = [
   "form-name", "First Name", "Last Name", "Company", "Job Title", "email", "Phone",
   "Number of People", "Target Move-In", "Length of Stay", "Lease Type",
-  "Decision Timeline", "Services of Interest", "Notes",
+  "Decision Timeline", "Services of Interest", "Referred By", "Travel Nurse", "Notes",
 ];
-const got = received ? new Set(new URLSearchParams(received.body).keys()) : new Set();
+const sent = received ? new URLSearchParams(received.body) : new URLSearchParams();
+const got = new Set(sent.keys());
 const missing = expected.filter((f) => !got.has(f));
+const wrong = [];
+if (sent.getAll("Referred By").length !== 2) wrong.push(`Referred By has ${sent.getAll("Referred By").length} values, expected 2`);
+if (sent.get("Travel Nurse") !== "Yes") wrong.push(`Travel Nurse is "${sent.get("Travel Nurse")}", expected "Yes"`);
+if (sent.has("Wellness Sabbatical")) wrong.push("Wellness Sabbatical was sent although its box was left unticked");
 const passed = SIMULATE_FAILURE
   ? received && errorToastShown > 0 && confirmationShown === 0
-  : received && missing.length === 0 && confirmationShown > 0 && jsErrors.length === 0;
-console.log(`\n${passed ? "PASS" : "FAIL"}${missing.length ? ` — missing fields: ${missing.join(", ")}` : ""}`);
+  : received && missing.length === 0 && wrong.length === 0 && confirmationShown > 0 && jsErrors.length === 0;
+const problems = [missing.length ? `missing fields: ${missing.join(", ")}` : "", ...(SIMULATE_FAILURE ? [] : wrong)]
+  .filter(Boolean)
+  .join(" · ");
+console.log(`\n${passed ? "PASS" : "FAIL"}${problems ? ` — ${problems}` : ""}`);
 process.exit(passed ? 0 : 1);
