@@ -7,6 +7,20 @@ https://www.executivewellnesshousing.com/*  https://executivewellnesssuites.com/
 http://executivewellnesshousing.com/*       https://executivewellnesssuites.com/:splat  301!
 http://www.executivewellnesshousing.com/*   https://executivewellnesssuites.com/:splat  301!
 
+# housing.executivewellnesssuites.com — the lodging landing page, a plain HTML file at
+# client/public/housing/index.html. These only match while the subdomain is attached to this
+# Netlify site as a domain alias.
+#
+# A domain alias serves the WHOLE site, so the third rule sends every other path on the
+# subdomain to the main domain; without it, every page would exist twice. The last two keep the
+# page from also living at executivewellnesssuites.com/housing. Deploy previews have their own
+# hostname, so none of these match there and the page previews at /housing/.
+http://housing.executivewellnesssuites.com/*   https://housing.executivewellnesssuites.com/:splat  301!
+https://housing.executivewellnesssuites.com/   /housing/index.html                                200!
+https://housing.executivewellnesssuites.com/*  https://executivewellnesssuites.com/:splat         301!
+https://executivewellnesssuites.com/housing    https://housing.executivewellnesssuites.com/       301!
+https://executivewellnesssuites.com/housing/*  https://housing.executivewellnesssuites.com/       301!
+
 # Netlify serves existing static files first; this is the last-resort SPA fallback
 # so deep links and refreshes never 404.
 /*    /index.html   200

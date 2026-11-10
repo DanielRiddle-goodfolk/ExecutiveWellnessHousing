@@ -56,10 +56,15 @@ footers, meta titles, Open Graph tags, and the `LodgingBusiness` structured data
 and Netlify site are still named `ExecutiveWellnessHousing` — that is intentional, don't "fix" it.
 Any further change to the brand phrase or domain changes SEO and needs Dan's explicit sign-off.
 
+**One deliberate exception:** the housing landing page (`client/public/housing/index.html`, served
+at housing.executivewellnesssuites.com) says **"Executive Wellness Housing"** on purpose (Dan,
+November 10, 2026). It is not a leftover from the rename. Leave it.
+
 When the domain changes, these must all move together: `SITE_URL` in `client/src/lib/seo.ts` **and**
 `scripts/routes.mjs`, `PRODUCTION_HOSTS` in `client/src/lib/analytics.ts`, the canonical/OG tags in
-`client/index.html`, `client/public/robots.txt`, and the old-domain redirects in
-`client/public/_redirects`.
+`client/index.html`, `client/public/robots.txt`, the old-domain redirects in
+`client/public/_redirects`, and — for the housing page — its `LIVE_HOST` (twice), canonical, OG URL
+and button link in `client/public/housing/index.html` plus the housing rules in `_redirects`.
 
 ## Where things live
 
@@ -70,6 +75,7 @@ When the domain changes, these must all move together: `SITE_URL` in `client/src
 | The Table (dining) | `client/src/pages/TheTable.tsx` |
 | Photo gallery | `client/src/pages/Gallery.tsx` |
 | Inquiry form | `client/src/pages/Application.tsx` **+** `client/index.html` |
+| Housing landing page (housing.executivewellnesssuites.com) | `client/public/housing/index.html` |
 | Page titles, descriptions, social tags | `client/src/lib/seo.ts` |
 | Where inquiries are emailed | `INQUIRY_EMAIL` in `client/src/lib/seo.ts` |
 | Google Analytics | `client/src/lib/analytics.ts` |
@@ -80,6 +86,22 @@ When the domain changes, these must all move together: `SITE_URL` in `client/src
 
 There are **no** `about.html`, `contact.html`, `css/styles.css`, or `js/main.js` files. This is a
 React app — pages are `.tsx` components and styling is Tailwind utility classes.
+
+## The housing landing page
+
+`client/public/housing/index.html` is the one page that is **not** React. It is a single
+self-contained HTML file — its own styles, its own scripts — copied to the site as-is. That means:
+
+- **None of the build's checks cover it.** No prerender, and `pnpm run verify` does not visit it.
+  Open the deploy preview at `/housing/` and look at it on a phone.
+- **It reaches its subdomain through host rules in `client/public/_redirects`**, which only work
+  while `housing.executivewellnesssuites.com` is attached to the Netlify site as a domain alias.
+- **It has its own GA4 tag**, hostname-guarded to the live subdomain only — not the one in
+  `analytics.ts`, which this page never loads.
+- **Its "Request a Residency" button hands attribution to `/apply`** through two URL parameters,
+  `ews_lp` and `ews_ref`, which `client/src/lib/attribution.ts` reads. Rename one and you must
+  rename it in both files.
+- Three of its photos load from Squarespace's CDN. That is accepted for now (Dan, Nov 2026).
 
 ## Brand voice
 

@@ -4,6 +4,7 @@ Marketing website for **Executive Wellness Suites** — private corporate housin
 circa-1888 National Historic Registry mansion in La Porte, Indiana.
 
 - **Live site:** https://executivewellnesssuites.com
+- **Housing landing page:** https://housing.executivewellnesssuites.com
 - **Hosting:** Netlify (auto-deploys from this repo)
 - **Repo owner / admin:** Dan Riddle
 - **Inquiries go to:** Jennie@goodfolk.com
@@ -16,6 +17,9 @@ circa-1888 National Historic Registry mansion in La Porte, Indiana.
 > and the required status check. The brand phrase appears in page copy, meta titles, and structured
 > data. Any further change to it needs Dan's sign-off — it affects SEO. "The Old Ruth" is also
 > planned as a separate, non-corporate-facing site later.
+>
+> The housing landing page at housing.executivewellnesssuites.com says "Executive Wellness
+> Housing" **on purpose** (Dan, November 10, 2026). It is not a leftover from the rename.
 
 ## What this is
 
@@ -32,6 +36,10 @@ pnpm run verify    # gate: h1 count, 4xx, JS errors, broken images, screenshots
 pnpm run test:form # drives the real inquiry form against a fake Netlify server
 ```
 
+The one exception is the housing landing page, `client/public/housing/index.html` — a single plain
+HTML file copied to the site as-is. The build's checks do not cover it; review it on the deploy
+preview at `/housing/`.
+
 ## Folder structure
 
 ```
@@ -40,7 +48,9 @@ executive-wellness-housing/
 │   ├── index.html            # HTML shell + the hidden Netlify form declaration
 │   ├── public/               # copied verbatim to the site root
 │   │   ├── photos/           # 67 optimized WebP property photos
-│   │   ├── _redirects        # Netlify redirects
+│   │   ├── housing/
+│   │   │   └── index.html    # housing.executivewellnesssuites.com landing page (plain HTML)
+│   │   ├── _redirects        # Netlify redirects, incl. the housing subdomain rules
 │   │   ├── _headers          # Netlify headers
 │   │   ├── robots.txt
 │   │   └── sitemap.xml
@@ -55,6 +65,7 @@ executive-wellness-housing/
 │       ├── components/       # shared UI
 │       ├── lib/seo.ts        # per-route meta, and INQUIRY_EMAIL
 │       ├── lib/analytics.ts  # GA4 loader + the production-hostname guard
+│       ├── lib/attribution.ts # lead attribution (landing page, traffic source, campaign)
 │       └── index.css         # Tailwind layer + design tokens
 ├── scripts/
 │   ├── prerender.mjs         # writes crawlable HTML for every route
@@ -134,6 +145,12 @@ data just never arrives. `pnpm run test:form` catches the drift. See `CLAUDE.md`
 Deploy previews capture submissions into the *same* form as production, so a test submission on a
 preview will reach Notion. Useful for verifying the chain; delete the test row afterwards.
 
+**Leads from the housing landing page.** That page lives on its own subdomain, a different origin,
+so it can't share the main site's attribution record. Its "Request a Residency" button passes what
+it saw to `/apply` in the URL (`ews_lp`, `ews_ref`, plus any campaign tags), and
+`client/src/lib/attribution.ts` reads them back. Those leads arrive with **Landing Page =
+`housing.executivewellnesssuites.com`** and the real traffic source and campaign.
+
 ## Analytics
 
 **Google Analytics 4**, configured in `client/src/lib/analytics.ts`. The Measurement ID lives in
@@ -150,6 +167,12 @@ homepage to `/apply` never triggers a real page load. GA4's **Enhanced Measureme
 through its "page changes based on browser history events" option, which is on by default. Calling
 `trackPageView` as well would double-count every navigation. If Enhanced Measurement is ever turned
 off, wire it up then.
+
+**The housing landing page has its own tag**, in the page itself, reporting to the same property and
+guarded to `housing.executivewellnesssuites.com` only. It also sends three events —
+`housing_apply_click`, `housing_text_click`, `housing_copy_click`. A text never touches the inquiry
+form, so `housing_text_click` is the only record of a texted lead starting there. In GA4 reports the
+page's path is `/`, the same as the homepage — tell them apart by **Hostname** or page title.
 
 To verify tracking after a deploy: open the live site, then check **GA4 → Reports → Realtime**.
 
@@ -173,6 +196,10 @@ npx serve dist/public
   stays registered and 301-redirects every path to the new one — see `client/public/_redirects`.
   Keep it as a domain alias on the Netlify site; if it's removed there, the redirect rules stop
   matching and old links go dead.
+- **Subdomain:** housing.executivewellnesssuites.com — a domain alias on the same Netlify site,
+  with a GoDaddy CNAME `housing` → `executivewellnesshousing.netlify.app`. Host rules in
+  `client/public/_redirects` serve the housing page at its root and send every other path to the
+  main domain. Remove the alias and the subdomain stops working.
 - **DNS managed at:** GoDaddy
 - **Notes:** redirects live in `client/public/_redirects`; custom headers in `client/public/_headers`
 

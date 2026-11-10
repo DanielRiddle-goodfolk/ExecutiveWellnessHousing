@@ -23,7 +23,11 @@ const KEY = "ewh:attribution";
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"] as const;
 
 export type Attribution = {
-  /** First page of this site the visitor saw, e.g. "/corporate-housing" */
+  /**
+   * First page of this site the visitor saw, e.g. "/corporate-housing" — or
+   * "housing.executivewellnesssuites.com" for a visitor handed off from the
+   * housing landing page (see captureAttribution).
+   */
   landingPage: string;
   /** External site that sent them, or "(direct)" */
   referrer: string;
@@ -41,6 +45,18 @@ export function captureAttribution(): void {
     if (window.sessionStorage.getItem(KEY)) return;
 
     const params = new URLSearchParams(window.location.search);
+
+    // Hand-off from the housing landing page at housing.executivewellnesssuites.com
+    // (client/public/housing/index.html). That page is a different origin: it
+    // cannot share this sessionStorage and does not run this file, so without
+    // this its visitors' first page view here is /apply and their leads would be
+    // credited to the form instead of the page that sent them. Its button passes
+    // what it saw — ews_lp is where the visitor landed, ews_ref is the site that
+    // sent them there. Campaign tags and ad click ids are passed through
+    // unchanged and read below like any others. Rename either parameter and you
+    // must rename it in that page too.
+    const handoffLanding = (params.get("ews_lp") ?? "").slice(0, 200);
+    const handoffReferrer = (params.get("ews_ref") ?? "").slice(0, 500);
 
     const utm = UTM_KEYS.map((k) => {
       const v = params.get(k);
@@ -71,11 +87,17 @@ export function captureAttribution(): void {
     // do not count as two different landing pages.
     const path = window.location.pathname.replace(/(.)\/$/, "$1");
 
-    const record: Attribution = {
-      landingPage: path + window.location.search,
-      referrer: referrer || "(direct)",
-      campaign: utm || clickId,
-    };
+    const record: Attribution = handoffLanding
+      ? {
+          landingPage: handoffLanding,
+          referrer: handoffReferrer || "(direct)",
+          campaign: utm || clickId,
+        }
+      : {
+          landingPage: path + window.location.search,
+          referrer: referrer || "(direct)",
+          campaign: utm || clickId,
+        };
 
     window.sessionStorage.setItem(KEY, JSON.stringify(record));
   } catch {
