@@ -81,3 +81,25 @@ which is correct behaviour, not an outage. Fix the build; the site is not broken
 Check from a phone with wifi off before assuming anything is wrong. Desktop ad blockers routinely
 block the Google Analytics script while leaving everything else working, which looks exactly like a
 broken install. See `claude/analytics-ga4` in the project notes for the console checks.
+
+---
+
+## housing.executivewellnesssuites.com doesn't show the housing page
+
+Check what the subdomain actually returns:
+
+```
+curl -sI https://housing.executivewellnesssuites.com/ | head -3
+```
+
+- **Doesn't resolve / connection error** — DNS. GoDaddy needs a CNAME `housing` →
+  `executivewellnesshousing.netlify.app`. `nslookup housing.executivewellnesssuites.com` should
+  answer with Netlify's addresses.
+- **Certificate error** — Netlify hasn't reissued its certificate to include the subdomain yet.
+  Domain management → HTTPS → *Verify DNS configuration*, then *Renew certificate*.
+- **A Netlify "Site not found" page** — the subdomain is not attached to the site. Add it as a
+  domain alias under Domain management.
+- **A redirect to executivewellnesssuites.com instead of a 200** — the root rewrite in
+  `client/public/_redirects` isn't winning. Check the housing rules are still above the `/*`
+  fallback and that the root rule keeps its `200!`. If they are, Netlify is redirecting the alias
+  before the rules run, and the page needs its own Netlify site.

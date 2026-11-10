@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  housing.executivewellnesssuites.com — the lodging landing page.
+
+  Plain HTML, deliberately outside the React app. Vite copies client/public/ to the
+  built site as-is, so this file is served exactly as written: no prerender, and the
+  verify gate (scripts/verify.mjs) does not check it.
+
+  It reaches the subdomain through the host rules in client/public/_redirects. On a
+  deploy preview it is at /housing/.
+
+  "Executive Wellness Housing" on this page is intentional (Dan, Nov 10, 2026). It is
+  not a leftover from the September rename. Leave it.
+-->
+<title>Lodging from $1,895/month — Executive Wellness Housing, La Porte, IN</title>
+<meta name="description" content="Executive lodging at The Old Ruth, a circa-1888 historic mansion in La Porte, Indiana. From $1,895 a month, with a complimentary wellness spa membership.">
+<link rel="canonical" href="https://housing.executivewellnesssuites.com/">
+<meta name="theme-color" content="#1C1C1E">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Executive Wellness Housing">
+<meta property="og:title" content="Lodging from $1,895/month — Executive Wellness Housing">
+<meta property="og:description" content="Executive lodging at The Old Ruth, a circa-1888 historic mansion in La Porte, Indiana. From $1,895 a month, with a complimentary wellness spa membership.">
+<meta property="og:url" content="https://housing.executivewellnesssuites.com/">
+<!-- JPEG on purpose: LinkedIn does not reliably render WebP share images. -->
+<meta property="og:image" content="https://executivewellnesssuites.com/photos/og-default-2026-08.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="https://executivewellnesssuites.com/ews-favicon.svg" type="image/svg+xml">
+<link rel="icon" href="https://executivewellnesssuites.com/ews-favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://executivewellnesssuites.com/ews-apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://executivewellnesssuites.com/photos/hero-the-old-ruth-summer.webp" fetchpriority="high">
+
+<script>
+/*
+ * Google Analytics 4 — the same property as the main site.
+ *
+ * Only the live subdomain reports. Deploy previews and local copies are skipped so
+ * they never land in the real numbers — the same rule as PRODUCTION_HOSTS in
+ * client/src/lib/analytics.ts. If this page ever moves to another hostname, change
+ * LIVE_HOST here or tracking silently stops.
+ *
+ * Do not swap this for Google's copy-paste snippet: it has no hostname guard.
+ */
+(function () {
+  var GA_ID = "G-RQ8W0NEY7H";
+  var LIVE_HOST = "housing.executivewellnesssuites.com";
+  if (location.hostname !== LIVE_HOST) return;
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag("js", new Date());
+  window.gtag("config", GA_ID);
+})();
+</script>
+
+<style>
+  html, body { margin:0; padding:0; background:#1C1C1E; }
+
+  #ews-lodging {
+    --charcoal:#1C1C1E; --ivory:#F5F0E6; --ivory-dim:rgba(245,240,230,.72); --line:rgba(245,240,230,.22);
+    background:var(--charcoal); color:var(--ivory);
+    font-family:'Jost','Helvetica Neue',Arial,sans-serif; font-weight:300; line-height:1.6;
+    box-sizing:border-box; overflow:hidden;
+  }
+  #ews-lodging *, #ews-lodging *::before, #ews-lodging *::after { box-sizing:border-box; }
+
+  /* Hero */
+  #ews-lodging .el-hero { position:relative; min-height:clamp(460px, 68vh, 680px); display:flex; align-items:center; }
+  #ews-lodging .el-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
+  #ews-lodging .el-hero::after { content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 70% 75% at 50% 50%, rgba(10,10,12,.72) 0%, rgba(10,10,12,.45) 100%),
+      rgba(10,10,12,.30); }
+  #ews-lodging .el-copy { text-shadow:0 2px 18px rgba(0,0,0,.55); }
+  #ews-lodging a.el-btn { text-shadow:none; }
+  #ews-lodging .el-copy { position:relative; z-index:1; width:100%; max-width:1120px; margin:0 auto; padding:56px 24px; text-align:center; }
+  #ews-lodging .el-eyebrow { text-transform:uppercase; letter-spacing:.28em; font-size:11px; color:var(--ivory-dim); margin:0 0 12px; }
+  #ews-lodging .el-title { font-family:'Cormorant Garamond',Georgia,serif; font-weight:400; font-size:clamp(34px, 4.8vw, 58px); line-height:1.05; margin:0; color:var(--ivory); }
+  #ews-lodging .el-title em { font-style:italic; }
+  #ews-lodging .el-rule { width:70px; height:1px; background:var(--ivory); opacity:.5; margin:16px auto; }
+  #ews-lodging .el-sub { text-transform:uppercase; letter-spacing:.22em; font-size:13px; margin:0; color:var(--ivory); }
+
+  /* Photo strip */
+  #ews-lodging .el-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; }
+  #ews-lodging .el-strip img { width:100%; height:clamp(200px, 20vw, 300px); object-fit:cover; display:block; }
+
+  /* Text-us block */
+  #ews-lodging .el-text { max-width:460px; margin:18px auto 0; padding:12px 18px 14px; border:1px solid var(--line); border-radius:6px; background:rgba(10,10,12,.45); }
+  #ews-lodging .el-text-label { margin:0 0 6px; text-transform:uppercase; letter-spacing:.16em; font-size:11px; color:var(--ivory-dim); }
+  #ews-lodging .el-text-label a { color:var(--ivory) !important; text-decoration:none !important; border-bottom:1px solid var(--line); white-space:nowrap; }
+  #ews-lodging .el-text-msg { margin:0 0 10px; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; line-height:1.35; color:var(--ivory); }
+  #ews-lodging .el-text-btns { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  #ews-lodging button.el-copybtn, #ews-lodging a.el-sms { font-family:'Jost',sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:.16em; font-size:11px; line-height:1.2; padding:8px 16px; margin:0; width:auto; height:auto; min-width:0; min-height:0; display:inline-block; border-radius:999px;
+    border:1px solid var(--line); background:transparent; color:var(--ivory) !important; text-decoration:none !important; cursor:pointer; text-shadow:none; transition:background .2s, color .2s; }
+  #ews-lodging button.el-copybtn:hover, #ews-lodging a.el-sms:hover { border-color:var(--ivory); }
+
+  /* Address */
+  #ews-lodging .el-addr { margin:14px 0 0; text-transform:uppercase; letter-spacing:.2em; font-size:11px; }
+  #ews-lodging .el-addr a { color:var(--ivory-dim) !important; text-decoration:none !important; border-bottom:1px solid transparent; transition:color .2s, border-color .2s; }
+  #ews-lodging .el-addr a:hover { color:var(--ivory) !important; border-bottom-color:var(--line); }
+
+  /* CTA button (sits under the subtitle in the hero) */
+  #ews-lodging a.el-btn { margin-top:20px; display:inline-block; text-decoration:none !important; text-transform:uppercase; letter-spacing:.2em; font-size:13px; font-weight:400;
+    padding:13px 30px; border:1px solid var(--ivory); border-radius:999px; color:var(--charcoal) !important; background:var(--ivory); transition:background .2s, color .2s; }
+  #ews-lodging a.el-btn:hover { background:transparent; color:var(--ivory) !important; }
+
+  /* Mobile */
+  @media screen and (max-width:820px) {
+    #ews-lodging .el-hero { min-height:0 !important; }
+    #ews-lodging .el-copy { padding:56px 18px !important; }
+    #ews-lodging .el-rule { margin:12px auto !important; }
+    #ews-lodging .el-eyebrow { font-size:11px !important; letter-spacing:.2em !important; margin-bottom:10px !important; }
+    #ews-lodging h1.el-title { font-size:clamp(32px, 9.5vw, 44px) !important; line-height:1.08 !important; }
+    #ews-lodging h1.el-title .el-line { display:block !important; white-space:nowrap !important; }
+    #ews-lodging .el-sub { font-size:13px !important; letter-spacing:.16em !important; }
+    #ews-lodging a.el-btn { display:block !important; width:100% !important; max-width:360px !important; margin:18px auto 0 !important; padding:15px 24px !important; font-size:14px !important; letter-spacing:.18em !important; }
+    #ews-lodging .el-addr { font-size:11px !important; letter-spacing:.14em !important; margin-top:12px !important; }
+    #ews-lodging .el-text { margin-top:14px !important; padding:12px 14px !important; }
+    #ews-lodging .el-text-label { font-size:11px !important; letter-spacing:.12em !important; }
+    #ews-lodging .el-text-msg { font-size:16px !important; }
+    #ews-lodging button.el-copybtn, #ews-lodging a.el-sms { flex:1 1 0 !important; font-size:12px !important; padding:11px 10px !important; }
+    #ews-lodging .el-strip { grid-template-columns:1fr 1fr !important; }
+    #ews-lodging .el-strip img { height:clamp(200px, 56vw, 280px) !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+<section id="ews-lodging" aria-labelledby="ews-lodging-title">
+  <div class="el-hero">
+    <img src="https://executivewellnesssuites.com/photos/hero-the-old-ruth-summer.webp" fetchpriority="high"
+         alt="The Old Ruth estate seen across the lawn through mature trees, Executive Wellness Suites in La Porte, Indiana">
+    <div class="el-copy">
+      <p class="el-eyebrow">Executive Wellness Housing</p>
+      <h1 class="el-title" id="ews-lodging-title"><span class="el-line">Lodging starting at</span> <span class="el-line"><em>$1,895</em>/month</span></h1>
+      <div class="el-rule" aria-hidden="true"></div>
+      <p class="el-sub">Complimentary wellness spa membership</p>
+      <!-- The script at the bottom of the page rewrites this href to carry attribution.
+           The static value already credits this page, so it still works without JS. -->
+      <a class="el-btn" id="el-apply" data-track="housing_apply_click" href="https://executivewellnesssuites.com/apply?ews_lp=housing.executivewellnesssuites.com">Request a Residency</a>
+      <div class="el-text">
+        <p class="el-text-label">Or text this message to <a data-track="housing_text_click" href="sms:+12145787255?&amp;body=I%20am%20interested%20in%20a%2030-day%20stay%20with%20Executive%20Wellness%20Housing.%20Please%20reach%20out%20to%20me%20with%20more%20information">(214) 578-7255</a></p>
+        <p class="el-text-msg" id="el-text-msg">“I am interested in a 30-day stay with Executive Wellness Housing. Please reach out to me with more information”</p>
+        <div class="el-text-btns">
+          <button type="button" class="el-copybtn" data-track="housing_copy_click" onclick="(function(b){var t='I am interested in a 30-day stay with Executive Wellness Housing. Please reach out to me with more information';function ok(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy Message'},2000);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok);}else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok();}catch(e){}document.body.removeChild(a);}})(this)">Copy Message</button>
+          <a class="el-sms" data-track="housing_text_click" href="sms:+12145787255?&amp;body=I%20am%20interested%20in%20a%2030-day%20stay%20with%20Executive%20Wellness%20Housing.%20Please%20reach%20out%20to%20me%20with%20more%20information">Text Now</a>
+        </div>
+      </div>
+      <p class="el-addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=1603+Michigan+Ave+La+Porte+IN+46350" target="_blank" rel="noopener">1603 Michigan Ave &nbsp;·&nbsp; La Porte, IN 46350</a></p>
+    </div>
+  </div>
+
+  <div class="el-strip">
+    <img src="https://executivewellnesssuites.com/photos/TheOldRuthMarketingPhotos87_202c46d6.webp"
+         alt="Bedroom suite in warm lamplight at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/09.13.2023-Theoldruth-12_eaff6bd2.webp"
+         alt="Grand staircase and chandelier at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/TOR-Summer-2025-53_78d4fe65.webp"
+         alt="Furnished suite with antique art at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/studio-714-infrared-sauna-2026-09.webp"
+         alt="Far infrared sauna at Studio 7:14 in La Porte, Indiana" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/68dfe68f28a335268ee1ac8f/38d5291d-7c3d-4291-b056-78dadd3550e3/studio714_16x9_450dpi_final.jpeg?content-type=image%2Fjpeg"
+         alt="Studio 7:14 wellness spa storefront at sunset in downtown La Porte, Indiana" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/68dfe68f28a335268ee1ac8f/0900323e-0c97-4983-af51-0eccf4c93b43/Lobby.png?content-type=image%2Fpng"
+         alt="Lobby at Studio 7:14 in La Porte, Indiana" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/68dfe68f28a335268ee1ac8f/236de7ea-dc8d-4f3f-bc14-5659d934b5dc/GetWell+Massage+at+Studio+714+in+La+Porte+Indiana.png?content-type=image%2Fpng"
+         alt="GetWell Massage at Studio 7:14 in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/IMG_0022_0a4db764.webp"
+         alt="Red brick mansion framed by trees at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/TheOldRuthMarketingPhotos75_2635d02c.webp"
+         alt="Library with leather chair and bookshelves at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/theoldruth08.07.2023-43%281%29_f8d90acd.webp"
+         alt="Formal dining room with long tables at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/TOR-Summer-2025-29_2e2b4ff2.webp"
+         alt="Atrium with leather seating at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/studio-714-neurospa-chair-2026-09.webp"
+         alt="Zero-gravity lounger at Studio 7:14 in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/TheOldRuth08.07.2023-84_fedfed38.webp"
+         alt="Ornate ironwork veranda at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/studio-714-rebounding-2026-09.webp"
+         alt="Rebounding studio floor at Studio 7:14 in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/IMG_4954_35ac147d.webp"
+         alt="Executive meeting lounge above A Whole World of Good coffeehouse in downtown La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/garden-walk-bench-2026-09.webp"
+         alt="Garden path with cast-iron bench at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/TheOldRuthMarketingPhotos103_f4b6ee05.webp"
+         alt="Suite bed with drapery at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/09.13.2023-Theoldruth-6_94509e11.webp"
+         alt="View through the historic rooms at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/TOR-Summer-2025-40_4a31db1a.webp"
+         alt="Common room with red velvet sofa at The Old Ruth in La Porte, Indiana" loading="lazy">
+    <img src="https://executivewellnesssuites.com/photos/TheOldRuthMarketingPhotos50_fc88cdb1.webp"
+         alt="Leather Chesterfield in the sunroom at The Old Ruth in La Porte, Indiana" loading="lazy">
+  </div>
+</section>
+</main>
+
+<script>
+/*
+ * Lead attribution hand-off.
+ *
+ * The inquiry form is at executivewellnesssuites.com/apply, a different origin.
+ * Attribution there is recorded on the visitor's first page view on that origin
+ * (client/src/lib/attribution.ts), which would be /apply itself, so a lead this page
+ * produced would be credited to the form page instead.
+ *
+ * So the button carries what this page saw: ews_lp (where the visitor landed),
+ * ews_ref (the site that sent them here) and any campaign tags or ad click ids, all
+ * read back by attribution.ts. Rename either ews_ parameter and you must rename it
+ * there too.
+ *
+ * On a deploy preview the button points at that preview's own /apply, so the whole
+ * chain can be tested before merging. Preview submissions still reach the production
+ * form and the Notion CRM: delete the test row afterwards.
+ */
+(function () {
+  var LIVE_HOST = "housing.executivewellnesssuites.com";
+  var btn = document.getElementById("el-apply");
+  if (!btn) return;
+  try {
+    var here = new URLSearchParams(location.search);
+    var out = new URLSearchParams();
+    out.set("ews_lp", location.hostname + location.pathname.replace(/\/$/, ""));
+
+    var ref = document.referrer;
+    if (ref) {
+      try { if (new URL(ref).hostname === location.hostname) ref = ""; } catch (e) { ref = ""; }
+    }
+    if (ref) out.set("ews_ref", ref);
+
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid"].forEach(function (k) {
+      var v = here.get(k);
+      if (v) out.set(k, v);
+    });
+
+    var base = location.hostname === LIVE_HOST ? "https://executivewellnesssuites.com/apply" : "/apply";
+    btn.href = base + "?" + out.toString();
+  } catch (e) {
+    // Leave the static href in place; it still credits this page.
+  }
+})();
+
+/*
+ * The three actions on this page, as GA4 events: housing_apply_click,
+ * housing_text_click, housing_copy_click. A text never touches the inquiry form,
+ * so these are the only record that a texted lead started on this page.
+ * No-op wherever GA4 is not loaded (previews, local).
+ */
+document.addEventListener("click", function (e) {
+  var el = e.target && e.target.closest ? e.target.closest("[data-track]") : null;
+  if (el && window.gtag) window.gtag("event", el.getAttribute("data-track"));
+});
+</script>
+</body>
+</html>
