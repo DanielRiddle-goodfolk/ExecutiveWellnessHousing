@@ -2,7 +2,7 @@ import { useSeo, INQUIRY_EMAIL } from "@/lib/seo";
 import { applyAttribution } from "@/lib/attribution";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
 
 const fadeUp = {
@@ -42,6 +42,65 @@ const SERVICES = [
   "Executive Lounge Access",
 ];
 
+/* Self-reported referral sources — further up the funnel than the automatic
+   attribution in lib/attribution.ts can see. Every box ticked is submitted
+   under the one field "Referred By", and each value is what reaches Netlify,
+   Jennie's notification email and the CRM, so keep the names spelled exactly
+   as the partner spells them. A new name here is a new value downstream.
+
+   The group is required: at least one box, or "Other" with its fill-in, which
+   arrives as its own field, "Referred By Other". */
+const REFERRERS = [
+  "Turnaround Lifestyle",
+  "Microsoft",
+  "Walsh",
+  "reClaim Health Spa",
+  "Texas Spa House",
+  "The Emerging Sound",
+];
+
+/* One checkbox row. The real input is visually hidden and a styled box stands
+   in for it, so visitors — and scripts/test-form.mjs — click the wrapping
+   label. An unticked box submits nothing at all, so its field arrives empty.
+   Pass `checked` and `onChange` only when the page needs to know the box's
+   state; otherwise the browser keeps it. */
+function CheckOption({
+  name,
+  value,
+  label,
+  checked,
+  onChange,
+}: {
+  name: string;
+  value: string;
+  label: string;
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
+}) {
+  return (
+    <label className="flex items-center gap-3 cursor-pointer group">
+      <span className="relative flex">
+        <input
+          type="checkbox"
+          name={name}
+          value={value}
+          checked={checked}
+          onChange={onChange ? (e) => onChange(e.target.checked) : undefined}
+          className="peer sr-only"
+        />
+        <span className="w-5 h-5 shrink-0 border border-[var(--color-border)] bg-[var(--color-ivory)] peer-checked:border-[var(--color-brass)] peer-checked:bg-[var(--color-brass)] transition-all duration-200 flex items-center justify-center">
+          <svg className="w-3 h-3 text-[var(--color-ivory)] opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+      </span>
+      <span className="text-sm text-[var(--color-charcoal)] group-hover:text-[var(--color-brass)] transition-colors duration-200">
+        {label}
+      </span>
+    </label>
+  );
+}
+
 export default function Application() {
   useSeo({
     title: "Request a Residency | Executive Housing in La Porte, IN | The Old Ruth",
@@ -51,14 +110,31 @@ export default function Application() {
 
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [referralMissing, setReferralMissing] = useState(false);
+  const [otherReferral, setOtherReferral] = useState(false);
+  const referralGroup = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (sending) return;
-    setSending(true);
 
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    // "Referred By" is required, but a browser cannot require "at least one"
+    // of a group of checkboxes, so it is checked here. The browser's own
+    // checks (every other required field, and the Other fill-in once Other is
+    // ticked) have already passed by the time this runs.
+    if (data.getAll("Referred By").length === 0) {
+      setReferralMissing(true);
+      referralGroup.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      referralGroup.current?.querySelector("input")?.focus({ preventScroll: true });
+      return;
+    }
+    // A fill-in typed and then un-ticked is not an answer.
+    if (!data.getAll("Referred By").includes("Other")) data.delete("Referred By Other");
+
+    setSending(true);
     data.set("form-name", "residency-inquiry");
 
     // Attached here rather than rendered as inputs on purpose: the prerender
@@ -268,6 +344,54 @@ export default function Application() {
                         />
                       </div>
                     </div>
+
+                    {/* Required — see handleSubmit. The Other fill-in is always
+                        rendered (never conditionally), because Netlify only keeps
+                        fields it can see in the prerendered page. */}
+                    <div
+                      ref={referralGroup}
+                      role="group"
+                      aria-labelledby="referred-by-label"
+                      aria-describedby={referralMissing ? "referred-by-error" : undefined}
+                      onChange={() => setReferralMissing(false)}
+                      className="mt-8"
+                    >
+                      <span id="referred-by-label" className={labelClass}>
+                        Referred By
+                      </span>
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        {REFERRERS.map((item) => (
+                          <CheckOption key={item} name="Referred By" value={item} label={item} />
+                        ))}
+                        <div className="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-3">
+                          <div className="shrink-0">
+                            <CheckOption
+                              name="Referred By"
+                              value="Other"
+                              label="Other"
+                              checked={otherReferral}
+                              onChange={setOtherReferral}
+                            />
+                          </div>
+                          <input
+                            type="text"
+                            name="Referred By Other"
+                            aria-label="Other — who referred you"
+                            placeholder="Who referred you?"
+                            required={otherReferral}
+                            onChange={(e) => {
+                              if (e.target.value.trim()) setOtherReferral(true);
+                            }}
+                            className={`${fieldClass} sm:flex-1 py-2`}
+                          />
+                        </div>
+                      </div>
+                      {referralMissing && (
+                        <p id="referred-by-error" role="alert" className="mt-3 text-sm text-[var(--color-destructive)]">
+                          Please tell us who referred you — choose one, or Other.
+                        </p>
+                      )}
+                    </div>
                   </motion.div>
 
                   {/* Section 2: The Stay */}
@@ -343,25 +467,17 @@ export default function Application() {
                     <label className={labelClass}>Services &amp; Add-Ons of Interest (optional)</label>
                     <div className="grid sm:grid-cols-2 gap-3 mb-8">
                       {SERVICES.map((item) => (
-                        <label key={item} className="flex items-center gap-3 cursor-pointer group">
-                          <span className="relative flex">
-                            <input
-                              type="checkbox"
-                              name="Services of Interest"
-                              value={item}
-                              className="peer sr-only"
-                            />
-                            <span className="w-5 h-5 shrink-0 border border-[var(--color-border)] bg-[var(--color-ivory)] peer-checked:border-[var(--color-brass)] peer-checked:bg-[var(--color-brass)] transition-all duration-200 flex items-center justify-center">
-                              <svg className="w-3 h-3 text-[var(--color-ivory)] opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
-                            </span>
-                          </span>
-                          <span className="text-sm text-[var(--color-charcoal)] group-hover:text-[var(--color-brass)] transition-colors duration-200">
-                            {item}
-                          </span>
-                        </label>
+                        <CheckOption key={item} name="Services of Interest" value={item} label={item} />
                       ))}
+                    </div>
+                    <label className={labelClass}>About You (optional)</label>
+                    <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                      <CheckOption name="Travel Nurse" value="Yes" label="I am a travel nurse" />
+                      <CheckOption
+                        name="Wellness Sabbatical"
+                        value="Yes"
+                        label="Interested in a Wellness Sabbatical"
+                      />
                     </div>
                     <label className={labelClass}>Notes (optional)</label>
                     <textarea
