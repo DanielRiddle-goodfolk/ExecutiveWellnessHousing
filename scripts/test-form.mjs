@@ -88,10 +88,21 @@ for (const label of serviceLabels.slice(0, 2)) await label.click();
 const checkedCount = await page.$$eval('input[name="Services of Interest"]', (n) => n.filter((i) => i.checked).length);
 console.log(`service boxes checked via label click: ${checkedCount}/${serviceLabels.length}`);
 
-// Two referral sources, and Travel Nurse ticked while Wellness Sabbatical is
-// left alone — an unticked yes-box must arrive empty, not as "No".
-const referrerLabels = await page.$$('label:has(input[name="Referred By"])');
+// "Referred By" is required: with every other field filled and no referral
+// ticked, the form must refuse to send and say why.
+await page.click('button[type="submit"]');
+await page.waitForTimeout(800);
+const blockedWithoutReferral = received === null;
+const referralErrorShown = (await page.locator("#referred-by-error").count()) > 0;
+console.log(`no referral ticked: ${blockedWithoutReferral ? "not sent" : "SENT"}, error ${referralErrorShown ? "shown" : "NOT shown"}`);
+
+// Two named referral sources plus Other with its fill-in, and Travel Nurse
+// ticked while Wellness Sabbatical is left alone — an unticked yes-box must
+// arrive empty, not as "No".
+const referrerLabels = await page.$$('label:has(input[name="Referred By"]:not([value="Other"]))');
 for (const label of referrerLabels.slice(0, 2)) await label.click();
+await page.click('label:has(input[name="Referred By"][value="Other"])');
+await page.fill('input[name="Referred By Other"]', "Met at a Chicago conference");
 await page.click('label:has(input[name="Travel Nurse"])');
 
 await page.click('button[type="submit"]');
@@ -122,13 +133,17 @@ server.close();
 const expected = [
   "form-name", "First Name", "Last Name", "Company", "Job Title", "email", "Phone",
   "Number of People", "Target Move-In", "Length of Stay", "Lease Type",
-  "Decision Timeline", "Services of Interest", "Referred By", "Travel Nurse", "Notes",
+  "Decision Timeline", "Services of Interest", "Referred By", "Referred By Other", "Travel Nurse", "Notes",
 ];
 const sent = received ? new URLSearchParams(received.body) : new URLSearchParams();
 const got = new Set(sent.keys());
 const missing = expected.filter((f) => !got.has(f));
 const wrong = [];
-if (sent.getAll("Referred By").length !== 2) wrong.push(`Referred By has ${sent.getAll("Referred By").length} values, expected 2`);
+if (!blockedWithoutReferral) wrong.push("the form sent with no referral ticked");
+if (!referralErrorShown) wrong.push("no message asked for a referral");
+if (sent.getAll("Referred By").length !== 3) wrong.push(`Referred By has ${sent.getAll("Referred By").length} values, expected 3`);
+if (!sent.getAll("Referred By").includes("Other")) wrong.push("Other was ticked but not sent");
+if (sent.get("Referred By Other") !== "Met at a Chicago conference") wrong.push(`Referred By Other is "${sent.get("Referred By Other")}"`);
 if (sent.get("Travel Nurse") !== "Yes") wrong.push(`Travel Nurse is "${sent.get("Travel Nurse")}", expected "Yes"`);
 if (sent.has("Wellness Sabbatical")) wrong.push("Wellness Sabbatical was sent although its box was left unticked");
 const passed = SIMULATE_FAILURE
