@@ -42,6 +42,41 @@ const SERVICES = [
   "Executive Lounge Access",
 ];
 
+/* Self-reported referral sources — further up the funnel than the automatic
+   attribution in lib/attribution.ts can see. Every box ticked is submitted
+   under the one field "Referred By", and each value is what reaches Netlify,
+   Jennie's notification email and the CRM, so keep the names spelled exactly
+   as the partner spells them. A new name here is a new value downstream. */
+const REFERRERS = [
+  "Turnaround Lifestyle",
+  "Microsoft",
+  "Walsh",
+  "reClaim Health Spa",
+  "Texas Spa House",
+  "The Emerging Sound",
+];
+
+/* One checkbox row. The real input is visually hidden and a styled box stands
+   in for it, so visitors — and scripts/test-form.mjs — click the wrapping
+   label. An unticked box submits nothing at all, so its field arrives empty. */
+function CheckOption({ name, value, label }: { name: string; value: string; label: string }) {
+  return (
+    <label className="flex items-center gap-3 cursor-pointer group">
+      <span className="relative flex">
+        <input type="checkbox" name={name} value={value} className="peer sr-only" />
+        <span className="w-5 h-5 shrink-0 border border-[var(--color-border)] bg-[var(--color-ivory)] peer-checked:border-[var(--color-brass)] peer-checked:bg-[var(--color-brass)] transition-all duration-200 flex items-center justify-center">
+          <svg className="w-3 h-3 text-[var(--color-ivory)] opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+      </span>
+      <span className="text-sm text-[var(--color-charcoal)] group-hover:text-[var(--color-brass)] transition-colors duration-200">
+        {label}
+      </span>
+    </label>
+  );
+}
+
 export default function Application() {
   useSeo({
     title: "Request a Residency | Executive Housing in La Porte, IN | The Old Ruth",
@@ -343,25 +378,23 @@ export default function Application() {
                     <label className={labelClass}>Services &amp; Add-Ons of Interest (optional)</label>
                     <div className="grid sm:grid-cols-2 gap-3 mb-8">
                       {SERVICES.map((item) => (
-                        <label key={item} className="flex items-center gap-3 cursor-pointer group">
-                          <span className="relative flex">
-                            <input
-                              type="checkbox"
-                              name="Services of Interest"
-                              value={item}
-                              className="peer sr-only"
-                            />
-                            <span className="w-5 h-5 shrink-0 border border-[var(--color-border)] bg-[var(--color-ivory)] peer-checked:border-[var(--color-brass)] peer-checked:bg-[var(--color-brass)] transition-all duration-200 flex items-center justify-center">
-                              <svg className="w-3 h-3 text-[var(--color-ivory)] opacity-0 peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
-                            </span>
-                          </span>
-                          <span className="text-sm text-[var(--color-charcoal)] group-hover:text-[var(--color-brass)] transition-colors duration-200">
-                            {item}
-                          </span>
-                        </label>
+                        <CheckOption key={item} name="Services of Interest" value={item} label={item} />
                       ))}
+                    </div>
+                    <label className={labelClass}>Referred By (optional)</label>
+                    <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                      {REFERRERS.map((item) => (
+                        <CheckOption key={item} name="Referred By" value={item} label={item} />
+                      ))}
+                    </div>
+                    <label className={labelClass}>About You (optional)</label>
+                    <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                      <CheckOption name="Travel Nurse" value="Yes" label="I am a travel nurse" />
+                      <CheckOption
+                        name="Wellness Sabbatical"
+                        value="Yes"
+                        label="Interested in a Wellness Sabbatical"
+                      />
                     </div>
                     <label className={labelClass}>Notes (optional)</label>
                     <textarea
