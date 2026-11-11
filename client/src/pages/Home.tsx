@@ -1102,6 +1102,28 @@ export default function Home() {
             </motion.p>
           </motion.div>
 
+          {/* The Old Ruth Lawn — lead image */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="mb-6"
+          >
+            <motion.div variants={fadeUp} className="aspect-[3/2] md:aspect-[16/7] overflow-hidden relative group">
+              <img
+                src="/photos/old-ruth-lawn-2026-09.webp"
+                alt="The Old Ruth seen across its shaded lawn through century-old maples and walnuts in La Porte, Indiana"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <p className="text-sm text-white/90 font-medium">The Old Ruth Lawn</p>
+                <p className="text-xs text-white/70">Century-old maples and walnuts across 3.3 acres</p>
+              </div>
+            </motion.div>
+          </motion.div>
+
           {/* Grounds + Lake Michigan */}
           <motion.div
             initial="hidden"
