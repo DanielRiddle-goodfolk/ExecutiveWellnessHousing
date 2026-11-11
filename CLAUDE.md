@@ -100,7 +100,7 @@ self-contained HTML file — its own styles, its own scripts — copied to the s
   `analytics.ts`, which this page never loads.
 - **Its "Request a Residency" button hands attribution to `/apply`** through two URL parameters,
   `ews_lp` and `ews_ref`, which `client/src/lib/attribution.ts` reads. Rename one and you must
-  rename it in both files.
+  rename it in both files. The script covers every `a.el-btn`, so an added button gets it too.
 - Three of its photos load from Squarespace's CDN. That is accepted for now (Dan, Nov 2026).
 
 ## Brand voice

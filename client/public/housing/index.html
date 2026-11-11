@@ -92,8 +92,17 @@
   #ews-lodging .el-eyebrow { text-transform:uppercase; letter-spacing:.28em; font-size:11px; color:var(--ivory-dim); margin:0 0 12px; }
   #ews-lodging .el-title { font-family:'Cormorant Garamond',Georgia,serif; font-weight:400; font-size:clamp(34px, 4.8vw, 58px); line-height:1.05; margin:0; color:var(--ivory); }
   #ews-lodging .el-title em { font-style:italic; }
+  #ews-lodging .el-rooms { margin:10px auto 0; max-width:620px; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:20px; line-height:1.3; color:var(--ivory-dim); }
   #ews-lodging .el-rule { width:70px; height:1px; background:var(--ivory); opacity:.5; margin:16px auto; }
   #ews-lodging .el-sub { text-transform:uppercase; letter-spacing:.22em; font-size:13px; margin:0; color:var(--ivory); }
+
+  /* About copy */
+  #ews-lodging .el-about { max-width:680px; margin:0 auto; padding:72px 24px 76px; text-align:center; }
+  #ews-lodging .el-about-title { margin:0 0 26px; font-family:'Cormorant Garamond',Georgia,serif; font-weight:400; font-size:clamp(32px, 4vw, 46px); line-height:1.1; color:var(--ivory); }
+  #ews-lodging .el-about p { margin:0 0 18px; font-size:17px; line-height:1.75; color:rgba(245,240,230,.86); }
+  #ews-lodging .el-about p.el-about-terms span { white-space:nowrap; }
+  #ews-lodging .el-about p.el-about-terms .el-dot { font-style:normal; margin:0 .9em; }
+  #ews-lodging .el-about p.el-about-terms { margin:32px 0 0; padding-top:24px; border-top:1px solid var(--line); text-transform:uppercase; letter-spacing:.18em; font-size:12px; line-height:1.9; color:var(--ivory-dim); }
 
   /* Photo strip */
   #ews-lodging .el-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; }
@@ -101,6 +110,8 @@
 
   /* Text-us block */
   #ews-lodging .el-text { max-width:460px; margin:18px auto 0; padding:12px 18px 14px; border:1px solid var(--line); border-radius:6px; background:rgba(10,10,12,.45); }
+  #ews-lodging .el-text-promo { margin:0 0 8px; padding-bottom:8px; border-bottom:1px solid var(--line); text-transform:uppercase; letter-spacing:.16em; font-size:12px; font-weight:400; }
+  #ews-lodging .el-text-promo a { color:var(--ivory) !important; text-decoration:none !important; }
   #ews-lodging .el-text-label { margin:0 0 6px; text-transform:uppercase; letter-spacing:.16em; font-size:11px; color:var(--ivory-dim); }
   #ews-lodging .el-text-label a { color:var(--ivory) !important; text-decoration:none !important; border-bottom:1px solid var(--line); white-space:nowrap; }
   #ews-lodging .el-text-msg { margin:0 0 10px; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; line-height:1.35; color:var(--ivory); }
@@ -129,13 +140,20 @@
     #ews-lodging .el-eyebrow { font-size:11px !important; letter-spacing:.2em !important; margin-bottom:10px !important; }
     #ews-lodging h1.el-title { font-size:clamp(32px, 9.5vw, 44px) !important; line-height:1.08 !important; }
     #ews-lodging h1.el-title .el-line { display:block !important; white-space:nowrap !important; }
+    #ews-lodging .el-rooms { font-size:17px !important; margin-top:8px !important; }
     #ews-lodging .el-sub { font-size:13px !important; letter-spacing:.16em !important; }
     #ews-lodging a.el-btn { display:block !important; width:100% !important; max-width:360px !important; margin:18px auto 0 !important; padding:15px 24px !important; font-size:14px !important; letter-spacing:.18em !important; }
     #ews-lodging .el-addr { font-size:11px !important; letter-spacing:.14em !important; margin-top:12px !important; }
     #ews-lodging .el-text { margin-top:14px !important; padding:12px 14px !important; }
+    #ews-lodging .el-text-promo { font-size:12px !important; letter-spacing:.12em !important; }
     #ews-lodging .el-text-label { font-size:11px !important; letter-spacing:.12em !important; }
     #ews-lodging .el-text-msg { font-size:16px !important; }
     #ews-lodging button.el-copybtn, #ews-lodging a.el-sms { flex:1 1 0 !important; font-size:12px !important; padding:11px 10px !important; }
+    #ews-lodging .el-about { padding:52px 22px 56px !important; }
+    #ews-lodging .el-about p { font-size:16px !important; line-height:1.7 !important; text-align:left !important; }
+    #ews-lodging .el-about p.el-about-terms span { display:block !important; }
+    #ews-lodging .el-about p.el-about-terms .el-dot { display:none !important; }
+    #ews-lodging .el-about p.el-about-terms { text-align:center !important; font-size:11px !important; letter-spacing:.14em !important; }
     #ews-lodging .el-strip { grid-template-columns:1fr 1fr !important; }
     #ews-lodging .el-strip img { height:clamp(200px, 56vw, 280px) !important; }
   }
@@ -152,12 +170,14 @@
     <div class="el-copy">
       <p class="el-eyebrow">Executive Wellness Housing</p>
       <h1 class="el-title" id="ews-lodging-title"><span class="el-line">Lodging starting at</span> <span class="el-line"><em>$1,895</em>/month</span></h1>
+      <p class="el-rooms">Rooms with ensuite bathrooms through king suites available</p>
       <div class="el-rule" aria-hidden="true"></div>
       <p class="el-sub">Complimentary wellness spa membership</p>
-      <!-- The script at the bottom of the page rewrites this href to carry attribution.
-           The static value already credits this page, so it still works without JS. -->
-      <a class="el-btn" id="el-apply" data-track="housing_apply_click" href="https://executivewellnesssuites.com/apply?ews_lp=housing.executivewellnesssuites.com">Request a Residency</a>
+      <!-- The script at the bottom of the page rewrites every a.el-btn href to carry
+           attribution. The static value already credits this page, so it still works without JS. -->
+      <a class="el-btn" data-track="housing_apply_click" href="https://executivewellnesssuites.com/apply?ews_lp=housing.executivewellnesssuites.com">Request a Residency</a>
       <div class="el-text">
+        <p class="el-text-promo"><a data-track="housing_call_click" href="tel:+12145787255">Call or text for Microsoft discount</a></p>
         <p class="el-text-label">Or text this message to <a data-track="housing_text_click" href="sms:+12145787255?&amp;body=I%20am%20interested%20in%20a%2030-day%20stay%20with%20Executive%20Wellness%20Housing.%20Please%20reach%20out%20to%20me%20with%20more%20information">(214) 578-7255</a></p>
         <p class="el-text-msg" id="el-text-msg">“I am interested in a 30-day stay with Executive Wellness Housing. Please reach out to me with more information”</p>
         <div class="el-text-btns">
@@ -167,6 +187,16 @@
       </div>
       <p class="el-addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=1603+Michigan+Ave+La+Porte+IN+46350" target="_blank" rel="noopener">1603 Michigan Ave &nbsp;·&nbsp; La Porte, IN 46350</a></p>
     </div>
+  </div>
+
+  <div class="el-about">
+    <h2 class="el-about-title">A Home Away From Home</h2>
+    <p>This beautifully appointed historic mansion in La Porte is set aside for professionals and leaders on longer assignments and sabbaticals, people who are here to work and recover well.</p>
+    <p>We understand life on the road and how hard it is to stay well while you're away. This is a house set aside for healing, offering a full spa menu and complimentary wellness modalities every day.</p>
+    <p>Every room has its own private bath. Downstairs there's a grand dining room, a big, comfortable living room and 3.3 acres of shaded grounds. A concierge and housekeeping staff take care of the house so you can take care of the job.</p>
+    <p>The house keeps a steady rhythm of clean air, kind words, early nights and mornings that start with good coffee and a clear head. Everyone under this roof is here for the same reason.</p>
+    <p>It's a place you'll be glad to return to each evening, and one the loved ones waiting at home will be glad you found.</p>
+    <p class="el-about-terms"><span>Stays of 30 days or more</span><i class="el-dot" aria-hidden="true">·</i><span>Residents only</span><i class="el-dot" aria-hidden="true">·</i><span>Ages 18 and over</span></p>
   </div>
 
   <div class="el-strip">
@@ -223,10 +253,10 @@
  * (client/src/lib/attribution.ts), which would be /apply itself, so a lead this page
  * produced would be credited to the form page instead.
  *
- * So the button carries what this page saw: ews_lp (where the visitor landed),
- * ews_ref (the site that sent them here) and any campaign tags or ad click ids, all
- * read back by attribution.ts. Rename either ews_ parameter and you must rename it
- * there too.
+ * So the Request a Residency button carries what this page saw: ews_lp (where the
+ * visitor landed), ews_ref (the site that sent them here) and any campaign tags or
+ * ad click ids, all read back by attribution.ts. Rename either ews_ parameter and you
+ * must rename it there too. Any a.el-btn link gets this, so a second button would too.
  *
  * On a deploy preview the button points at that preview's own /apply, so the whole
  * chain can be tested before merging. Preview submissions still reach the production
@@ -234,8 +264,8 @@
  */
 (function () {
   var LIVE_HOST = "housing.executivewellnesssuites.com";
-  var btn = document.getElementById("el-apply");
-  if (!btn) return;
+  var btns = document.querySelectorAll("a.el-btn");
+  if (!btns.length) return;
   try {
     var here = new URLSearchParams(location.search);
     var out = new URLSearchParams();
@@ -253,16 +283,18 @@
     });
 
     var base = location.hostname === LIVE_HOST ? "https://executivewellnesssuites.com/apply" : "/apply";
-    btn.href = base + "?" + out.toString();
+    var href = base + "?" + out.toString();
+    for (var i = 0; i < btns.length; i++) btns[i].href = href;
   } catch (e) {
     // Leave the static href in place; it still credits this page.
   }
 })();
 
 /*
- * The three actions on this page, as GA4 events: housing_apply_click,
- * housing_text_click, housing_copy_click. A text never touches the inquiry form,
- * so these are the only record that a texted lead started on this page.
+ * The actions on this page, as GA4 events: housing_apply_click (Request a
+ * Residency), housing_text_click, housing_copy_click and housing_call_click
+ * (the Microsoft discount line). A text or call never touches the inquiry form, so
+ * these are the only record that such a lead started on this page.
  * No-op wherever GA4 is not loaded (previews, local).
  */
 document.addEventListener("click", function (e) {

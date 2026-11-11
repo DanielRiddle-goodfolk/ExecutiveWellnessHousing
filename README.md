@@ -175,9 +175,11 @@ through its "page changes based on browser history events" option, which is on b
 off, wire it up then.
 
 **The housing landing page has its own tag**, in the page itself, reporting to the same property and
-guarded to `housing.executivewellnesssuites.com` only. It also sends three events —
-`housing_apply_click`, `housing_text_click`, `housing_copy_click`. A text never touches the inquiry
-form, so `housing_text_click` is the only record of a texted lead starting there. In GA4 reports the
+guarded to `housing.executivewellnesssuites.com` only. It also sends four events —
+`housing_apply_click` (Request a Residency), `housing_text_click`,
+`housing_copy_click` and `housing_call_click` (the "Call or text for Microsoft discount" line). A
+text or call never touches the inquiry form, so `housing_text_click` and `housing_call_click` are the
+only record of those leads starting there. In GA4 reports the
 page's path is `/`, the same as the homepage — tell them apart by **Hostname** or page title.
 
 To verify tracking after a deploy: open the live site, then check **GA4 → Reports → Realtime**.
