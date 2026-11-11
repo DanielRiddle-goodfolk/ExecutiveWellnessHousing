@@ -79,6 +79,9 @@
   /* Hero */
   #ews-lodging .el-hero { position:relative; min-height:clamp(460px, 68vh, 680px); display:flex; align-items:center; }
   #ews-lodging .el-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
+  /* EWS monogram, top-left. More specific than the hero-photo rule above, which
+     would otherwise stretch it to fill the hero. z-index lifts it over the dark overlay. */
+  #ews-lodging .el-hero img.el-logo { inset:auto; top:24px; left:24px; width:56px; height:56px; object-fit:contain; z-index:2; }
   #ews-lodging .el-hero::after { content:""; position:absolute; inset:0;
     background:
       radial-gradient(ellipse 70% 75% at 50% 50%, rgba(10,10,12,.72) 0%, rgba(10,10,12,.45) 100%),
@@ -119,7 +122,9 @@
   /* Mobile */
   @media screen and (max-width:820px) {
     #ews-lodging .el-hero { min-height:0 !important; }
-    #ews-lodging .el-copy { padding:56px 18px !important; }
+    /* Extra top padding clears the logo, which would otherwise sit on the eyebrow. */
+    #ews-lodging .el-copy { padding:84px 18px 56px !important; }
+    #ews-lodging .el-hero img.el-logo { top:16px !important; left:16px !important; width:44px !important; height:44px !important; }
     #ews-lodging .el-rule { margin:12px auto !important; }
     #ews-lodging .el-eyebrow { font-size:11px !important; letter-spacing:.2em !important; margin-bottom:10px !important; }
     #ews-lodging h1.el-title { font-size:clamp(32px, 9.5vw, 44px) !important; line-height:1.08 !important; }
@@ -142,6 +147,8 @@
   <div class="el-hero">
     <img src="https://executivewellnesssuites.com/photos/hero-the-old-ruth-summer.webp" fetchpriority="high"
          alt="The Old Ruth estate seen across the lawn through mature trees, Executive Wellness Suites in La Porte, Indiana">
+    <img class="el-logo" src="https://executivewellnesssuites.com/photos/ews-monogram-ivory.svg" width="56" height="56"
+         alt="Executive Wellness Housing">
     <div class="el-copy">
       <p class="el-eyebrow">Executive Wellness Housing</p>
       <h1 class="el-title" id="ews-lodging-title"><span class="el-line">Lodging starting at</span> <span class="el-line"><em>$1,895</em>/month</span></h1>
